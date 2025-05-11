@@ -367,6 +367,8 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Scripts/CloudGenerator.cs"
+"Assets/Scripts/CloudManager.cs"
 "Assets/Scripts/CubeGenerator.cs"
 "Assets/Scripts/CubePrefabCreator.cs"
 "Assets/Scripts/GameManager.cs"
