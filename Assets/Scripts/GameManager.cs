@@ -8,7 +8,13 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Vector3 spawnPosition = new Vector3(0, 20, 0); // 玩家生成位置，高度设置高一些以便让玩家落到地面上
     
+    [Header("天气设置")]
+    public bool enableWeatherSystem = true;
+    public bool startWithRain = false;
+    public float defaultRainIntensity = 0.7f;
+    
     private GameObject player;
+    private RainManager rainManager;
     
     void Awake()
     {
@@ -36,6 +42,12 @@ public class GameManager : MonoBehaviour
         
         // 初始化云朵系统
         InitializeCloudSystem();
+        
+        // 初始化雨滴系统
+        if (enableWeatherSystem)
+        {
+            InitializeRainSystem();
+        }
     }
     
     void InitializeCloudSystem()
@@ -60,6 +72,30 @@ public class GameManager : MonoBehaviour
             cloudGenerator.cloudColor = Color.white;
             
             Debug.Log("GameManager: 已创建云朵生成器");
+        }
+    }
+    
+    void InitializeRainSystem()
+    {
+        // 检查是否已经有RainManager
+        RainManager existingManager = FindObjectOfType<RainManager>();
+        if (existingManager == null)
+        {
+            // 创建雨滴管理器对象
+            GameObject rainManagerObj = new GameObject("RainManager");
+            rainManager = rainManagerObj.AddComponent<RainManager>();
+            
+            // 设置雨滴管理器参数
+            rainManager.enableRainSystem = true;
+            rainManager.startWithRain = startWithRain;
+            rainManager.defaultRainIntensity = defaultRainIntensity;
+            
+            Debug.Log("GameManager: 已创建雨滴管理器");
+        }
+        else
+        {
+            rainManager = existingManager;
+            Debug.Log("GameManager: 场景中已存在雨滴管理器");
         }
     }
     
@@ -157,6 +193,42 @@ public class GameManager : MonoBehaviour
                     Destroy(listener);
                 }
             }
+        }
+    }
+    
+    // 公共方法：开始下雨
+    public void StartRain()
+    {
+        if (rainManager != null)
+        {
+            rainManager.StartRain();
+        }
+    }
+    
+    // 公共方法：停止下雨
+    public void StopRain()
+    {
+        if (rainManager != null)
+        {
+            rainManager.StopRain();
+        }
+    }
+    
+    // 公共方法：切换雨的状态
+    public void ToggleRain()
+    {
+        if (rainManager != null)
+        {
+            rainManager.ToggleRain();
+        }
+    }
+    
+    // 公共方法：设置雨的强度
+    public void SetRainIntensity(float intensity)
+    {
+        if (rainManager != null)
+        {
+            rainManager.SetRainIntensity(intensity);
         }
     }
 }

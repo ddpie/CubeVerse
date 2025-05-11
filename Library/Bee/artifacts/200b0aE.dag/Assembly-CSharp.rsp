@@ -374,6 +374,8 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerSetup.cs"
+"Assets/Scripts/RainManager.cs"
+"Assets/Scripts/RainSystem.cs"
 -langversion:9.0
 /deterministic
 /optimize+

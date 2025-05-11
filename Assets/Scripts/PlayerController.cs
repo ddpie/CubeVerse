@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float lookUpLimit = 90f;
     public float lookDownLimit = -90f;
     
+    [Header("天气控制")]
+    public KeyCode toggleRainKey = KeyCode.R; // 按R键切换雨的状态
+    
     private CharacterController characterController;
     private Camera playerCamera;
     private float rotationX = 0;
@@ -53,6 +56,9 @@ public class PlayerController : MonoBehaviour
         
         // 处理移动
         HandleMovement();
+        
+        // 处理天气控制
+        HandleWeatherControl();
         
         // 输出当前位置（调试用）
         if (Time.frameCount % 300 == 0) // 每300帧输出一次位置
@@ -102,5 +108,20 @@ public class PlayerController : MonoBehaviour
         
         // 应用移动
         characterController.Move((move * currentSpeed + new Vector3(0, moveDirection.y, 0)) * Time.deltaTime);
+    }
+    
+    void HandleWeatherControl()
+    {
+        // 按R键切换雨的状态
+        if (Input.GetKeyDown(toggleRainKey))
+        {
+            // 查找GameManager并切换雨的状态
+            GameManager manager = GameManager.Instance;
+            if (manager != null)
+            {
+                manager.ToggleRain();
+                Debug.Log("玩家切换了雨的状态");
+            }
+        }
     }
 }
