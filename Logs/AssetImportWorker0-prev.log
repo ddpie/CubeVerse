@@ -1,0 +1,2424 @@
+Tuanjie Editor version:  2022.3.55t2 (64e76bfb17bd)
+Branch:                  tuanjie/1.5/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.4.1 (Build 24E263)
+Darwin version:          24.4.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        18432 MB
+Using pre-set license
+Pro License: YES
+
+COMMAND LINE ARGUMENTS:
+/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/MacOS/Tuanjie
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/caobao/projects/unity/CubeVerse
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+62829
+Successfully changed project path to: /Users/caobao/projects/unity/CubeVerse
+/Users/caobao/projects/unity/CubeVerse
+[Memory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8835320960]  Target information:
+
+Player connection [8835320960]  * "[IP] 192.168.3.85 [Port] 0 [Flags] 2 [Guid] 1920745039 [EditorId] 1920745039 [Version] 1048832 [Id] OSXEditor(0,7cf34de90a17) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [8835320960]  * "[IP] 192.168.203.67 [Port] 0 [Flags] 2 [Guid] 1920745039 [EditorId] 1920745039 [Version] 1048832 [Id] OSXEditor(0,7cf34de90a17) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [8835320960]  * "[IP] 11.160.34.214 [Port] 0 [Flags] 2 [Guid] 1920745039 [EditorId] 1920745039 [Version] 1048832 [Id] OSXEditor(0,7cf34de90a17) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [8835320960] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8835320960] Host joined alternative multi-casting on [225.0.0.222:34997]...
+AS: AutoStreaming module initializing.
+[PhysX] Initialized MultithreadedTaskDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 16.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.55t2 (64e76bfb17bd)
+[Subsystems] Discovering subsystems at path /Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/caobao/projects/unity/CubeVerse/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+ preferred device: Apple M3 Pro (high power)
+Metal devices available: 1
+0: Apple M3 Pro (high power)
+Using device Apple M3 Pro (high power)
+Initializing Metal device caps: Apple M3 Pro
+Initialize mono
+Mono path[0] = '/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/Managed'
+Mono path[1] = '/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=0.0.0.0:56170
+Begin MonoManager ReloadAssembly
+Registering precompiled tuanjie dll's ...
+Register platform support module: /Applications/Tuanjie/Hub/Editor/2022.3.55t2/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Tuanjie/Hub/Editor/2022.3.55t2/PlaybackEngines/WeixinMiniGameSupport/UnityEditor.WeixinMiniGame.Extensions.dll
+Registered in 0.002408 seconds.
+- Loaded All Assemblies, in  0.270 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.129 seconds
+Domain Reload Profiling: 399ms
+	BeginReloadAssembly (103ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (19ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (105ms)
+		LoadAssemblies (104ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (102ms)
+			TypeCache.Refresh (100ms)
+				TypeCache.ScanAssembly (89ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (129ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (103ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (86ms)
+			ProcessInitializeOnLoadMethodAttributes (8ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.411 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.329 seconds
+Domain Reload Profiling: 740ms
+	BeginReloadAssembly (74ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (11ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (295ms)
+		LoadAssemblies (238ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (102ms)
+			TypeCache.Refresh (92ms)
+				TypeCache.ScanAssembly (77ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (329ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (261ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (227ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Launching external process: /Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/Tools/TuanjieShaderCompiler
+Launched and connected shader compiler TuanjieShaderCompiler after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3128 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (49.5 KB). Loaded Objects now: 3611.
+Memory consumption went from 128.8 MB to 128.8 MB.
+Total: 2.503875 ms (FindLiveObjects: 0.113958 ms CreateObjectMapping: 0.032208 ms MarkObjects: 2.140042 ms  DeleteObjects: 0.217166 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 287883.925145 seconds.
+  path: Assets/New Prefab.prefab
+  artifactKey: Guid(56996d5617443435ea9d02ede6373db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Prefab.prefab using Guid(56996d5617443435ea9d02ede6373db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 11 workers.
+ -> (artifact id: '821a8c523cfc040a09cd5627970632de') in 0.011517 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x30fb13000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.509 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.788 seconds
+Domain Reload Profiling: 1298ms
+	BeginReloadAssembly (207ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (98ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (262ms)
+		LoadAssemblies (326ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (789ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (244ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (208ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 1.98 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3121 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 16 unused Assets / (29.6 KB). Loaded Objects now: 3617.
+Memory consumption went from 133.0 MB to 133.0 MB.
+Total: 2.251333 ms (FindLiveObjects: 0.102208 ms CreateObjectMapping: 0.029625 ms MarkObjects: 2.086583 ms  DeleteObjects: 0.032584 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 19f72bc40780414e44018d7b64cb48fc -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.480 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.791 seconds
+Domain Reload Profiling: 1271ms
+	BeginReloadAssembly (135ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (26ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (294ms)
+		LoadAssemblies (354ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (25ms)
+			TypeCache.Refresh (17ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (791ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (255ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (219ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3123 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 16 unused Assets / (29.6 KB). Loaded Objects now: 3622.
+Memory consumption went from 139.8 MB to 139.8 MB.
+Total: 2.484250 ms (FindLiveObjects: 0.107125 ms CreateObjectMapping: 0.031042 ms MarkObjects: 2.308125 ms  DeleteObjects: 0.037500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Import Request.
+  Time since last request: 227.378242 seconds.
+  path: Assets/Prefabs/CubePrefab.prefab
+  artifactKey: Guid(7691624e7fa5c44ef8d9dedf1b26148b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/CubePrefab.prefab using Guid(7691624e7fa5c44ef8d9dedf1b26148b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 11 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 11 workers.
+ -> (artifact id: 'd4a3484bee5f5c1b078e9c1b0b492ee2') in 0.338817 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.394 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.880 seconds
+Domain Reload Profiling: 1275ms
+	BeginReloadAssembly (117ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (24ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (235ms)
+		LoadAssemblies (298ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (880ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (310ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (276ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.19 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3635.
+Memory consumption went from 148.9 MB to 148.9 MB.
+Total: 2.231458 ms (FindLiveObjects: 0.106458 ms CreateObjectMapping: 0.033584 ms MarkObjects: 2.062083 ms  DeleteObjects: 0.028875 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.462 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.868 seconds
+Domain Reload Profiling: 1330ms
+	BeginReloadAssembly (115ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (33ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (297ms)
+		LoadAssemblies (328ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (22ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (868ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (289ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (240ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 1.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3639.
+Memory consumption went from 155.4 MB to 155.4 MB.
+Total: 2.700625 ms (FindLiveObjects: 0.110500 ms CreateObjectMapping: 0.031208 ms MarkObjects: 2.524583 ms  DeleteObjects: 0.033834 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.462 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.716 seconds
+Domain Reload Profiling: 1178ms
+	BeginReloadAssembly (105ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (26ms)
+	LoadAllAssembliesAndSetupDomain (294ms)
+		LoadAssemblies (327ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (21ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (717ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (260ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (26ms)
+			ProcessInitializeOnLoadAttributes (222ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.06 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3643.
+Memory consumption went from 161.9 MB to 161.9 MB.
+Total: 3.284458 ms (FindLiveObjects: 0.114292 ms CreateObjectMapping: 0.031792 ms MarkObjects: 3.086708 ms  DeleteObjects: 0.051084 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.380 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.737 seconds
+Domain Reload Profiling: 1117ms
+	BeginReloadAssembly (97ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (235ms)
+		LoadAssemblies (267ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (20ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (737ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (250ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (215ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.18 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3647.
+Memory consumption went from 168.4 MB to 168.4 MB.
+Total: 2.356125 ms (FindLiveObjects: 0.106750 ms CreateObjectMapping: 0.031375 ms MarkObjects: 2.189458 ms  DeleteObjects: 0.028250 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.433 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.751 seconds
+Domain Reload Profiling: 1184ms
+	BeginReloadAssembly (135ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (254ms)
+		LoadAssemblies (327ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (17ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (4ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (751ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (253ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (219ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.19 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3651.
+Memory consumption went from 174.9 MB to 174.9 MB.
+Total: 2.256167 ms (FindLiveObjects: 0.111292 ms CreateObjectMapping: 0.031625 ms MarkObjects: 2.080292 ms  DeleteObjects: 0.032125 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.350 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.808 seconds
+Domain Reload Profiling: 1158ms
+	BeginReloadAssembly (98ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (212ms)
+		LoadAssemblies (254ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (808ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (284ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (246ms)
+			ProcessInitializeOnLoadMethodAttributes (6ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 4.71 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3655.
+Memory consumption went from 181.4 MB to 181.4 MB.
+Total: 3.096000 ms (FindLiveObjects: 0.127875 ms CreateObjectMapping: 0.031125 ms MarkObjects: 2.881541 ms  DeleteObjects: 0.054875 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.430 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.883 seconds
+Domain Reload Profiling: 1314ms
+	BeginReloadAssembly (128ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (263ms)
+		LoadAssemblies (334ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (11ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (883ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (290ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (249ms)
+			ProcessInitializeOnLoadMethodAttributes (10ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 4.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3659.
+Memory consumption went from 187.8 MB to 187.8 MB.
+Total: 10.503541 ms (FindLiveObjects: 0.340208 ms CreateObjectMapping: 0.107584 ms MarkObjects: 9.999708 ms  DeleteObjects: 0.055500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.363 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.820 seconds
+Domain Reload Profiling: 1183ms
+	BeginReloadAssembly (120ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (12ms)
+	LoadAllAssembliesAndSetupDomain (207ms)
+		LoadAssemblies (274ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (820ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (275ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (23ms)
+			ProcessInitializeOnLoadAttributes (237ms)
+			ProcessInitializeOnLoadMethodAttributes (9ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 3.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3663.
+Memory consumption went from 194.3 MB to 194.3 MB.
+Total: 2.461458 ms (FindLiveObjects: 0.114667 ms CreateObjectMapping: 0.031084 ms MarkObjects: 2.285291 ms  DeleteObjects: 0.030083 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.435 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.804 seconds
+Domain Reload Profiling: 1239ms
+	BeginReloadAssembly (119ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (27ms)
+	LoadAllAssembliesAndSetupDomain (239ms)
+		LoadAssemblies (294ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (18ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (4ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (804ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (249ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (26ms)
+			ProcessInitializeOnLoadAttributes (212ms)
+			ProcessInitializeOnLoadMethodAttributes (4ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3667.
+Memory consumption went from 200.8 MB to 200.7 MB.
+Total: 3.708125 ms (FindLiveObjects: 0.109375 ms CreateObjectMapping: 0.029916 ms MarkObjects: 3.532667 ms  DeleteObjects: 0.035541 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.454 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.694 seconds
+Domain Reload Profiling: 1149ms
+	BeginReloadAssembly (210ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (29ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (201ms)
+		LoadAssemblies (337ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (20ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (4ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (694ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (243ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (209ms)
+			ProcessInitializeOnLoadMethodAttributes (4ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.06 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3671.
+Memory consumption went from 207.2 MB to 207.2 MB.
+Total: 2.296708 ms (FindLiveObjects: 0.106333 ms CreateObjectMapping: 0.030083 ms MarkObjects: 2.124333 ms  DeleteObjects: 0.035458 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.360 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.810 seconds
+Domain Reload Profiling: 1170ms
+	BeginReloadAssembly (110ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (12ms)
+	LoadAllAssembliesAndSetupDomain (213ms)
+		LoadAssemblies (270ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (810ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (265ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (231ms)
+			ProcessInitializeOnLoadMethodAttributes (6ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.34 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3675.
+Memory consumption went from 213.7 MB to 213.7 MB.
+Total: 2.358833 ms (FindLiveObjects: 0.110667 ms CreateObjectMapping: 0.030708 ms MarkObjects: 2.177042 ms  DeleteObjects: 0.040042 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.468 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.822 seconds
+Domain Reload Profiling: 1290ms
+	BeginReloadAssembly (140ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (24ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (251ms)
+		LoadAssemblies (321ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (22ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (822ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (249ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (26ms)
+			ProcessInitializeOnLoadAttributes (213ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.05 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3679.
+Memory consumption went from 220.1 MB to 220.1 MB.
+Total: 2.210291 ms (FindLiveObjects: 0.108041 ms CreateObjectMapping: 0.030625 ms MarkObjects: 2.039375 ms  DeleteObjects: 0.031958 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.389 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.739 seconds
+Domain Reload Profiling: 1128ms
+	BeginReloadAssembly (131ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (211ms)
+		LoadAssemblies (281ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (16ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (739ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (243ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (26ms)
+			ProcessInitializeOnLoadAttributes (206ms)
+			ProcessInitializeOnLoadMethodAttributes (4ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.24 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3683.
+Memory consumption went from 226.6 MB to 226.6 MB.
+Total: 2.256958 ms (FindLiveObjects: 0.118250 ms CreateObjectMapping: 0.038208 ms MarkObjects: 2.073334 ms  DeleteObjects: 0.026833 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.428 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.752 seconds
+Domain Reload Profiling: 1181ms
+	BeginReloadAssembly (136ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (223ms)
+		LoadAssemblies (297ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (18ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (753ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (240ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (206ms)
+			ProcessInitializeOnLoadMethodAttributes (4ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.7 KB). Loaded Objects now: 3687.
+Memory consumption went from 233.1 MB to 233.1 MB.
+Total: 2.290167 ms (FindLiveObjects: 0.110458 ms CreateObjectMapping: 0.031333 ms MarkObjects: 2.120833 ms  DeleteObjects: 0.027209 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.391 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.755 seconds
+Domain Reload Profiling: 1146ms
+	BeginReloadAssembly (122ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (19ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (229ms)
+		LoadAssemblies (299ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (755ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (244ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (210ms)
+			ProcessInitializeOnLoadMethodAttributes (4ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3691.
+Memory consumption went from 239.6 MB to 239.5 MB.
+Total: 2.611000 ms (FindLiveObjects: 0.117667 ms CreateObjectMapping: 0.031958 ms MarkObjects: 2.421084 ms  DeleteObjects: 0.039917 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.426 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.807 seconds
+Domain Reload Profiling: 1233ms
+	BeginReloadAssembly (132ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (245ms)
+		LoadAssemblies (315ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (11ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (807ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (258ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (24ms)
+			ProcessInitializeOnLoadAttributes (223ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.56 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3695.
+Memory consumption went from 246.0 MB to 246.0 MB.
+Total: 3.045333 ms (FindLiveObjects: 0.119667 ms CreateObjectMapping: 0.031500 ms MarkObjects: 2.859666 ms  DeleteObjects: 0.034250 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.397 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.846 seconds
+Domain Reload Profiling: 1244ms
+	BeginReloadAssembly (121ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (2ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (236ms)
+		LoadAssemblies (305ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (847ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (253ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (218ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.33 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3699.
+Memory consumption went from 252.3 MB to 252.3 MB.
+Total: 2.436000 ms (FindLiveObjects: 0.108875 ms CreateObjectMapping: 0.034500 ms MarkObjects: 2.259833 ms  DeleteObjects: 0.032500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.457 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.904 seconds
+Domain Reload Profiling: 1361ms
+	BeginReloadAssembly (127ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (44ms)
+	LoadAllAssembliesAndSetupDomain (250ms)
+		LoadAssemblies (322ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (10ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (904ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (287ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (28ms)
+			ProcessInitializeOnLoadAttributes (248ms)
+			ProcessInitializeOnLoadMethodAttributes (5ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 2.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3703.
+Memory consumption went from 258.8 MB to 258.7 MB.
+Total: 2.641458 ms (FindLiveObjects: 0.135167 ms CreateObjectMapping: 0.032084 ms MarkObjects: 2.433791 ms  DeleteObjects: 0.040042 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.603 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.958 seconds
+Domain Reload Profiling: 1562ms
+	BeginReloadAssembly (324ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (66ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (239ms)
+		LoadAssemblies (426ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (15ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (959ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (278ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (25ms)
+			ProcessInitializeOnLoadAttributes (238ms)
+			ProcessInitializeOnLoadMethodAttributes (8ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 2.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3707.
+Memory consumption went from 258.4 MB to 258.4 MB.
+Total: 2.892042 ms (FindLiveObjects: 0.296000 ms CreateObjectMapping: 0.099959 ms MarkObjects: 2.464083 ms  DeleteObjects: 0.031500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Thread 0x16faa7000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.543 seconds
+Native extension for WeixinMiniGame target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[MCP Unity] Updated workspace configuration in /Users/caobao/projects/unity/CubeVerse/CubeVerse.code-workspace
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+McpUnity.Utils.VsCodeWorkspaceUtils:AddPackageCacheToWorkspace () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs:66)
+McpUnity.Unity.McpUnitySettings:.ctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:67)
+McpUnity.Unity.McpUnitySettings:get_Instance () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnitySettings.cs:55)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:41)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/VsCodeWorkspaceUtils.cs Line: 66)
+
+[MCP Unity] Failed to start WebSocket server: Address already in use
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/dev/tj/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+McpUnity.Utils.McpLogger:LogError (string) (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/Utils/Logger.cs:40)
+McpUnity.Unity.McpUnityServer:StartServer () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:103)
+McpUnity.Unity.McpUnityServer:.cctor () (at ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs:43)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/build/output/dev/tj/Editor/Mono/EditorAssemblies.cs:119)
+
+(Filename: ./Library/PackageCache/com.gamelovers.mcp-unity@fe27f2b491/Editor/UnityBridge/McpUnityServer.cs Line: 103)
+
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.900 seconds
+Domain Reload Profiling: 1443ms
+	BeginReloadAssembly (279ms)
+		ExecutionOrderSort (1ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (79ms)
+	RebuildCommonClasses (21ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (219ms)
+		LoadAssemblies (353ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (13ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (900ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (298ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (27ms)
+			ProcessInitializeOnLoadAttributes (256ms)
+			ProcessInitializeOnLoadMethodAttributes (7ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 2.96 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3122 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (28.8 KB). Loaded Objects now: 3711.
+Memory consumption went from 262.7 MB to 262.7 MB.
+Total: 5.685125 ms (FindLiveObjects: 0.163042 ms CreateObjectMapping: 0.034417 ms MarkObjects: 5.430375 ms  DeleteObjects: 0.056833 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/CubePrefabCreator.cs: 8f10a839f0dde4254d85cc19d92f1834 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/PlayerSetup.cs: c9630819492e965ec45efaa93415d972 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3b820d93f89d51f0d0c293cf78b22b09 -> 22ffee82fd87bd1f83792b4d0a94468c
