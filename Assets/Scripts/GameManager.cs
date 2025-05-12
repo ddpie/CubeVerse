@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     public bool enableWeatherSystem = true;
     public bool startWithRain = false;
     public float defaultRainIntensity = 0.7f;
+    public bool startWithSnow = false;
+    public float defaultSnowIntensity = 0.5f;
     
     private GameObject player;
     private RainManager rainManager;
+    private SnowManager snowManager;
     
     void Awake()
     {
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
         if (enableWeatherSystem)
         {
             InitializeRainSystem();
+            InitializeSnowSystem();
         }
     }
     
@@ -96,6 +100,30 @@ public class GameManager : MonoBehaviour
         {
             rainManager = existingManager;
             Debug.Log("GameManager: 场景中已存在雨滴管理器");
+        }
+    }
+    
+    void InitializeSnowSystem()
+    {
+        // 检查是否已经有SnowManager
+        SnowManager existingManager = FindObjectOfType<SnowManager>();
+        if (existingManager == null)
+        {
+            // 创建雪花管理器对象
+            GameObject snowManagerObj = new GameObject("SnowManager");
+            snowManager = snowManagerObj.AddComponent<SnowManager>();
+            
+            // 设置雪花管理器参数
+            snowManager.enableSnowSystem = true;
+            snowManager.startWithSnow = startWithSnow;
+            snowManager.defaultSnowIntensity = defaultSnowIntensity;
+            
+            Debug.Log("GameManager: 已创建雪花管理器");
+        }
+        else
+        {
+            snowManager = existingManager;
+            Debug.Log("GameManager: 场景中已存在雪花管理器");
         }
     }
     
@@ -229,6 +257,42 @@ public class GameManager : MonoBehaviour
         if (rainManager != null)
         {
             rainManager.SetRainIntensity(intensity);
+        }
+    }
+    
+    // 公共方法：开始下雪
+    public void StartSnow()
+    {
+        if (snowManager != null)
+        {
+            snowManager.StartSnow();
+        }
+    }
+    
+    // 公共方法：停止下雪
+    public void StopSnow()
+    {
+        if (snowManager != null)
+        {
+            snowManager.StopSnow();
+        }
+    }
+    
+    // 公共方法：切换雪的状态
+    public void ToggleSnow()
+    {
+        if (snowManager != null)
+        {
+            snowManager.ToggleSnow();
+        }
+    }
+    
+    // 公共方法：设置雪的强度
+    public void SetSnowIntensity(float intensity)
+    {
+        if (snowManager != null)
+        {
+            snowManager.SetSnowIntensity(intensity);
         }
     }
 }

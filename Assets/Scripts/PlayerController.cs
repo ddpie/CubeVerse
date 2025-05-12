@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("天气控制")]
     public KeyCode toggleRainKey = KeyCode.R; // 按R键切换雨的状态
+    public KeyCode toggleSnowKey = KeyCode.S; // 按S键切换雪的状态
     
     private CharacterController characterController;
     private Camera playerCamera;
@@ -121,6 +122,18 @@ public class PlayerController : MonoBehaviour
             {
                 manager.ToggleRain();
                 Debug.Log("玩家切换了雨的状态");
+            }
+        }
+        
+        // 按S键切换雪的状态
+        if (Input.GetKeyDown(toggleSnowKey))
+        {
+            // 查找GameManager并切换雪的状态
+            GameManager manager = GameManager.Instance;
+            if (manager != null)
+            {
+                manager.ToggleSnow();
+                Debug.Log("玩家切换了雪的状态");
             }
         }
     }

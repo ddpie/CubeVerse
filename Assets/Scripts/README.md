@@ -1,60 +1,32 @@
-# CubeVerse 项目
+# CubeVerse 天气系统
 
-## 云朵系统说明
+## 概述
+CubeVerse 是一个基于立方体的世界，包含了多种天气效果系统。
 
-在本次更新中，我们为CubeVerse项目添加了白色方块组成的云朵系统。云朵系统具有以下特点：
+## 天气系统
+目前实现的天气系统包括：
 
-1. 云朵由白色方块组成，与项目整体风格一致
-2. 云朵会在玩家周围的天空中自动生成
-3. 云朵会随风缓慢移动，增加场景的动态效果
-4. 云朵没有碰撞体，玩家可以穿过它们
-5. 当玩家移动到新区域时，远处的云朵会被销毁，新的云朵会在玩家周围生成
+1. **云朵系统**
+   - 由 CloudGenerator 和 CloudManager 管理
+   - 在天空中生成立方体组成的云朵
 
-## 雨滴系统说明
+2. **雨滴系统**
+   - 由 RainSystem 和 RainManager 管理
+   - 可以通过按 R 键切换开关
+   - 雨滴以较快的速度垂直下落
 
-我们还添加了与方块风格一致的雨滴系统。雨滴系统具有以下特点：
+3. **雪花系统**
+   - 由 SnowSystem 和 SnowManager 管理
+   - 可以通过按 S 键切换开关
+   - 雪花以较慢的速度飘落，并有旋转和漂移效果
 
-1. 雨滴由细长的半透明蓝色方块组成，与项目整体风格一致
-2. 雨滴会从玩家上方的天空中落下
-3. 雨滴没有碰撞体，不会与玩家或地形产生物理交互
-4. 玩家可以通过按R键切换雨的开关状态
-5. 雨的强度可以通过代码调整
-6. 雨滴系统使用对象池技术，性能开销小
+## 控制方式
+- **移动**: WASD 键
+- **跳跃**: 空格键
+- **奔跑**: 按住 Shift 键
+- **视角**: 鼠标控制
+- **切换雨**: R 键
+- **切换雪**: S 键
 
-## 实现方式
-
-云朵系统通过以下两个脚本实现：
-
-1. `CloudGenerator.cs` - 主要的云朵生成和管理脚本
-2. 在 `GameManager.cs` 中添加了云朵系统的初始化代码
-
-雨滴系统通过以下三个脚本实现：
-
-1. `RainSystem.cs` - 主要的雨滴生成和管理脚本
-2. `RainManager.cs` - 雨滴系统的管理器
-3. 在 `GameManager.cs` 中添加了雨滴系统的初始化和控制代码
-4. 在 `PlayerController.cs` 中添加了玩家控制雨的功能
-
-## 参数调整
-
-如果需要调整云朵的外观和行为，可以在GameManager中修改以下参数：
-
-- `cloudCount` - 云朵的数量
-- `minCloudHeight` / `maxCloudHeight` - 云朵生成的高度范围
-- `cloudSpawnRadius` - 云朵生成的半径范围
-- `minCubesPerCloud` / `maxCubesPerCloud` - 每朵云的方块数量范围
-- `cloudDensity` - 云朵的密度
-- `cloudColor` - 云朵的颜色（默认为白色）
-
-如果需要调整雨滴的外观和行为，可以在GameManager和RainManager中修改以下参数：
-
-- `enableWeatherSystem` - 是否启用天气系统
-- `startWithRain` - 是否在游戏开始时下雨
-- `defaultRainIntensity` - 默认雨的强度（0-1）
-- `maxRainDrops` - 最大雨滴数量
-- `rainSpawnRadius` - 雨滴生成半径
-- `rainHeight` - 雨滴生成高度
-- `rainColor` - 雨滴颜色
-- `rainDropScale` - 雨滴大小
-- `rainSpeed` - 雨滴下落速度
-- `rainDirection` - 雨的方向（角度）
+## 技术实现
+所有天气效果都使用立方体作为基本元素，通过不同的参数设置和行为模式实现不同的视觉效果。

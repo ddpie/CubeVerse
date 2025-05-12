@@ -64,10 +64,12 @@
     <Analyzer Include="/Applications/Tuanjie/Hub/Editor/2022.3.55t2/Tuanjie.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/SnowSystem.cs" />
     <Compile Include="Assets/Scripts/PlayerSetup.cs" />
     <Compile Include="Assets/Scripts/RainSystem.cs" />
     <Compile Include="Assets/Scripts/CloudManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
+    <Compile Include="Assets/Scripts/SnowManager.cs" />
     <Compile Include="Assets/Scripts/RainManager.cs" />
     <Compile Include="Assets/Scripts/CubeGenerator.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
