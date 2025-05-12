@@ -373,6 +373,8 @@
 "Assets/Scripts/CubePrefabCreator.cs"
 "Assets/Scripts/DayNightManager.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/LightningManager.cs"
+"Assets/Scripts/LightningSystem.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerSetup.cs"
 "Assets/Scripts/RainManager.cs"

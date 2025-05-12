@@ -67,6 +67,7 @@
     <Compile Include="Assets/Scripts/SnowSystem.cs" />
     <Compile Include="Assets/Scripts/PlayerSetup.cs" />
     <Compile Include="Assets/Scripts/RainSystem.cs" />
+    <Compile Include="Assets/Scripts/LightningSystem.cs" />
     <Compile Include="Assets/Scripts/CloudManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/Scripts/DayNightManager.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/CubePrefabCreator.cs" />
     <Compile Include="Assets/Scripts/CloudGenerator.cs" />
+    <Compile Include="Assets/Scripts/LightningManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

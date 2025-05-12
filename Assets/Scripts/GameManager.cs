@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float defaultRainIntensity = 0.7f;
     public bool startWithSnow = false;
     public float defaultSnowIntensity = 0.5f;
+    public bool enableLightning = true; // 是否启用闪电系统
     
     [Header("日夜设置")]
     public bool enableDayNightSystem = true;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private RainManager rainManager;
     private SnowManager snowManager;
+    private LightningManager lightningManager;
     private DayNightManager dayNightManager;
     
     void Awake()
@@ -56,6 +58,12 @@ public class GameManager : MonoBehaviour
         {
             InitializeRainSystem();
             InitializeSnowSystem();
+            
+            // 初始化闪电系统
+            if (enableLightning)
+            {
+                InitializeLightningSystem();
+            }
         }
         
         // 初始化日夜系统
@@ -135,6 +143,31 @@ public class GameManager : MonoBehaviour
         {
             snowManager = existingManager;
             Debug.Log("GameManager: 场景中已存在雪花管理器");
+        }
+    }
+    
+    void InitializeLightningSystem()
+    {
+        // 检查是否已经有LightningManager
+        LightningManager existingManager = FindObjectOfType<LightningManager>();
+        if (existingManager == null)
+        {
+            // 创建闪电管理器对象
+            GameObject lightningManagerObj = new GameObject("LightningManager");
+            lightningManager = lightningManagerObj.AddComponent<LightningManager>();
+            
+            // 设置闪电管理器参数
+            lightningManager.enableLightningSystem = true;
+            lightningManager.lightningChance = 0.05f;
+            lightningManager.minLightningInterval = 3f;
+            lightningManager.maxLightningInterval = 15f;
+            
+            Debug.Log("GameManager: 已创建闪电管理器");
+        }
+        else
+        {
+            lightningManager = existingManager;
+            Debug.Log("GameManager: 场景中已存在闪电管理器");
         }
     }
     
@@ -326,6 +359,15 @@ public class GameManager : MonoBehaviour
         if (snowManager != null)
         {
             snowManager.SetSnowIntensity(intensity);
+        }
+    }
+    
+    // 公共方法：手动触发闪电
+    public void TriggerLightning()
+    {
+        if (lightningManager != null)
+        {
+            lightningManager.TriggerLightning();
         }
     }
     
