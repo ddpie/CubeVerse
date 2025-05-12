@@ -25,9 +25,9 @@ public class RainManager : MonoBehaviour
             rainSystem = rainSystemObj.AddComponent<RainSystem>();
             
             // 设置雨滴系统参数
-            rainSystem.maxRainDrops = 2000;
+            rainSystem.maxRainDrops = 3000;
             rainSystem.rainIntensity = defaultRainIntensity;
-            rainSystem.rainSpawnRadius = 40f;
+            rainSystem.rainSpawnRadius = 60f;
             rainSystem.rainHeight = 35f;
             rainSystem.rainColor = new Color(0.7f, 0.7f, 1.0f, 0.7f);
             rainSystem.rainDropScale = new Vector3(0.08f, 0.5f, 0.08f);

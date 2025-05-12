@@ -5,9 +5,9 @@ public class RainSystem : MonoBehaviour
 {
     [Header("雨滴设置")]
     public GameObject rainDropPrefab; // 雨滴预制体（会使用与云朵相同的方块）
-    public int maxRainDrops = 2000; // 最大雨滴数量（增加）
+    public int maxRainDrops = 3000; // 最大雨滴数量（增加）
     public float rainIntensity = 0.7f; // 雨的强度 (0-1)（增加）
-    public float rainSpawnRadius = 40f; // 雨滴生成半径（增加）
+    public float rainSpawnRadius = 60f; // 雨滴生成半径（增加）
     public float rainHeight = 35f; // 雨滴生成高度（增加）
     
     [Header("雨滴外观")]
@@ -23,7 +23,7 @@ public class RainSystem : MonoBehaviour
     private List<GameObject> rainDrops = new List<GameObject>(); // 雨滴对象池
     private List<GameObject> activeRainDrops = new List<GameObject>(); // 活动的雨滴
     private Vector3 lastPlayerPosition; // 上次更新雨滴位置时的玩家位置
-    private float updateDistance = 10f; // 玩家移动多远后更新雨滴位置
+    private float updateDistance = 5f; // 玩家移动多远后更新雨滴位置（减小这个值使雨滴更平滑地跟随玩家）
     
     void Start()
     {
@@ -193,18 +193,18 @@ public class RainSystem : MonoBehaviour
         // 如果正在下雨，更新雨滴
         if (isRaining)
         {
-            // 如果玩家移动了足够远的距离，更新雨滴位置
-            if (Vector3.Distance(player.position, lastPlayerPosition) > updateDistance)
-            {
-                lastPlayerPosition = player.position;
-                UpdateRainPosition();
-            }
-            
             // 更新雨滴下落
             UpdateRainDrops();
             
-            // 根据雨的强度生成新的雨滴
+            // 每帧都生成新的雨滴，保持持续的雨效果
             SpawnNewRainDrops();
+            
+            // 如果玩家移动，只更新一小部分雨滴的位置，避免突然的变化
+            if (Vector3.Distance(player.position, lastPlayerPosition) > 0.1f)
+            {
+                lastPlayerPosition = player.position;
+                // 不再调用UpdateRainPosition()，而是在SpawnNewRainDrops中处理新雨滴的位置
+            }
         }
     }
     
@@ -213,8 +213,9 @@ public class RainSystem : MonoBehaviour
         // 将所有活动的雨滴重新定位到玩家周围
         foreach (GameObject rainDrop in activeRainDrops)
         {
-            // 只重新定位高于玩家的雨滴
-            if (rainDrop.transform.position.y > player.position.y)
+            // 只重新定位高于玩家的雨滴，并且随机选择一部分雨滴进行重定位
+            // 这样可以避免所有雨滴同时重定位导致的"一阵一阵"效果
+            if (rainDrop.transform.position.y > player.position.y && Random.value < 0.3f)
             {
                 PositionRainDropAbovePlayer(rainDrop);
             }
@@ -234,28 +235,25 @@ public class RainSystem : MonoBehaviour
             // 移动雨滴
             rainDrop.transform.position += fallDirection * rainSpeed * Time.deltaTime;
             
-            // 如果雨滴落到地面以下，重新定位或回收
+            // 如果雨滴落到地面以下，直接重新定位到上方（不回收）
             if (rainDrop.transform.position.y < player.position.y - 10)
             {
-                // 有一定概率重新定位到上方，否则回收
-                if (Random.value < rainIntensity)
-                {
-                    PositionRainDropAbovePlayer(rainDrop);
-                }
-                else
-                {
-                    // 回收雨滴
-                    rainDrop.SetActive(false);
-                    activeRainDrops.RemoveAt(i);
-                }
+                // 始终重新定位雨滴，保持持续下雨效果
+                PositionRainDropAbovePlayer(rainDrop);
+                
+                // 给每个重新定位的雨滴一个随机的初始下落距离，避免同时落地
+                Vector3 pos = rainDrop.transform.position;
+                pos.y -= Random.Range(0f, 15f);
+                rainDrop.transform.position = pos;
             }
         }
     }
     
     void SpawnNewRainDrops()
     {
-        // 根据雨的强度计算每帧应该生成的雨滴数量
-        int rainDropsToSpawn = Mathf.FloorToInt(rainIntensity * 20); // 增加生成速率
+        // 每帧生成固定数量的雨滴，确保持续均匀的雨效果
+        int baseRainDropsPerFrame = 10; // 基础每帧生成数量
+        int rainDropsToSpawn = baseRainDropsPerFrame + Mathf.FloorToInt(rainIntensity * 20); // 根据强度增加生成数量
         
         // 确保不超过最大数量
         int availableDrops = maxRainDrops - activeRainDrops.Count;
@@ -270,8 +268,13 @@ public class RainSystem : MonoBehaviour
                 GameObject rainDrop = rainDrops[0];
                 rainDrops.RemoveAt(0);
                 
-                // 定位雨滴
+                // 定位雨滴 - 使用更均匀的分布
                 PositionRainDropAbovePlayer(rainDrop);
+                
+                // 给每个雨滴一个随机的初始高度，避免同时落地
+                Vector3 pos = rainDrop.transform.position;
+                pos.y -= Random.Range(0f, 15f);
+                rainDrop.transform.position = pos;
                 
                 // 激活雨滴
                 rainDrop.SetActive(true);
@@ -282,13 +285,22 @@ public class RainSystem : MonoBehaviour
     
     void PositionRainDropAbovePlayer(GameObject rainDrop)
     {
-        // 在玩家上方随机位置生成雨滴
-        float angle = Random.Range(0f, 360f);
-        float distance = Random.Range(0f, rainSpawnRadius);
+        // 使用更均匀的分布方式在玩家上方生成雨滴
+        // 将圆形区域分成扇形，确保雨滴分布更均匀
+        float sectorSize = 10f; // 将圆分成36个扇区
+        float sectorIndex = Random.Range(0, 36);
+        float angle = sectorIndex * sectorSize;
+        
+        // 在扇区内随机选择距离
+        float minDistance = rainSpawnRadius * 0.2f; // 最小距离为半径的20%
+        float distance = Random.Range(minDistance, rainSpawnRadius);
+        
+        // 添加一些随机偏移，使雨滴不会完全沿着扇区边界排列
+        angle += Random.Range(-sectorSize/3, sectorSize/3);
         
         Vector3 spawnPosition = player.position + new Vector3(
             Mathf.Cos(angle * Mathf.Deg2Rad) * distance,
-            rainHeight,
+            rainHeight + Random.Range(-5f, 5f), // 高度也添加随机变化
             Mathf.Sin(angle * Mathf.Deg2Rad) * distance
         );
         
