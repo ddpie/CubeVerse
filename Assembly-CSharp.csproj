@@ -69,6 +69,7 @@
     <Compile Include="Assets/Scripts/RainSystem.cs" />
     <Compile Include="Assets/Scripts/CloudManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
+    <Compile Include="Assets/Scripts/DayNightManager.cs" />
     <Compile Include="Assets/Scripts/SnowManager.cs" />
     <Compile Include="Assets/Scripts/RainManager.cs" />
     <Compile Include="Assets/Scripts/CubeGenerator.cs" />

@@ -371,6 +371,7 @@
 "Assets/Scripts/CloudManager.cs"
 "Assets/Scripts/CubeGenerator.cs"
 "Assets/Scripts/CubePrefabCreator.cs"
+"Assets/Scripts/DayNightManager.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerSetup.cs"

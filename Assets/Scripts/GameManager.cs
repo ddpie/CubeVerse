@@ -15,9 +15,14 @@ public class GameManager : MonoBehaviour
     public bool startWithSnow = false;
     public float defaultSnowIntensity = 0.5f;
     
+    [Header("日夜设置")]
+    public bool enableDayNightSystem = true;
+    public bool startWithNight = false;
+    
     private GameObject player;
     private RainManager rainManager;
     private SnowManager snowManager;
+    private DayNightManager dayNightManager;
     
     void Awake()
     {
@@ -51,6 +56,12 @@ public class GameManager : MonoBehaviour
         {
             InitializeRainSystem();
             InitializeSnowSystem();
+        }
+        
+        // 初始化日夜系统
+        if (enableDayNightSystem)
+        {
+            InitializeDayNightSystem();
         }
     }
     
@@ -124,6 +135,28 @@ public class GameManager : MonoBehaviour
         {
             snowManager = existingManager;
             Debug.Log("GameManager: 场景中已存在雪花管理器");
+        }
+    }
+    
+    void InitializeDayNightSystem()
+    {
+        // 检查是否已经有DayNightManager
+        DayNightManager existingManager = FindObjectOfType<DayNightManager>();
+        if (existingManager == null)
+        {
+            // 创建日夜管理器对象
+            GameObject dayNightManagerObj = new GameObject("DayNightManager");
+            dayNightManager = dayNightManagerObj.AddComponent<DayNightManager>();
+            
+            // 设置日夜管理器参数
+            dayNightManager.isNight = startWithNight;
+            
+            Debug.Log("GameManager: 已创建日夜管理器");
+        }
+        else
+        {
+            dayNightManager = existingManager;
+            Debug.Log("GameManager: 场景中已存在日夜管理器");
         }
     }
     
@@ -293,6 +326,33 @@ public class GameManager : MonoBehaviour
         if (snowManager != null)
         {
             snowManager.SetSnowIntensity(intensity);
+        }
+    }
+    
+    // 公共方法：切换日夜状态
+    public void ToggleDayNight()
+    {
+        if (dayNightManager != null)
+        {
+            dayNightManager.ToggleDayNight();
+        }
+    }
+    
+    // 公共方法：设置为白天
+    public void SetDay()
+    {
+        if (dayNightManager != null)
+        {
+            dayNightManager.SetDay();
+        }
+    }
+    
+    // 公共方法：设置为夜晚
+    public void SetNight()
+    {
+        if (dayNightManager != null)
+        {
+            dayNightManager.SetNight();
         }
     }
 }
