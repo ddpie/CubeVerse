@@ -96,8 +96,15 @@ public class RainManager : MonoBehaviour
     {
         if (rainSystem != null)
         {
+            bool wasRaining = rainSystem.isRaining;
             rainSystem.StopRain();
             NotifyLightningManagers(false);
+            
+            // 记录日志，帮助调试彩虹系统
+            if (wasRaining)
+            {
+                Debug.Log("RainManager: 雨已停止，应该触发彩虹效果");
+            }
         }
     }
     

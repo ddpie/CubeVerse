@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public bool startWithSnow = false;
     public float defaultSnowIntensity = 0.5f;
     public bool enableLightning = true; // 是否启用闪电系统
+    public bool enableRainbow = true;   // 是否启用彩虹系统
     
     [Header("日夜设置")]
     public bool enableDayNightSystem = true;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     private SnowManager snowManager;
     private LightningManager lightningManager;
     private DayNightManager dayNightManager;
+    private RainbowManager rainbowManager;
     
     void Awake()
     {
@@ -63,6 +65,29 @@ public class GameManager : MonoBehaviour
             if (enableLightning)
             {
                 InitializeLightningSystem();
+            }
+            
+            // 初始化彩虹系统
+            if (enableRainbow)
+            {
+                // 检查是否已经有RainbowManager
+                RainbowManager existingManager = FindObjectOfType<RainbowManager>();
+                if (existingManager == null)
+                {
+                    // 创建彩虹管理器对象
+                    GameObject rainbowManagerObj = new GameObject("RainbowManager");
+                    rainbowManager = rainbowManagerObj.AddComponent<RainbowManager>();
+                    
+                    // 设置彩虹管理器参数
+                    rainbowManager.enableRainbowSystem = true;
+                    
+                    Debug.Log("GameManager: 已创建彩虹管理器");
+                }
+                else
+                {
+                    rainbowManager = existingManager;
+                    Debug.Log("GameManager: 场景中已存在彩虹管理器");
+                }
             }
         }
         

@@ -67,6 +67,7 @@
     <Compile Include="Assets/Scripts/SnowSystem.cs" />
     <Compile Include="Assets/Scripts/PlayerSetup.cs" />
     <Compile Include="Assets/Scripts/RainSystem.cs" />
+    <Compile Include="Assets/Scripts/RainbowManager.cs" />
     <Compile Include="Assets/Scripts/LightningSystem.cs" />
     <Compile Include="Assets/Scripts/CloudManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets/Scripts/SnowManager.cs" />
     <Compile Include="Assets/Scripts/RainManager.cs" />
     <Compile Include="Assets/Scripts/CubeGenerator.cs" />
+    <Compile Include="Assets/Scripts/RainbowSystem.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/CubePrefabCreator.cs" />
     <Compile Include="Assets/Scripts/CloudGenerator.cs" />

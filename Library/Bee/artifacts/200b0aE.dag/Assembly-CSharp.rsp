@@ -377,6 +377,8 @@
 "Assets/Scripts/LightningSystem.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerSetup.cs"
+"Assets/Scripts/RainbowManager.cs"
+"Assets/Scripts/RainbowSystem.cs"
 "Assets/Scripts/RainManager.cs"
 "Assets/Scripts/RainSystem.cs"
 "Assets/Scripts/SnowManager.cs"

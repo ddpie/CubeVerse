@@ -23,7 +23,8 @@ public class RainSystem : MonoBehaviour
     private List<GameObject> rainDrops = new List<GameObject>(); // 雨滴对象池
     private List<GameObject> activeRainDrops = new List<GameObject>(); // 活动的雨滴
     private Vector3 lastPlayerPosition; // 上次更新雨滴位置时的玩家位置
-    private float updateDistance = 5f; // 玩家移动多远后更新雨滴位置（减小这个值使雨滴更平滑地跟随玩家）
+    // 玩家移动阈值，用于平滑雨滴跟随
+    private float playerMoveThreshold = 5f;
     
     void Start()
     {
@@ -200,7 +201,7 @@ public class RainSystem : MonoBehaviour
             SpawnNewRainDrops();
             
             // 如果玩家移动，只更新一小部分雨滴的位置，避免突然的变化
-            if (Vector3.Distance(player.position, lastPlayerPosition) > 0.1f)
+            if (Vector3.Distance(player.position, lastPlayerPosition) > playerMoveThreshold)
             {
                 lastPlayerPosition = player.position;
                 // 不再调用UpdateRainPosition()，而是在SpawnNewRainDrops中处理新雨滴的位置
