@@ -68,6 +68,7 @@
     <Compile Include="Assets/Scripts/PlayerSetup.cs" />
     <Compile Include="Assets/Scripts/RainSystem.cs" />
     <Compile Include="Assets/Scripts/RainbowManager.cs" />
+    <Compile Include="Assets/Scripts/StarSystem.cs" />
     <Compile Include="Assets/Scripts/LightningSystem.cs" />
     <Compile Include="Assets/Scripts/CloudManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />

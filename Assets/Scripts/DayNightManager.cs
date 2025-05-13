@@ -3,23 +3,19 @@ using UnityEngine;
 public class DayNightManager : MonoBehaviour
 {
     [Header("日夜设置")]
-    public bool isNight = false;
+    public bool isNight = false; // 默认为白天
     public Color dayLightColor = new Color(1f, 0.95f, 0.85f); // 白天的光照颜色
-    public Color nightLightColor = new Color(0.05f, 0.05f, 0.2f); // 夜晚的光照颜色（更深的蓝色）
+    public Color nightLightColor = new Color(0.03f, 0.03f, 0.15f); // 夜晚的光照颜色（更深的蓝色）
     public float dayLightIntensity = 1.0f; // 白天的光照强度
-    public float nightLightIntensity = 0.2f; // 夜晚的光照强度（更暗）
+    public float nightLightIntensity = 0.15f; // 夜晚的光照强度（更暗）
     public Color daySkyColor = new Color(0.5f, 0.7f, 1f); // 白天的天空颜色
-    public Color nightSkyColor = new Color(0.02f, 0.02f, 0.05f); // 夜晚的天空颜色（更暗）
+    public Color nightSkyColor = new Color(0.01f, 0.01f, 0.03f); // 夜晚的天空颜色（更暗）
     
     [Header("星星设置")]
-    public bool showStarsAtNight = true;
-    public int starCount = 200;
-    public float starSize = 0.05f;
-    public Color starColor = new Color(1f, 1f, 1f, 0.8f);
+    public bool enableStars = true;      // 是否启用星星系统
     
     private Light directionalLight;
-    private GameObject starsContainer;
-    private GameObject[] stars;
+    private StarSystem starSystem;
     
     void Start()
     {
@@ -31,60 +27,43 @@ public class DayNightManager : MonoBehaviour
             return;
         }
         
-        // 创建星星
-        if (showStarsAtNight)
+        // 初始化星星系统
+        if (enableStars)
         {
-            CreateStars();
+            InitializeStarSystem();
         }
         
         // 初始化日夜状态
         UpdateLighting();
     }
     
-    // 创建星星
-    void CreateStars()
+    // 初始化星星系统
+    void InitializeStarSystem()
     {
-        // 创建星星容器
-        starsContainer = new GameObject("Stars");
-        starsContainer.transform.parent = transform;
-        
-        // 创建星星
-        stars = new GameObject[starCount];
-        for (int i = 0; i < starCount; i++)
+        // 检查是否已经有StarSystem
+        StarSystem existingSystem = FindObjectOfType<StarSystem>();
+        if (existingSystem == null)
         {
-            // 创建星星游戏对象
-            stars[i] = GameObject.CreatePrimitive(PrimitiveType.Quad);
-            stars[i].name = "Star_" + i;
-            stars[i].transform.parent = starsContainer.transform;
+            // 创建星星系统对象
+            GameObject starSystemObj = new GameObject("StarSystem");
+            starSystem = starSystemObj.AddComponent<StarSystem>();
             
-            // 随机位置（在天空半球上）
-            float theta = Random.Range(0f, Mathf.PI * 0.5f); // 高度角（0到90度）
-            float phi = Random.Range(0f, Mathf.PI * 2f); // 方位角（0到360度）
-            float radius = 100f; // 天空半球半径
+            // 设置星星系统参数
+            starSystem.maxStars = 500;
+            starSystem.starSpawnRadius = 100f;
+            starSystem.minStarSize = 0.08f;
+            starSystem.maxStarSize = 0.25f;
+            starSystem.starColor = new Color(1f, 1f, 1f, 0.9f);
+            starSystem.enableTwinkle = true;
+            starSystem.twinkleSpeed = 1.2f;
+            starSystem.twinkleAmount = 0.4f;
             
-            float x = radius * Mathf.Sin(theta) * Mathf.Cos(phi);
-            float y = radius * Mathf.Cos(theta);
-            float z = radius * Mathf.Sin(theta) * Mathf.Sin(phi);
-            
-            stars[i].transform.position = new Vector3(x, y, z);
-            
-            // 让星星面向球心
-            stars[i].transform.LookAt(Vector3.zero);
-            
-            // 设置大小
-            float randomSize = Random.Range(starSize * 0.5f, starSize * 1.5f);
-            stars[i].transform.localScale = new Vector3(randomSize, randomSize, randomSize);
-            
-            // 创建材质
-            Material starMaterial = new Material(Shader.Find("Unlit/Transparent"));
-            starMaterial.color = starColor;
-            
-            // 应用材质
-            Renderer renderer = stars[i].GetComponent<Renderer>();
-            renderer.material = starMaterial;
-            
-            // 初始状态隐藏
-            stars[i].SetActive(false);
+            Debug.Log("DayNightManager: 已创建星星系统");
+        }
+        else
+        {
+            starSystem = existingSystem;
+            Debug.Log("DayNightManager: 场景中已存在星星系统");
         }
     }
     
@@ -150,21 +129,24 @@ public class DayNightManager : MonoBehaviour
                     new Color(daySkyColor.r * 0.8f, daySkyColor.g * 0.8f, daySkyColor.b * 0.8f);
                 
                 // 夜晚时雾效更浓
-                RenderSettings.fogDensity = isNight ? 0.03f : 0.01f;
+                RenderSettings.fogDensity = isNight ? 0.04f : 0.01f;
             }
             
             // 调整环境反射强度
             RenderSettings.reflectionIntensity = isNight ? 0.3f : 1.0f;
             
             // 显示或隐藏星星
-            if (stars != null && stars.Length > 0)
+            if (starSystem != null)
             {
-                foreach (GameObject star in stars)
+                if (isNight)
                 {
-                    if (star != null)
-                    {
-                        star.SetActive(isNight);
-                    }
+                    starSystem.ShowStars();
+                    Debug.Log("DayNightManager: 夜晚模式，显示星星");
+                }
+                else
+                {
+                    starSystem.HideStars();
+                    Debug.Log("DayNightManager: 白天模式，隐藏星星");
                 }
             }
         }

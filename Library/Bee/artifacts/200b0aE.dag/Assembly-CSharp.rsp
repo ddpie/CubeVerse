@@ -383,6 +383,7 @@
 "Assets/Scripts/RainSystem.cs"
 "Assets/Scripts/SnowManager.cs"
 "Assets/Scripts/SnowSystem.cs"
+"Assets/Scripts/StarSystem.cs"
 -langversion:9.0
 /deterministic
 /optimize+
