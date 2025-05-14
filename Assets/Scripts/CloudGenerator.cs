@@ -31,31 +31,45 @@ public class CloudGenerator : MonoBehaviour
     
     void InitializeClouds()
     {
-        // 查找玩家
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
+        // 首先尝试从GameManager获取玩家引用
+        if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
         {
-            player = playerObj.transform;
-            Debug.Log("云朵系统找到玩家: " + player.position);
+            player = GameManager.Instance.playerTransform;
+            Debug.Log("云朵系统从GameManager获取玩家引用");
             lastPlayerPosition = player.position;
             
             // 生成初始云朵
             GenerateInitialClouds();
         }
-        else if (Camera.main != null)
-        {
-            player = Camera.main.transform;
-            Debug.Log("云朵系统找到相机: " + player.position);
-            lastPlayerPosition = player.position;
-            
-            // 生成初始云朵
-            GenerateInitialClouds();
-        }
+        // 如果GameManager不可用，则使用传统方法
         else
         {
-            // 如果还没找到相机，继续尝试
-            Invoke("InitializeClouds", 0.5f);
-            Debug.Log("云朵系统等待玩家初始化...");
+            // 查找玩家
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+                Debug.Log("云朵系统找到玩家: " + player.position);
+                lastPlayerPosition = player.position;
+                
+                // 生成初始云朵
+                GenerateInitialClouds();
+            }
+            else if (Camera.main != null)
+            {
+                player = Camera.main.transform;
+                Debug.Log("云朵系统找到相机: " + player.position);
+                lastPlayerPosition = player.position;
+                
+                // 生成初始云朵
+                GenerateInitialClouds();
+            }
+            else
+            {
+                // 如果还没找到相机，继续尝试
+                Invoke("InitializeClouds", 0.5f);
+                Debug.Log("云朵系统等待玩家初始化...");
+            }
         }
     }
     
@@ -64,29 +78,35 @@ public class CloudGenerator : MonoBehaviour
         // 确保有玩家
         if (player == null)
         {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
+            // 首先尝试从GameManager获取玩家引用
+            if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
             {
-                player = playerObj.transform;
-                Debug.Log("云朵系统找到玩家: " + player.position);
-                lastPlayerPosition = player.position;
-            }
-            else if (Camera.main != null)
-            {
-                player = Camera.main.transform;
-                Debug.Log("云朵系统找到相机: " + player.position);
+                player = GameManager.Instance.playerTransform;
                 lastPlayerPosition = player.position;
             }
             else
             {
-                return; // 如果没有玩家，不执行更新
+                GameObject playerObj = GameObject.FindWithTag("Player");
+                if (playerObj != null)
+                {
+                    player = playerObj.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else if (Camera.main != null)
+                {
+                    player = Camera.main.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else
+                {
+                    return; // 如果没有玩家，不执行更新
+                }
             }
         }
         
         // 如果玩家移动了足够远的距离，更新云朵
         if (Vector3.Distance(player.position, lastPlayerPosition) > updateDistance)
         {
-            Debug.Log("玩家移动距离足够，更新云朵");
             lastPlayerPosition = player.position;
             UpdateClouds();
         }
@@ -185,6 +205,9 @@ public class CloudGenerator : MonoBehaviour
         }
     }
     
+    // 缓存云朵材质
+    private Material cloudMaterial;
+    
     void CreateCloudCube(Vector3 position, Transform parent)
     {
         GameObject cube = Instantiate(cubePrefab, position, Quaternion.identity, parent);
@@ -193,9 +216,13 @@ public class CloudGenerator : MonoBehaviour
         Renderer renderer = cube.GetComponent<Renderer>();
         if (renderer != null)
         {
-            Material material = new Material(renderer.material);
-            material.color = cloudColor;
-            renderer.material = material;
+            // 使用共享材质而不是每次创建新材质
+            if (cloudMaterial == null)
+            {
+                cloudMaterial = new Material(renderer.material);
+                cloudMaterial.color = cloudColor;
+            }
+            renderer.sharedMaterial = cloudMaterial;
         }
         
         // 移除碰撞器，让玩家可以穿过云朵

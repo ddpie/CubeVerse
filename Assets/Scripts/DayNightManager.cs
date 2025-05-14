@@ -5,11 +5,11 @@ public class DayNightManager : MonoBehaviour
     [Header("日夜设置")]
     public bool isNight = false; // 默认为白天
     public Color dayLightColor = new Color(1f, 0.95f, 0.85f); // 白天的光照颜色
-    public Color nightLightColor = new Color(0.03f, 0.03f, 0.15f); // 夜晚的光照颜色（更深的蓝色）
+    public Color nightLightColor = new Color(0.005f, 0.005f, 0.02f); // 夜晚的光照颜色（极暗的蓝色）
     public float dayLightIntensity = 1.0f; // 白天的光照强度
-    public float nightLightIntensity = 0.15f; // 夜晚的光照强度（更暗）
+    public float nightLightIntensity = 0.02f; // 夜晚的光照强度（极低）
     public Color daySkyColor = new Color(0.5f, 0.7f, 1f); // 白天的天空颜色
-    public Color nightSkyColor = new Color(0.01f, 0.01f, 0.03f); // 夜晚的天空颜色（更暗）
+    public Color nightSkyColor = new Color(0.002f, 0.002f, 0.005f); // 夜晚的天空颜色（几乎全黑）
     
     [Header("星星设置")]
     public bool enableStars = true;      // 是否启用星星系统
@@ -49,11 +49,11 @@ public class DayNightManager : MonoBehaviour
             starSystem = starSystemObj.AddComponent<StarSystem>();
             
             // 设置星星系统参数
-            starSystem.maxStars = 500;
+            starSystem.maxStars = 800;
             starSystem.starSpawnRadius = 100f;
             starSystem.minStarSize = 0.08f;
             starSystem.maxStarSize = 0.25f;
-            starSystem.starColor = new Color(1f, 1f, 1f, 0.9f);
+            starSystem.starColor = new Color(1f, 1f, 1f, 0.95f);
             starSystem.enableTwinkle = true;
             starSystem.twinkleSpeed = 1.2f;
             starSystem.twinkleAmount = 0.4f;
@@ -106,14 +106,26 @@ public class DayNightManager : MonoBehaviour
             directionalLight.color = isNight ? nightLightColor : dayLightColor;
             directionalLight.intensity = isNight ? nightLightIntensity : dayLightIntensity;
             
-            // 更新天空颜色
+            // 更新天空颜色 - 夜晚时使用极暗的环境光
             RenderSettings.ambientLight = isNight ? nightSkyColor : daySkyColor;
+            
+            // 夜晚时使用环境光模式为Color（最暗）
+            if (isNight)
+            {
+                RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+                RenderSettings.ambientIntensity = 0.05f; // 极低的环境光强度，进一步降低
+            }
+            else
+            {
+                RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Skybox;
+                RenderSettings.ambientIntensity = 1.0f;
+            }
             
             // 调整光源角度，夜晚时光源角度更高（模拟月光）
             if (isNight)
             {
                 // 夜晚时，将光源角度调整为从上方照射（模拟月光）
-                directionalLight.transform.rotation = Quaternion.Euler(80, directionalLight.transform.rotation.eulerAngles.y, 0);
+                directionalLight.transform.rotation = Quaternion.Euler(85, directionalLight.transform.rotation.eulerAngles.y, 0);
             }
             else
             {
@@ -125,15 +137,15 @@ public class DayNightManager : MonoBehaviour
             if (RenderSettings.fog)
             {
                 RenderSettings.fogColor = isNight ? 
-                    new Color(nightSkyColor.r * 0.5f, nightSkyColor.g * 0.5f, nightSkyColor.b * 0.5f) : 
+                    new Color(0.0005f, 0.0005f, 0.002f) : // 夜晚几乎全黑的雾，偏深蓝色
                     new Color(daySkyColor.r * 0.8f, daySkyColor.g * 0.8f, daySkyColor.b * 0.8f);
                 
                 // 夜晚时雾效更浓
-                RenderSettings.fogDensity = isNight ? 0.04f : 0.01f;
+                RenderSettings.fogDensity = isNight ? 0.1f : 0.01f;
             }
             
             // 调整环境反射强度
-            RenderSettings.reflectionIntensity = isNight ? 0.3f : 1.0f;
+            RenderSettings.reflectionIntensity = isNight ? 0.02f : 1.0f;
             
             // 显示或隐藏星星
             if (starSystem != null)
@@ -141,12 +153,32 @@ public class DayNightManager : MonoBehaviour
                 if (isNight)
                 {
                     starSystem.ShowStars();
-                    Debug.Log("DayNightManager: 夜晚模式，显示星星");
                 }
                 else
                 {
                     starSystem.HideStars();
-                    Debug.Log("DayNightManager: 白天模式，隐藏星星");
+                }
+            }
+            
+            // 调整闪电效果（如果有）
+            if (isNight)
+            {
+                // 夜晚时闪电更明显
+                LightningSystem lightningSystem = FindObjectOfType<LightningSystem>();
+                if (lightningSystem != null)
+                {
+                    lightningSystem.lightningIntensity = 10.0f; // 夜晚时闪电强度大幅增加
+                    Debug.Log("DayNightManager: 已调整夜晚闪电强度为 10.0");
+                }
+            }
+            else
+            {
+                // 白天时闪电强度恢复正常
+                LightningSystem lightningSystem = FindObjectOfType<LightningSystem>();
+                if (lightningSystem != null)
+                {
+                    lightningSystem.lightningIntensity = 8.0f; // 白天闪电强度
+                    Debug.Log("DayNightManager: 已调整白天闪电强度为 8.0");
                 }
             }
         }

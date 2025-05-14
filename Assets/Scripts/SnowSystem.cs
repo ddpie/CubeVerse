@@ -38,30 +38,10 @@ public class SnowSystem : MonoBehaviour
     
     void Initialize()
     {
-        // 查找玩家
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
+        // 首先尝试从GameManager获取玩家引用
+        if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
         {
-            player = playerObj.transform;
-            Debug.Log("雪花系统找到玩家: " + player.position);
-            lastPlayerPosition = player.position;
-            
-            // 初始化雪花预制体
-            InitializeSnowflakePrefab();
-            
-            // 创建雪花对象池
-            CreateSnowflakePool();
-            
-            // 如果默认下雪，开始下雪
-            if (isSnowing)
-            {
-                StartSnow();
-            }
-        }
-        else if (Camera.main != null)
-        {
-            player = Camera.main.transform;
-            Debug.Log("雪花系统找到相机: " + player.position);
+            player = GameManager.Instance.playerTransform;
             lastPlayerPosition = player.position;
             
             // 初始化雪花预制体
@@ -78,9 +58,47 @@ public class SnowSystem : MonoBehaviour
         }
         else
         {
-            // 如果还没找到相机，继续尝试
-            Invoke("Initialize", 0.5f);
-            Debug.Log("雪花系统等待玩家初始化...");
+            // 查找玩家
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+                lastPlayerPosition = player.position;
+                
+                // 初始化雪花预制体
+                InitializeSnowflakePrefab();
+                
+                // 创建雪花对象池
+                CreateSnowflakePool();
+                
+                // 如果默认下雪，开始下雪
+                if (isSnowing)
+                {
+                    StartSnow();
+                }
+            }
+            else if (Camera.main != null)
+            {
+                player = Camera.main.transform;
+                lastPlayerPosition = player.position;
+                
+                // 初始化雪花预制体
+                InitializeSnowflakePrefab();
+                
+                // 创建雪花对象池
+                CreateSnowflakePool();
+                
+                // 如果默认下雪，开始下雪
+                if (isSnowing)
+                {
+                    StartSnow();
+                }
+            }
+            else
+            {
+                // 如果还没找到相机，继续尝试
+                Invoke("Initialize", 0.5f);
+            }
         }
     }
     
@@ -138,6 +156,9 @@ public class SnowSystem : MonoBehaviour
         Debug.Log($"雪花系统创建了 {maxSnowflakes} 个雪花");
     }
     
+    // 缓存雪花材质
+    private Material snowflakeMaterial;
+    
     void ConfigureSnowflake(GameObject snowflake)
     {
         // 设置雪花大小
@@ -147,20 +168,23 @@ public class SnowSystem : MonoBehaviour
         Renderer renderer = snowflake.GetComponent<Renderer>();
         if (renderer != null)
         {
-            Material material = new Material(renderer.material);
-            material.color = snowColor;
-            
-            // 设置为半透明
-            material.SetFloat("_Mode", 3); // 透明模式
-            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            material.SetInt("_ZWrite", 0);
-            material.DisableKeyword("_ALPHATEST_ON");
-            material.EnableKeyword("_ALPHABLEND_ON");
-            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            material.renderQueue = 3000;
-            
-            renderer.material = material;
+            // 使用共享材质而不是每次创建新材质
+            if (snowflakeMaterial == null)
+            {
+                snowflakeMaterial = new Material(renderer.material);
+                snowflakeMaterial.color = snowColor;
+                
+                // 设置为半透明
+                snowflakeMaterial.SetFloat("_Mode", 3); // 透明模式
+                snowflakeMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                snowflakeMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                snowflakeMaterial.SetInt("_ZWrite", 0);
+                snowflakeMaterial.DisableKeyword("_ALPHATEST_ON");
+                snowflakeMaterial.EnableKeyword("_ALPHABLEND_ON");
+                snowflakeMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                snowflakeMaterial.renderQueue = 3000;
+            }
+            renderer.sharedMaterial = snowflakeMaterial;
         }
         
         // 移除碰撞器，让雪花可以穿过物体
@@ -176,22 +200,29 @@ public class SnowSystem : MonoBehaviour
         // 确保有玩家
         if (player == null)
         {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
+            // 首先尝试从GameManager获取玩家引用
+            if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
             {
-                player = playerObj.transform;
-                Debug.Log("雪花系统找到玩家: " + player.position);
-                lastPlayerPosition = player.position;
-            }
-            else if (Camera.main != null)
-            {
-                player = Camera.main.transform;
-                Debug.Log("雪花系统找到相机: " + player.position);
+                player = GameManager.Instance.playerTransform;
                 lastPlayerPosition = player.position;
             }
             else
             {
-                return; // 如果没有玩家，不执行更新
+                GameObject playerObj = GameObject.FindWithTag("Player");
+                if (playerObj != null)
+                {
+                    player = playerObj.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else if (Camera.main != null)
+                {
+                    player = Camera.main.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else
+                {
+                    return; // 如果没有玩家，不执行更新
+                }
             }
         }
         

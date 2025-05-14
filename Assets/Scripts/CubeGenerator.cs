@@ -41,21 +41,10 @@ public class CubeGenerator : MonoBehaviour
     
     void InitializeWorld()
     {
-        // 查找玩家
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
+        // 首先尝试从GameManager获取玩家引用
+        if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
         {
-            player = playerObj.transform;
-            Debug.Log("找到玩家: " + player.position);
-            lastPlayerPosition = player.position;
-            
-            // 生成初始区块
-            UpdateChunks();
-        }
-        else if (Camera.main != null)
-        {
-            player = Camera.main.transform;
-            Debug.Log("找到相机: " + player.position);
+            player = GameManager.Instance.playerTransform;
             lastPlayerPosition = player.position;
             
             // 生成初始区块
@@ -63,9 +52,29 @@ public class CubeGenerator : MonoBehaviour
         }
         else
         {
-            // 如果还没找到相机，继续尝试
-            Invoke("InitializeWorld", 0.5f);
-            Debug.Log("等待玩家初始化...");
+            // 查找玩家
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+                lastPlayerPosition = player.position;
+                
+                // 生成初始区块
+                UpdateChunks();
+            }
+            else if (Camera.main != null)
+            {
+                player = Camera.main.transform;
+                lastPlayerPosition = player.position;
+                
+                // 生成初始区块
+                UpdateChunks();
+            }
+            else
+            {
+                // 如果还没找到相机，继续尝试
+                Invoke("InitializeWorld", 0.5f);
+            }
         }
     }
     
@@ -74,22 +83,29 @@ public class CubeGenerator : MonoBehaviour
         // 确保有玩家
         if (player == null)
         {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
+            // 首先尝试从GameManager获取玩家引用
+            if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
             {
-                player = playerObj.transform;
-                Debug.Log("找到玩家: " + player.position);
-                lastPlayerPosition = player.position;
-            }
-            else if (Camera.main != null)
-            {
-                player = Camera.main.transform;
-                Debug.Log("找到相机: " + player.position);
+                player = GameManager.Instance.playerTransform;
                 lastPlayerPosition = player.position;
             }
             else
             {
-                return; // 如果没有玩家，不执行更新
+                GameObject playerObj = GameObject.FindWithTag("Player");
+                if (playerObj != null)
+                {
+                    player = playerObj.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else if (Camera.main != null)
+                {
+                    player = Camera.main.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else
+                {
+                    return; // 如果没有玩家，不执行更新
+                }
             }
         }
         
@@ -106,9 +122,8 @@ public class CubeGenerator : MonoBehaviour
         // 每帧都检查一下玩家位置，确保不会掉出地图
         if (player.position.y < -10)
         {
-            Debug.LogWarning("玩家掉出地图，重置位置");
             // 找到GameManager并重置玩家位置
-            GameManager manager = FindObjectOfType<GameManager>();
+            GameManager manager = GameManager.Instance;
             if (manager != null)
             {
                 manager.RespawnPlayer();
@@ -118,16 +133,14 @@ public class CubeGenerator : MonoBehaviour
         // 如果玩家移动到新区块或移动了足够远的距离，更新可见区块
         if (newChunk != currentChunk || distanceMoved > chunkSize / 2)
         {
-            Debug.Log($"玩家移动到新区块: {newChunk.x}, {newChunk.y}，原区块: {currentChunk.x}, {currentChunk.y}，位置: {player.position}");
             currentChunk = newChunk;
             distanceMoved = 0;
             UpdateChunks();
         }
         
         // 每5秒强制更新一次区块，确保地形正确生成
-        if (Time.frameCount % 150 == 0)
+        if (Time.frameCount % 300 == 0)
         {
-            Debug.Log("定期更新区块，玩家位置: " + player.position);
             UpdateChunks();
         }
     }
@@ -136,11 +149,8 @@ public class CubeGenerator : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("更新区块时玩家为空");
             return;
         }
-        
-        Debug.Log($"更新区块，当前区块: {currentChunk.x}, {currentChunk.y}，玩家位置: {player.position}");
         
         // 记录需要保留的区块
         HashSet<Vector2Int> neededChunks = new HashSet<Vector2Int>();
@@ -160,7 +170,6 @@ public class CubeGenerator : MonoBehaviour
                     newChunk.transform.parent = transform;
                     chunks[chunkPos] = newChunk;
                     GenerateChunk(chunkPos, newChunk.transform);
-                    Debug.Log($"生成新区块: {chunkPos.x}, {chunkPos.y}，玩家位置: {player.position}");
                 }
             }
         }
@@ -177,12 +186,9 @@ public class CubeGenerator : MonoBehaviour
         
         foreach (var chunkPos in chunksToRemove)
         {
-            Debug.Log($"销毁远处区块: {chunkPos.x}, {chunkPos.y}");
             Destroy(chunks[chunkPos]);
             chunks.Remove(chunkPos);
         }
-        
-        Debug.Log($"当前区块总数: {chunks.Count}，玩家位置: {player.position}");
     }
     
     void GenerateChunk(Vector2Int chunkPos, Transform parent)
@@ -280,6 +286,15 @@ public class CubeGenerator : MonoBehaviour
         }
     }
     
+    // 缓存不同类型的材质
+    private Material grassMaterial;
+    private Material dirtMaterial;
+    private Material stoneMaterial;
+    private Material waterMaterial;
+    private Material sandMaterial;
+    private Material treeMaterial;
+    private Material leafMaterial;
+    
     void CreateCube(Vector3 position, Color color, Transform parent, bool isTransparent = false)
     {
         GameObject cube = Instantiate(cubePrefab, position, Quaternion.identity, parent);
@@ -288,22 +303,95 @@ public class CubeGenerator : MonoBehaviour
         Renderer renderer = cube.GetComponent<Renderer>();
         if (renderer != null)
         {
-            Material material = new Material(renderer.material);
-            material.color = color;
-            
-            if (isTransparent)
-            {
-                material.SetFloat("_Mode", 3); // 透明模式
-                material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                material.SetInt("_ZWrite", 0);
-                material.DisableKeyword("_ALPHATEST_ON");
-                material.EnableKeyword("_ALPHABLEND_ON");
-                material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                material.renderQueue = 3000;
-            }
-            
-            renderer.material = material;
+            // 根据颜色选择或创建共享材质
+            Material material = GetMaterialForColor(color, isTransparent);
+            renderer.sharedMaterial = material;
         }
+    }
+    
+    // 根据颜色获取共享材质
+    Material GetMaterialForColor(Color color, bool isTransparent)
+    {
+        // 比较颜色，返回对应的共享材质
+        if (color == grassColor)
+        {
+            if (grassMaterial == null)
+            {
+                grassMaterial = CreateMaterial(color, isTransparent);
+            }
+            return grassMaterial;
+        }
+        else if (color == dirtColor)
+        {
+            if (dirtMaterial == null)
+            {
+                dirtMaterial = CreateMaterial(color, isTransparent);
+            }
+            return dirtMaterial;
+        }
+        else if (color == stoneColor)
+        {
+            if (stoneMaterial == null)
+            {
+                stoneMaterial = CreateMaterial(color, isTransparent);
+            }
+            return stoneMaterial;
+        }
+        else if (color == waterColor)
+        {
+            if (waterMaterial == null)
+            {
+                waterMaterial = CreateMaterial(color, true); // 水总是透明的
+            }
+            return waterMaterial;
+        }
+        else if (color == sandColor)
+        {
+            if (sandMaterial == null)
+            {
+                sandMaterial = CreateMaterial(color, isTransparent);
+            }
+            return sandMaterial;
+        }
+        else if (color == treeColor)
+        {
+            if (treeMaterial == null)
+            {
+                treeMaterial = CreateMaterial(color, isTransparent);
+            }
+            return treeMaterial;
+        }
+        else if (color == leafColor)
+        {
+            if (leafMaterial == null)
+            {
+                leafMaterial = CreateMaterial(color, isTransparent);
+            }
+            return leafMaterial;
+        }
+        
+        // 如果是其他颜色，创建一个新材质（这种情况应该很少发生）
+        return CreateMaterial(color, isTransparent);
+    }
+    
+    // 创建材质的辅助方法
+    Material CreateMaterial(Color color, bool isTransparent)
+    {
+        Material material = new Material(Shader.Find("Standard"));
+        material.color = color;
+        
+        if (isTransparent)
+        {
+            material.SetFloat("_Mode", 3); // 透明模式
+            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetInt("_ZWrite", 0);
+            material.DisableKeyword("_ALPHATEST_ON");
+            material.EnableKeyword("_ALPHABLEND_ON");
+            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.renderQueue = 3000;
+        }
+        
+        return material;
     }
 }

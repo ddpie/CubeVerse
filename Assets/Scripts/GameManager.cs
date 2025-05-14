@@ -4,6 +4,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
+    // 公共引用，避免其他脚本使用Find查找
+    [HideInInspector] public Transform playerTransform;
+    
     [Header("游戏设置")]
     public GameObject playerPrefab;
     public Vector3 spawnPosition = new Vector3(0, 20, 0); // 玩家生成位置，高度设置高一些以便让玩家落到地面上
@@ -52,6 +55,9 @@ public class GameManager : MonoBehaviour
         // 生成玩家
         SpawnPlayer();
         
+        // 初始化质量设置
+        InitializeQualitySettings();
+        
         // 初始化云朵系统
         InitializeCloudSystem();
         
@@ -80,13 +86,10 @@ public class GameManager : MonoBehaviour
                     
                     // 设置彩虹管理器参数
                     rainbowManager.enableRainbowSystem = true;
-                    
-                    Debug.Log("GameManager: 已创建彩虹管理器");
                 }
                 else
                 {
                     rainbowManager = existingManager;
-                    Debug.Log("GameManager: 场景中已存在彩虹管理器");
                 }
             }
         }
@@ -95,6 +98,26 @@ public class GameManager : MonoBehaviour
         if (enableDayNightSystem)
         {
             InitializeDayNightSystem();
+        }
+    }
+    
+    // 初始化质量设置
+    void InitializeQualitySettings()
+    {
+        // 检查是否已经有QualitySettings
+        QualitySettings existingSettings = FindObjectOfType<QualitySettings>();
+        if (existingSettings == null)
+        {
+            // 创建质量设置对象
+            GameObject qualitySettingsObj = new GameObject("QualitySettings");
+            QualitySettings qualitySettings = qualitySettingsObj.AddComponent<QualitySettings>();
+            
+            // 设置质量参数
+            qualitySettings.targetFrameRate = 60;
+            qualitySettings.vSyncEnabled = false;
+            qualitySettings.reduceShadowQuality = true;
+            qualitySettings.disableSoftParticles = true;
+            qualitySettings.reduceLODBias = true;
         }
     }
     
@@ -194,6 +217,35 @@ public class GameManager : MonoBehaviour
             lightningManager = existingManager;
             Debug.Log("GameManager: 场景中已存在闪电管理器");
         }
+        
+        // 确保闪电系统被正确初始化
+        Invoke("CheckLightningSystem", 2.0f);
+    }
+    
+    // 检查闪电系统是否正确初始化
+    void CheckLightningSystem()
+    {
+        if (lightningManager != null)
+        {
+            LightningSystem lightningSystem = FindObjectOfType<LightningSystem>();
+            if (lightningSystem != null)
+            {
+                Debug.Log("GameManager: 闪电系统已正确初始化");
+                
+                // 如果正在下雨，确保闪电系统知道
+                RainSystem rainSystem = FindObjectOfType<RainSystem>();
+                if (rainSystem != null && rainSystem.isRaining)
+                {
+                    lightningSystem.SetRaining(true);
+                    Debug.Log("GameManager: 通知闪电系统当前正在下雨");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("GameManager: 闪电系统未找到，重新初始化");
+                InitializeLightningSystem();
+            }
+        }
     }
     
     void InitializeDayNightSystem()
@@ -244,6 +296,7 @@ public class GameManager : MonoBehaviour
         {
             player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
             player.tag = "Player"; // 确保设置标签
+            playerTransform = player.transform; // 设置公共引用
             Debug.Log("玩家已生成在位置: " + spawnPosition);
             
             // 确保只有一个AudioListener
@@ -264,6 +317,7 @@ public class GameManager : MonoBehaviour
             Destroy(player);
             player = Instantiate(playerPrefab, spawnPosition, rotation);
             player.tag = "Player"; // 确保设置标签
+            playerTransform = player.transform; // 更新公共引用
             Debug.Log("玩家已重生在位置: " + spawnPosition);
             
             // 确保只有一个AudioListener
@@ -392,7 +446,20 @@ public class GameManager : MonoBehaviour
     {
         if (lightningManager != null)
         {
+            Debug.Log("GameManager: 手动触发闪电");
             lightningManager.TriggerLightning();
+        }
+        else
+        {
+            Debug.LogWarning("GameManager: 无法触发闪电，lightningManager为空");
+            
+            // 尝试查找LightningManager
+            lightningManager = FindObjectOfType<LightningManager>();
+            if (lightningManager != null)
+            {
+                Debug.Log("GameManager: 找到LightningManager，触发闪电");
+                lightningManager.TriggerLightning();
+            }
         }
     }
     

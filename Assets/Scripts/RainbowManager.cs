@@ -58,23 +58,28 @@ public class RainbowManager : MonoBehaviour
     
     void Initialize()
     {
-        // 查找玩家
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
+        // 首先尝试从GameManager获取玩家引用
+        if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
         {
-            player = playerObj.transform;
-            Debug.Log("RainbowManager: 找到玩家: " + player.position);
-        }
-        else if (Camera.main != null)
-        {
-            player = Camera.main.transform;
-            Debug.Log("RainbowManager: 找到相机: " + player.position);
+            player = GameManager.Instance.playerTransform;
         }
         else
         {
-            // 如果还没找到相机，继续尝试
-            Invoke("Initialize", 0.5f);
-            Debug.Log("RainbowManager: 等待玩家初始化...");
+            // 查找玩家
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+            else if (Camera.main != null)
+            {
+                player = Camera.main.transform;
+            }
+            else
+            {
+                // 如果还没找到相机，继续尝试
+                Invoke("Initialize", 0.5f);
+            }
         }
     }
     
@@ -97,7 +102,6 @@ public class RainbowManager : MonoBehaviour
         if (rainSystem != null)
         {
             isRaining = rainSystem.isRaining;
-            Debug.Log($"RainbowManager: 当前雨状态 - isRaining: {isRaining}, wasRaining: {wasRaining}");
         }
         
         // 检测雨是否刚刚停止
@@ -123,12 +127,6 @@ public class RainbowManager : MonoBehaviour
             
             // 显示彩虹
             rainbowSystem.ShowRainbow(position, rotationY);
-            
-            Debug.Log("RainbowManager: 雨停止，显示彩虹！位置: " + position + ", 旋转: " + rotationY);
-        }
-        else
-        {
-            Debug.LogError("RainbowManager: 无法显示彩虹，rainbowSystem或player为null");
         }
     }
 }

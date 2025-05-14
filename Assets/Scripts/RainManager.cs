@@ -58,12 +58,18 @@ public class RainManager : MonoBehaviour
         foreach (LightningManager manager in managers)
         {
             lightningManagers.Add(manager);
+            Debug.Log($"RainManager: 找到闪电管理器 {manager.name}");
         }
         
         // 通知闪电管理器当前雨的状态
         if (rainSystem != null)
         {
+            Debug.Log($"RainManager: 通知闪电管理器当前雨状态: {(rainSystem.isRaining ? "下雨" : "不下雨")}");
             NotifyLightningManagers(rainSystem.isRaining);
+        }
+        else
+        {
+            Debug.LogWarning("RainManager: rainSystem为空，无法通知闪电管理器");
         }
         
         Debug.Log($"RainManager: 找到 {lightningManagers.Count} 个闪电管理器");

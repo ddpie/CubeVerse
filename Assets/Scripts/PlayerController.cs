@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode toggleRainKey = KeyCode.R; // 按R键切换雨的状态
     public KeyCode toggleSnowKey = KeyCode.S; // 按S键切换雪的状态
     public KeyCode toggleDayNightKey = KeyCode.D; // 按D键切换日夜状态
+    public KeyCode triggerLightningKey = KeyCode.L; // 按L键触发闪电
     
     private CharacterController characterController;
     private Camera playerCamera;
@@ -61,12 +62,6 @@ public class PlayerController : MonoBehaviour
         
         // 处理天气控制
         HandleWeatherControl();
-        
-        // 输出当前位置（调试用）
-        if (Time.frameCount % 300 == 0) // 每300帧输出一次位置
-        {
-            Debug.Log("玩家位置: " + transform.position);
-        }
     }
     
     void HandleRotation()
@@ -122,7 +117,6 @@ public class PlayerController : MonoBehaviour
             if (manager != null)
             {
                 manager.ToggleRain();
-                Debug.Log("玩家切换了雨的状态");
             }
         }
         
@@ -134,7 +128,6 @@ public class PlayerController : MonoBehaviour
             if (manager != null)
             {
                 manager.ToggleSnow();
-                Debug.Log("玩家切换了雪的状态");
             }
         }
         
@@ -146,7 +139,18 @@ public class PlayerController : MonoBehaviour
             if (manager != null)
             {
                 manager.ToggleDayNight();
-                Debug.Log("玩家切换了日夜状态");
+            }
+        }
+        
+        // 按L键触发闪电
+        if (Input.GetKeyDown(triggerLightningKey))
+        {
+            // 查找GameManager并触发闪电
+            GameManager manager = GameManager.Instance;
+            if (manager != null)
+            {
+                Debug.Log("PlayerController: 按下L键，触发闪电");
+                manager.TriggerLightning();
             }
         }
     }

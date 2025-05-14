@@ -172,8 +172,6 @@ public class RainbowSystem : MonoBehaviour
         isDisplaying = true;
         rainbowObject.SetActive(true);
         
-        Debug.Log("RainbowSystem: 彩虹开始显示，淡入阶段");
-        
         // 淡入
         float elapsedTime = 0f;
         while (elapsedTime < fadeInTime)
@@ -185,12 +183,8 @@ public class RainbowSystem : MonoBehaviour
         }
         SetRainbowVisibility(1f);
         
-        Debug.Log("RainbowSystem: 彩虹淡入完成，开始显示阶段");
-        
         // 显示一段时间
         yield return new WaitForSeconds(displayTime);
-        
-        Debug.Log("RainbowSystem: 彩虹显示阶段结束，开始淡出");
         
         // 淡出
         elapsedTime = 0f;
@@ -206,7 +200,5 @@ public class RainbowSystem : MonoBehaviour
         SetRainbowVisibility(0f);
         rainbowObject.SetActive(false);
         isDisplaying = false;
-        
-        Debug.Log("RainbowSystem: 彩虹淡出完成，已隐藏");
     }
 }

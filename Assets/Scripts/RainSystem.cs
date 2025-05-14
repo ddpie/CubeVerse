@@ -34,30 +34,10 @@ public class RainSystem : MonoBehaviour
     
     void Initialize()
     {
-        // 查找玩家
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
+        // 首先尝试从GameManager获取玩家引用
+        if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
         {
-            player = playerObj.transform;
-            Debug.Log("雨滴系统找到玩家: " + player.position);
-            lastPlayerPosition = player.position;
-            
-            // 初始化雨滴预制体
-            InitializeRainDropPrefab();
-            
-            // 创建雨滴对象池
-            CreateRainDropPool();
-            
-            // 如果默认下雨，开始下雨
-            if (isRaining)
-            {
-                StartRain();
-            }
-        }
-        else if (Camera.main != null)
-        {
-            player = Camera.main.transform;
-            Debug.Log("雨滴系统找到相机: " + player.position);
+            player = GameManager.Instance.playerTransform;
             lastPlayerPosition = player.position;
             
             // 初始化雨滴预制体
@@ -74,9 +54,47 @@ public class RainSystem : MonoBehaviour
         }
         else
         {
-            // 如果还没找到相机，继续尝试
-            Invoke("Initialize", 0.5f);
-            Debug.Log("雨滴系统等待玩家初始化...");
+            // 查找玩家
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+                lastPlayerPosition = player.position;
+                
+                // 初始化雨滴预制体
+                InitializeRainDropPrefab();
+                
+                // 创建雨滴对象池
+                CreateRainDropPool();
+                
+                // 如果默认下雨，开始下雨
+                if (isRaining)
+                {
+                    StartRain();
+                }
+            }
+            else if (Camera.main != null)
+            {
+                player = Camera.main.transform;
+                lastPlayerPosition = player.position;
+                
+                // 初始化雨滴预制体
+                InitializeRainDropPrefab();
+                
+                // 创建雨滴对象池
+                CreateRainDropPool();
+                
+                // 如果默认下雨，开始下雨
+                if (isRaining)
+                {
+                    StartRain();
+                }
+            }
+            else
+            {
+                // 如果还没找到相机，继续尝试
+                Invoke("Initialize", 0.5f);
+            }
         }
     }
     
@@ -134,6 +152,9 @@ public class RainSystem : MonoBehaviour
         Debug.Log($"雨滴系统创建了 {maxRainDrops} 个雨滴");
     }
     
+    // 缓存雨滴材质
+    private Material rainDropMaterial;
+    
     void ConfigureRainDrop(GameObject rainDrop)
     {
         // 设置雨滴大小
@@ -143,20 +164,23 @@ public class RainSystem : MonoBehaviour
         Renderer renderer = rainDrop.GetComponent<Renderer>();
         if (renderer != null)
         {
-            Material material = new Material(renderer.material);
-            material.color = rainColor;
-            
-            // 设置为半透明
-            material.SetFloat("_Mode", 3); // 透明模式
-            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            material.SetInt("_ZWrite", 0);
-            material.DisableKeyword("_ALPHATEST_ON");
-            material.EnableKeyword("_ALPHABLEND_ON");
-            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            material.renderQueue = 3000;
-            
-            renderer.material = material;
+            // 使用共享材质而不是每次创建新材质
+            if (rainDropMaterial == null)
+            {
+                rainDropMaterial = new Material(renderer.material);
+                rainDropMaterial.color = rainColor;
+                
+                // 设置为半透明
+                rainDropMaterial.SetFloat("_Mode", 3); // 透明模式
+                rainDropMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                rainDropMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                rainDropMaterial.SetInt("_ZWrite", 0);
+                rainDropMaterial.DisableKeyword("_ALPHATEST_ON");
+                rainDropMaterial.EnableKeyword("_ALPHABLEND_ON");
+                rainDropMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                rainDropMaterial.renderQueue = 3000;
+            }
+            renderer.sharedMaterial = rainDropMaterial;
         }
         
         // 移除碰撞器，让雨滴可以穿过物体
@@ -172,22 +196,29 @@ public class RainSystem : MonoBehaviour
         // 确保有玩家
         if (player == null)
         {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
+            // 首先尝试从GameManager获取玩家引用
+            if (GameManager.Instance != null && GameManager.Instance.playerTransform != null)
             {
-                player = playerObj.transform;
-                Debug.Log("雨滴系统找到玩家: " + player.position);
-                lastPlayerPosition = player.position;
-            }
-            else if (Camera.main != null)
-            {
-                player = Camera.main.transform;
-                Debug.Log("雨滴系统找到相机: " + player.position);
+                player = GameManager.Instance.playerTransform;
                 lastPlayerPosition = player.position;
             }
             else
             {
-                return; // 如果没有玩家，不执行更新
+                GameObject playerObj = GameObject.FindWithTag("Player");
+                if (playerObj != null)
+                {
+                    player = playerObj.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else if (Camera.main != null)
+                {
+                    player = Camera.main.transform;
+                    lastPlayerPosition = player.position;
+                }
+                else
+                {
+                    return; // 如果没有玩家，不执行更新
+                }
             }
         }
         
@@ -314,7 +345,7 @@ public class RainSystem : MonoBehaviour
         if (!isRaining)
         {
             isRaining = true;
-            Debug.Log("开始下雨");
+            Debug.Log("RainSystem: 开始下雨");
         }
     }
     
@@ -324,7 +355,7 @@ public class RainSystem : MonoBehaviour
         if (isRaining)
         {
             isRaining = false;
-            Debug.Log("停止下雨");
+            Debug.Log("RainSystem: 停止下雨");
             
             // 回收所有活动的雨滴
             foreach (GameObject rainDrop in activeRainDrops)

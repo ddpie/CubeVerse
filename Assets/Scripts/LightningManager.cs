@@ -58,8 +58,19 @@ public class LightningManager : MonoBehaviour
             {
                 // 设置初始雨状态
                 lightningSystem.SetRaining(rainSystem.isRaining);
-                Debug.Log("LightningManager: 已连接到雨滴系统");
+                Debug.Log("LightningManager: 已连接到雨滴系统，当前雨状态: " + (rainSystem.isRaining ? "下雨" : "不下雨"));
             }
+            else
+            {
+                Debug.LogWarning("LightningManager: 无法找到RainSystem组件");
+            }
+        }
+        else
+        {
+            if (lightningSystem == null)
+                Debug.LogWarning("LightningManager: lightningSystem为空");
+            if (rainManager == null)
+                Debug.LogWarning("LightningManager: rainManager为空");
         }
     }
     
@@ -68,7 +79,12 @@ public class LightningManager : MonoBehaviour
     {
         if (lightningSystem != null)
         {
+            Debug.Log("LightningManager: 手动触发闪电");
             lightningSystem.TriggerManualLightning();
+        }
+        else
+        {
+            Debug.LogWarning("LightningManager: 无法触发闪电，lightningSystem为空");
         }
     }
     
@@ -77,8 +93,23 @@ public class LightningManager : MonoBehaviour
     {
         if (lightningSystem != null)
         {
-            lightningSystem.SetRaining(isRaining);
             Debug.Log("LightningManager: 雨状态变更为 " + (isRaining ? "下雨" : "停雨"));
+            lightningSystem.SetRaining(isRaining);
+        }
+        else
+        {
+            Debug.LogWarning("LightningManager: 无法更新雨状态，lightningSystem为空");
+        }
+    }
+    
+    // 添加一个Update方法用于测试
+    void Update()
+    {
+        // 按L键手动触发闪电（测试用）
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("LightningManager: 按下L键，手动触发闪电");
+            TriggerLightning();
         }
     }
 }

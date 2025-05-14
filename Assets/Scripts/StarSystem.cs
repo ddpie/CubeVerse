@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public class StarSystem : MonoBehaviour
 {
     [Header("星星设置")]
-    public int maxStars = 500;           // 最大星星数量
+    public int maxStars = 800;           // 增加星星数量
     public float starSpawnRadius = 100f;  // 星星生成半径
     public float minStarSize = 0.08f;     // 最小星星大小
     public float maxStarSize = 0.25f;     // 最大星星大小
-    public Color starColor = new Color(1f, 1f, 1f, 0.9f); // 星星颜色
+    public Color starColor = new Color(1f, 1f, 1f, 0.95f); // 星星颜色（增加亮度）
     
     [Header("闪烁设置")]
     public bool enableTwinkle = true;     // 是否启用闪烁效果
@@ -19,6 +19,9 @@ public class StarSystem : MonoBehaviour
     private List<GameObject> stars = new List<GameObject>();
     private List<float> starPhases = new List<float>(); // 用于闪烁效果的相位
     private bool starsVisible = false;
+    
+    // 缓存星星材质
+    private Material starMaterial;
     
     void Start()
     {
@@ -67,23 +70,28 @@ public class StarSystem : MonoBehaviour
             
             // 设置材质
             Renderer renderer = star.GetComponent<Renderer>();
-            Material starMaterial = new Material(Shader.Find("Standard"));
-            starMaterial.SetFloat("_Mode", 3); // 透明模式
-            starMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            starMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            starMaterial.SetInt("_ZWrite", 0);
-            starMaterial.DisableKeyword("_ALPHATEST_ON");
-            starMaterial.EnableKeyword("_ALPHABLEND_ON");
-            starMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            starMaterial.renderQueue = 3000;
-            starMaterial.color = starColor;
             
-            // 设置发光效果
-            starMaterial.SetFloat("_EmissionEnabled", 1);
-            starMaterial.EnableKeyword("_EMISSION");
-            starMaterial.SetColor("_EmissionColor", starColor * 1.5f);
+            // 使用共享材质
+            if (starMaterial == null)
+            {
+                starMaterial = new Material(Shader.Find("Standard"));
+                starMaterial.SetFloat("_Mode", 3); // 透明模式
+                starMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                starMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                starMaterial.SetInt("_ZWrite", 0);
+                starMaterial.DisableKeyword("_ALPHATEST_ON");
+                starMaterial.EnableKeyword("_ALPHABLEND_ON");
+                starMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                starMaterial.renderQueue = 3000;
+                starMaterial.color = starColor;
+                
+                // 设置发光效果
+                starMaterial.SetFloat("_EmissionEnabled", 1);
+                starMaterial.EnableKeyword("_EMISSION");
+                starMaterial.SetColor("_EmissionColor", starColor * 1.5f);
+            }
             
-            renderer.material = starMaterial;
+            renderer.sharedMaterial = starMaterial;
             
             // 移除碰撞器
             Destroy(star.GetComponent<Collider>());
@@ -97,8 +105,6 @@ public class StarSystem : MonoBehaviour
             // 设置父对象
             star.transform.SetParent(starContainer.transform);
         }
-        
-        Debug.Log($"StarSystem: 已生成 {stars.Count} 颗星星");
     }
     
     void UpdateStarTwinkle()
@@ -113,14 +119,11 @@ public class StarSystem : MonoBehaviour
                 // 计算闪烁强度
                 float twinkle = 1.0f - twinkleAmount + twinkleAmount * Mathf.Sin(starPhases[i]);
                 
-                // 应用到星星颜色
+                // 应用到星星颜色 - 使用共享材质的情况下，我们不能直接修改每个星星的颜色
+                // 所以我们只修改发光强度
                 Renderer renderer = stars[i].GetComponent<Renderer>();
                 if (renderer != null)
                 {
-                    Color currentColor = renderer.material.color;
-                    currentColor.a = starColor.a * twinkle;
-                    renderer.material.color = currentColor;
-                    
                     // 同时更新发光强度
                     renderer.material.SetColor("_EmissionColor", starColor * twinkle * 1.5f);
                 }
@@ -133,7 +136,6 @@ public class StarSystem : MonoBehaviour
     {
         starContainer.SetActive(true);
         starsVisible = true;
-        Debug.Log("StarSystem: 星星已显示");
     }
     
     // 公共方法：隐藏星星
@@ -141,6 +143,5 @@ public class StarSystem : MonoBehaviour
     {
         starContainer.SetActive(false);
         starsVisible = false;
-        Debug.Log("StarSystem: 星星已隐藏");
     }
 }
