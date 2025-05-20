@@ -48,6 +48,19 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitializeGame();
+        
+        // 如果设置了开始下雪，确保在游戏开始时启动雪花系统
+        if (startWithSnow && snowManager != null)
+        {
+            Debug.Log("GameManager: 游戏开始时启动雪花系统");
+            Invoke("StartSnowWithDelay", 2.0f);
+        }
+    }
+    
+    void StartSnowWithDelay()
+    {
+        StartSnow();
+        Debug.Log("GameManager: 已启动雪花系统");
     }
     
     void InitializeGame()
