@@ -295,6 +295,10 @@ public class CubeGenerator : MonoBehaviour
     private Material treeMaterial;
     private Material leafMaterial;
     
+    // 材质缓存时间
+    private float materialCacheTime = 3.0f;
+    private float lastMaterialRefreshTime = 0f;
+    
     void CreateCube(Vector3 position, Color color, Transform parent, bool isTransparent = false)
     {
         GameObject cube = Instantiate(cubePrefab, position, Quaternion.identity, parent);
@@ -312,6 +316,22 @@ public class CubeGenerator : MonoBehaviour
     // 根据颜色获取共享材质
     Material GetMaterialForColor(Color color, bool isTransparent)
     {
+        // 检查是否需要刷新材质缓存
+        if (Time.time - lastMaterialRefreshTime > materialCacheTime)
+        {
+            // 清除所有材质缓存
+            grassMaterial = null;
+            dirtMaterial = null;
+            stoneMaterial = null;
+            waterMaterial = null;
+            sandMaterial = null;
+            treeMaterial = null;
+            leafMaterial = null;
+            
+            // 更新刷新时间戳
+            lastMaterialRefreshTime = Time.time;
+        }
+        
         // 比较颜色，返回对应的共享材质
         if (color == grassColor)
         {
