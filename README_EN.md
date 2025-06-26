@@ -15,7 +15,7 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 
 ### Video Description
 
-This demo video showcases how to use Amazon Q Developer CLI to control the game in real-time through natural language conversations. In the video, we achieve the following effects through simple natural language commands:
+This demo video showcases how to use Amazon Q Developer CLI to develop game through natural language conversations. In the video, we achieve the following effects through simple natural language commands:
 
 - Switch the game scene to winter style and enable snow effects
 - Adjust terrain generation parameters to reduce terrain undulation
