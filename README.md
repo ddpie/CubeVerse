@@ -113,7 +113,7 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 5. **实现计划** - 制定任务清单和开发路线图（Q CLI来做，人来监控）
 6. **实现** - 通过自然语言指令实现功能（Q CLI来做，人来监控）
 
-这一流程参考了 [Amazon Q Developer CLI 项目的实践](https://github.com/aws/amazon-q-developer-cli/pull/834)，特别适合团队协作和复杂功能开发。通过这种方式，即使是非技术团队成员也能参与整个开发过程，从创意构思到最终实现。
+这一流程参考了 [这个PR](https://github.com/aws/amazon-q-developer-cli/pull/834)，特别适合团队协作和复杂功能开发。通过这种方式，即使是非技术团队成员也能参与整个开发过程，从创意构思到最终实现。
 
 ---
 
