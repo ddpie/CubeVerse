@@ -6,6 +6,16 @@ English | [中文](README.md)
 
 CubeVerse is a 3D cube world game developed entirely using **Amazon Q Developer CLI** through natural language conversations.
 
+## Innovative Development Approach
+
+Traditional game development has high technical barriers, where game producers, designers, and other non-technical team members can only describe their creative ideas through documentation without directly participating in implementation. This development model leads to slow conversion of ideas into actual features and often results in misunderstandings.
+
+**Amazon Q Developer CLI** innovatively combines **MCP (Model Context Protocol)** technology with Unity integration, creating a new paradigm of natural language-driven game development. Developers only need to describe requirements in natural language, and Q CLI intelligently interprets instructions, automatically generates code, and directly controls the game engine to implement features, achieving seamless transformation from ideas to functionality.
+
+This project is built entirely from scratch using Amazon Q Developer CLI, including all code and engine configurations, representing a complete practice of this innovative development approach.
+
+This solution significantly lowers the barrier to game programming skills, enabling every team member (including non-technical personnel) to directly participate in feature development, greatly improving iteration speed and creative validation efficiency. It is particularly suitable for rapid prototyping, concept validation, and agile iteration scenarios in game studios, bringing revolutionary changes to the game development process.
+
 ![Game Screenshot](Assets/Resources/showcase.png)
 *CubeVerse game screenshot - Cube-style world*
 
