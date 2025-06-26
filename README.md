@@ -1,5 +1,7 @@
 # CubeVerse - 立方体世界
 
+[English](README_EN.md) | 中文
+
 ## 项目简介
 
 CubeVerse 是一个完全使用 **Amazon Q Developer CLI** 通过自然语言对话开发的 3D 立方体世界游戏。本项目基于团结引擎/Unity 1.5.x (Unity 2022.3 LTS) 构建，展示了如何通过 AI 助手的自然语言交互来快速构建一个功能丰富的游戏世界，无需手动编写代码。
