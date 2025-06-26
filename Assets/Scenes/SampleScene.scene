@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 291945016}
   m_Layer: 0
   m_HasEditorInfo: 1
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,8 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fea0959616704284b3f5037c37365ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   playerPrefab: {fileID: 5774227430038444882, guid: f0b32e3a615ad422cb4ecf422d3d86b7, type: 3}
   spawnPosition: {x: 0, y: 20, z: 0}
+  enableWeatherSystem: 1
+  startWithRain: 0
+  defaultRainIntensity: 0.7
+  startWithSnow: 0
+  defaultSnowIntensity: 0.5
+  enableLightning: 1
+  enableRainbow: 1
+  enableDayNightSystem: 1
+  startWithNight: 0
 --- !u!4 &291945017
 Transform:
   m_ObjectHideFlags: 0
@@ -183,7 +193,7 @@ GameObject:
   - component: {fileID: 601687299}
   m_Layer: 0
   m_HasEditorInfo: 1
-  m_Name: GameObject (2)
+  m_Name: PlayerSetup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,7 +550,7 @@ GameObject:
   - component: {fileID: 1896583718}
   m_Layer: 0
   m_HasEditorInfo: 1
-  m_Name: GameObject (1)
+  m_Name: CubeGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

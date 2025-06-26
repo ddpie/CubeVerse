@@ -1,1 +1,0 @@
-Temp/ScriptUpdater/325267976/1128149531_QualitySettings.cs => Assets/Scripts/QualitySettings.cs
