@@ -117,4 +117,4 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 
 ---
 
-**使用 Amazon Q Developer CLI 开发，让游戏开发更高效！** 🚀
+**使用 Amazon Q Developer CLI，让游戏开发更高效！** 🚀
