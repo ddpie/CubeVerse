@@ -10,7 +10,7 @@ CubeVerse is a 3D cube world game developed entirely using **Amazon Q Developer 
 
 Traditional game development has high technical barriers, where game producers, designers, and other non-technical team members can only describe their creative ideas through documentation without directly participating in implementation. This development model leads to slow conversion of ideas into actual features and often results in misunderstandings.
 
-**Amazon Q Developer CLI** innovatively combines MCP (Model Context Protocol) technology with Unity integration, creating a new paradigm of natural language-driven game development. Developers only need to describe requirements in natural language, and Q CLI intelligently interprets instructions, automatically generates code, and directly controls the game engine to implement features, achieving seamless transformation from ideas to functionality.
+**Amazon Q Developer CLI** innovatively combines **MCP (Model Context Protocol)** technology with Unity integration, creating a new paradigm of natural language-driven game development. Developers only need to describe requirements in natural language, and Q CLI intelligently interprets instructions, automatically generates code, and directly controls the game engine to implement features, achieving seamless transformation from ideas to functionality.
 
 This project is built entirely from scratch using Amazon Q Developer CLI, including all code and engine configurations, representing a complete practice of this innovative development approach.
 
@@ -25,7 +25,7 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 
 ### Video Description
 
-This demo video showcases how to use Amazon Q Developer CLI to develop game through natural language conversations. In the video, we achieve the following effects through simple natural language commands:
+This demo video showcases how to use Amazon Q Developer CLI to develop games through natural language conversations with Unity. In the video, we achieve the following effects through simple natural language commands:
 
 - Switch the game scene to winter style and enable snow effects
 - Adjust terrain generation parameters to reduce terrain undulation
@@ -101,6 +101,19 @@ Refer to https://github.com/CoderGamester/mcp-unity/blob/main/README.md for MCP 
 - **WASD** - Movement
 - **Mouse** - Camera control
 - **Space** - Jump
+
+## Recommended Development Process
+
+For developing complex game projects using Amazon Q Developer CLI, we recommend the following structured process:
+
+1. **Rough Idea** - Establish the basic concept and core gameplay (provided by humans)
+2. **CodeBase Research** - Understand relevant technologies and existing solutions (done by Q CLI, monitored by humans)
+3. **Requirement Clarification** - Refine and clarify requirements through Q CLI questioning (Q CLI asks questions, humans answer)
+4. **Detail Design** - Design system architecture, component interactions, and data flow (done by Q CLI, monitored by humans)
+5. **Implementation Plan** - Create task lists and development roadmap (done by Q CLI, monitored by humans)
+6. **Implementation** - Implement features through natural language instructions (done by Q CLI, monitored by humans)
+
+This process is based on [practices from the Amazon Q Developer CLI project](https://github.com/aws/amazon-q-developer-cli/pull/834) and is particularly suitable for team collaboration and complex feature development. Through this approach, even non-technical team members can participate in the entire development process, from conceptualization to final implementation.
 
 ---
 
