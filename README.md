@@ -1,6 +1,6 @@
 # CubeVerse - 立方体世界
 
-| [🇺English](README_EN.md) | 🇨中文 |
+| [English](README_EN.md) | 中文 |
 |:---:|:---:|
 
 ## 项目简介
