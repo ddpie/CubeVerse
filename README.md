@@ -73,7 +73,7 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 ## 安装和运行
 
 ### 环境要求
-- 团结引擎/Unity 1.5.x (Unity 2022.3 LTS) 或更高版本
+- 团结引擎 1.5.x (Unity 2022.3 LTS) 或更高版本
 - Amazon Q Developer CLI（核心开发工具）
 - Node.js 18+ （用于运行 MCP Unity/团结引擎 服务器）
 
