@@ -113,7 +113,7 @@ For developing complex game projects using Amazon Q Developer CLI, we recommend 
 5. **Implementation Plan** - Create task lists and development roadmap (done by Q CLI, monitored by humans)
 6. **Implementation** - Implement features through natural language instructions (done by Q CLI, monitored by humans)
 
-This process is based on [这个PR](https://github.com/aws/amazon-q-developer-cli/pull/834) and is particularly suitable for team collaboration and complex feature development. Through this approach, even non-technical team members can participate in the entire development process, from conceptualization to final implementation.
+This process is based on [This PR](https://github.com/aws/amazon-q-developer-cli/pull/834) and is particularly suitable for team collaboration and complex feature development. Through this approach, even non-technical team members can participate in the entire development process, from conceptualization to final implementation.
 
 ---
 
