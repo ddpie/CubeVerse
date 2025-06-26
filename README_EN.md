@@ -41,7 +41,7 @@ All these operations are completed through conversations with Amazon Q Developer
 - **Physics Interaction**: Realistic physics collision and gravity system
 
 ### 🌦️ Weather System
-- **Rain System**: Realistic rainfall effects with rain particle effects and sounds
+- **Rain System**: Realistic rainfall effects with rain particle effects
 - **Snow System**: Beautiful snowfall effects creating winter atmosphere
 - **Lightning System**: Dynamic lightning effects enhancing storm experience
 - **Rainbow System**: Post-rain rainbows adding visual beauty
