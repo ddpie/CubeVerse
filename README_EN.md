@@ -77,6 +77,18 @@ This project is **100% developed using Amazon Q Developer CLI** combined with **
 ### MCP Installation Steps
 Refer to https://github.com/CoderGamester/mcp-unity/blob/main/README.md for MCP configuration
 
+### Project Setup Steps
+1. Open the project using Unity Hub
+2. Wait for Unity to import all assets
+3. In the Project window, navigate to the `Assets/Scenes` folder
+4. Double-click to open the `SampleScene.scene` file
+5. Click the play button at the top of the editor to start the game
+
+### Controls
+- **WASD** - Movement
+- **Mouse** - Camera control
+- **Space** - Jump
+
 ---
 
 **Develop with Amazon Q Developer CLI - Make game development more efficient!** 🚀

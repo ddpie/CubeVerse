@@ -77,6 +77,18 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 ### MCP 安装步骤
 参考 https://github.com/CoderGamester/mcp-unity/blob/main/README.md 来配置 MCP
 
+### 项目运行步骤
+1. 使用 Unity Hub 打开项目
+2. 等待团结引擎/Unity 导入所有资源
+3. 在 Project 窗口中导航到 `Assets/Scenes` 文件夹
+4. 双击打开 `SampleScene.scene` 场景文件
+5. 点击编辑器顶部的播放按钮开始游戏
+
+### 控制说明
+- **WASD** - 移动
+- **鼠标** - 视角控制
+- **空格** - 跳跃
+
 ---
 
 **使用 Amazon Q Developer CLI 开发，让游戏开发更高效！** 🚀
