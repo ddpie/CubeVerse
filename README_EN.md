@@ -17,7 +17,7 @@ This demo video showcases how to use Amazon Q Developer CLI to control the game 
 - Switch the game scene to winter style and enable snow effects
 - Adjust terrain generation parameters to reduce terrain undulation
 
-All these operations are completed through conversations with Amazon Q, rather than manually modifying code or adjusting parameters.
+All these operations are completed through conversations with Amazon Q Developer CLI, rather than manually modifying code or adjusting parameters.
 
 ## Game Features
 
@@ -79,4 +79,4 @@ Refer to https://github.com/CoderGamester/mcp-unity/blob/main/README.md for MCP 
 
 ---
 
-**Develop with Amazon Q CLI - Make game development more efficient!** 🚀
+**Develop with Amazon Q Developer CLI - Make game development more efficient!** 🚀

@@ -17,7 +17,7 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 - 将游戏场景切换为冬季风格，开启降雪效果开关
 - 调整地形生成参数，降低地形的起伏程度
 
-所有这些操作都是通过与 Amazon Q 的对话完成的，而不是手动修改代码或调整参数。
+所有这些操作都是通过与 Amazon Q Developer CLI 的对话完成的，而不是手动修改代码或调整参数。
 
 ## 游戏特性
 
@@ -79,4 +79,4 @@ https://www.bilibili.com/video/BV1bUKfzjEbr
 
 ---
 
-**使用 Amazon Q CLI 开发，让游戏开发更高效！** 🚀
+**使用 Amazon Q Developer CLI 开发，让游戏开发更高效！** 🚀
