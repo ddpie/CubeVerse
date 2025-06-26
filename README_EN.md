@@ -6,6 +6,9 @@ English | [中文](README.md)
 
 CubeVerse is a 3D cube world game developed entirely using **Amazon Q Developer CLI** through natural language conversations. Built on Unity 2022.3 LTS, this project demonstrates how to rapidly build a feature-rich game world through natural language interactions with AI assistants, without manually writing code.
 
+![Game Screenshot](Assets/Resources/showcase.png)
+*CubeVerse game screenshot - Cube-style world*
+
 ## Demo Video
 
 https://www.bilibili.com/video/BV1bUKfzjEbr
