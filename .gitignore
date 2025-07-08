@@ -103,6 +103,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Python (if using for build scripts)
+Python/
 __pycache__/
 *.py[cod]
 *$py.class
