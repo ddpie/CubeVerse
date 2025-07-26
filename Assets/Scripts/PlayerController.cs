@@ -78,6 +78,12 @@ public class PlayerController : MonoBehaviour
     
     void HandleMovement()
     {
+        // 检查CharacterController是否启用，如果未启用则不处理移动
+        if (characterController == null || !characterController.enabled)
+        {
+            return;
+        }
+        
         // 如果在地面上，重置Y方向速度
         if (isGrounded)
         {
