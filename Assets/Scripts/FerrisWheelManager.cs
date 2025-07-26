@@ -25,8 +25,8 @@ public class FerrisWheelManager : MonoBehaviour
     
     void Start()
     {
-        // 设置摩天轮的位置，让圆心在地面上方60个单位
-        transform.position = new Vector3(20f, 60f, 20f);
+        // 设置摩天轮的位置，让圆心在地面上方80个单位
+        transform.position = new Vector3(20f, 80f, 20f);
         
         timeOffset = Random.value * 10f;
         
@@ -47,6 +47,7 @@ public class FerrisWheelManager : MonoBehaviour
         }
         
         CreateFerrisWheel();
+        CreateStairsToLowestCabin(); // 创建通向最低车厢的楼梯
     }
     
     void Update()
@@ -372,6 +373,124 @@ public class FerrisWheelManager : MonoBehaviour
         }
     }
     
+    void CreateStairsToLowestCabin()
+    {
+        Debug.Log("开始创建通向最低车厢的楼梯...");
+        
+        // === 精确的坐标计算 ===
+        // 摩天轮世界坐标：(20, 80, 20)
+        // 摩天轮半径：25
+        // 车厢尺寸：wheelRadius * 0.25f = 6.25f
+        // 车厢偏移：车厢尺寸 + 2f = 8.25f
+        
+        // 最低车厢的精确位置（世界坐标）
+        float ferrisWheelCenterY = 80f;
+        float lowestCabinCenterY = ferrisWheelCenterY - wheelRadius; // 80 - 25 = 55
+        float cabinSize = wheelRadius * 0.25f; // 6.25f
+        
+        // 车厢地板的实际高度（车厢中心 - 车厢尺寸）
+        float cabinFloorY = lowestCabinCenterY - cabinSize; // 55 - 6.25 = 48.75
+        
+        // 车厢在摩天轮右侧的位置
+        float cabinOffset = cabinSize + 2f; // 8.25f
+        float lowestCabinWorldX = 20f + wheelRadius + cabinOffset; // 20 + 25 + 8.25 = 53.25
+        float lowestCabinWorldZ = 20f; // 与摩天轮中心Z对齐
+        
+        Debug.Log($"=== 楼梯坐标计算 ===");
+        Debug.Log($"摩天轮中心: (20, 80, 20)");
+        Debug.Log($"最低车厢中心: ({lowestCabinWorldX}, {lowestCabinCenterY}, {lowestCabinWorldZ})");
+        Debug.Log($"最低车厢地板高度: {cabinFloorY}");
+        Debug.Log($"需要爬升高度: {cabinFloorY}");
+        
+        // 创建楼梯的父对象
+        GameObject stairs = new GameObject("StairsToLowestCabin");
+        stairs.transform.position = Vector3.zero; // 使用世界坐标
+        
+        // 楼梯参数 - 降低台阶高度，调整深度
+        Color stairColor = new Color(0.5f, 0.3f, 0.1f); // 深棕色楼梯
+        float stairWidth = 8f; // 楼梯宽度：原来5f + 两边各1.5f = 8f
+        float stepHeight = 0.5f; // 降低台阶高度到0.5个单位
+        float stepDepth = 1f; // 调整台阶深度到1个单位
+        int totalSteps = Mathf.CeilToInt(cabinFloorY / stepHeight) + 1; // 总台阶数 = 48.75 / 0.5 ≈ 98步 + 1 = 99步
+        
+        // 楼梯位置：与摩天轮完全垂直
+        // 楼梯沿Z轴方向，从摩天轮前方延伸到车厢
+        float stairCenterX = lowestCabinWorldX; // 与车厢X坐标对齐
+        float stairStartZ = lowestCabinWorldZ - (totalSteps * stepDepth) - 5f + 1f; // 往摩天轮方向侧移1个单位
+        float stairEndZ = lowestCabinWorldZ + cabinSize + 1f; // 延伸到车厢内部，也侧移1个单位
+        
+        Debug.Log($"楼梯参数: 台阶高度={stepHeight}, 台阶深度={stepDepth}, 总台阶数={totalSteps}");
+        Debug.Log($"楼梯起始Z坐标: {stairStartZ}");
+        Debug.Log($"楼梯结束Z坐标: {stairEndZ}");
+        
+        // 创建楼梯台阶 - 沿Z轴垂直于摩天轮方向
+        for (int step = 0; step < totalSteps; step++)
+        {
+            float currentStepY = (step + 1) * stepHeight; // 当前台阶高度
+            float currentStepZ = stairStartZ + step * stepDepth; // 沿Z轴均匀分布
+            
+            // 创建台阶平台
+            for (float x = stairCenterX - stairWidth/2; x <= stairCenterX + stairWidth/2; x++)
+            {
+                for (float z = currentStepZ; z <= currentStepZ + stepDepth; z++)
+                {
+                    GameObject stepCube = CreateCube(new Vector3(x, currentStepY, z), stairs.transform, stairColor);
+                    // 楼梯需要物理碰撞来支撑玩家
+                    if (stepCube != null)
+                    {
+                        EnsureCollider(stepCube);
+                    }
+                }
+            }
+            
+            // 为每个台阶添加前沿支撑（防止玩家掉下去）
+            if (step > 0)
+            {
+                for (float y = step * stepHeight; y < currentStepY; y++)
+                {
+                    for (float x = stairCenterX - stairWidth/2; x <= stairCenterX + stairWidth/2; x++)
+                    {
+                        GameObject supportCube = CreateCube(new Vector3(x, y, currentStepZ), stairs.transform, stairColor);
+                        if (supportCube != null)
+                        {
+                            EnsureCollider(supportCube);
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 创建最终平台，精确对齐车厢地板高度
+        for (float x = stairCenterX - stairWidth/2; x <= stairCenterX + stairWidth/2; x++)
+        {
+            for (float z = stairStartZ + totalSteps * stepDepth; z <= stairEndZ; z++)
+            {
+                GameObject platformCube = CreateCube(new Vector3(x, cabinFloorY, z), stairs.transform, stairColor);
+                if (platformCube != null)
+                {
+                    EnsureCollider(platformCube);
+                }
+            }
+        }
+        
+        // 添加楼梯两侧的护栏
+        Color railingColor = new Color(0.8f, 0.6f, 0.3f);
+        for (int step = 1; step < totalSteps; step += 3) // 每3个台阶添加一个护栏，避免太密集
+        {
+            float currentStepY = (step + 1) * stepHeight;
+            float currentStepZ = stairStartZ + step * stepDepth;
+            
+            // 左右护栏
+            CreateCube(new Vector3(stairCenterX - stairWidth/2 - 0.5f, currentStepY + 1f, currentStepZ), stairs.transform, railingColor);
+            CreateCube(new Vector3(stairCenterX + stairWidth/2 + 0.5f, currentStepY + 1f, currentStepZ), stairs.transform, railingColor);
+        }
+        
+        Debug.Log($"楼梯创建完成！");
+        Debug.Log($"最终平台高度: {cabinFloorY} (与车厢地板对齐)");
+        Debug.Log($"楼梯总长度: {totalSteps * stepDepth}个单位");
+        Debug.Log($"楼梯坡度: {stepHeight}/{stepDepth} = {stepHeight/stepDepth:F2} (更平缓)");
+    }
+    
     void KeepCabinsLevel()
     {
         // 保持所有车厢水平
@@ -503,44 +622,92 @@ public class FerrisWheelManager : MonoBehaviour
         physicsObject.transform.SetParent(parent, false);
         physicsObject.transform.localPosition = Vector3.zero;
         
+        // 关键：添加Rigidbody但设置为Kinematic，这样Unity会自动处理移动平台逻辑
+        Rigidbody physicsRb = physicsObject.AddComponent<Rigidbody>();
+        physicsRb.isKinematic = true;
+        physicsRb.useGravity = false;
+        
         // 添加地板碰撞体 - 一个大的平面
         GameObject floorCollider = new GameObject("FloorCollider");
         floorCollider.transform.SetParent(physicsObject.transform, false);
-        floorCollider.transform.localPosition = new Vector3(0, -size + 0.5f, 0); // 地板上方一点
+        floorCollider.transform.localPosition = new Vector3(0, -size + 0.5f, 0);
         
         BoxCollider floorBox = floorCollider.AddComponent<BoxCollider>();
-        floorBox.size = new Vector3(size * 2f, 1f, size * 2f); // 覆盖整个地板
+        floorBox.size = new Vector3(size * 2f, 1f, size * 2f);
+        floorBox.material = CreatePhysicsMaterial();
         
-        // 添加墙壁碰撞体 - 四面墙
-        // 前墙
-        GameObject frontWall = new GameObject("FrontWall");
-        frontWall.transform.SetParent(physicsObject.transform, false);
-        frontWall.transform.localPosition = new Vector3(0, 0, size);
-        BoxCollider frontBox = frontWall.AddComponent<BoxCollider>();
-        frontBox.size = new Vector3(size * 2f, size * 2f, 0.5f);
+        // 围栏高度参数
+        float railingHeight = 0.5f;
         
-        // 后墙
-        GameObject backWall = new GameObject("BackWall");
-        backWall.transform.SetParent(physicsObject.transform, false);
-        backWall.transform.localPosition = new Vector3(0, 0, -size);
-        BoxCollider backBox = backWall.AddComponent<BoxCollider>();
-        backBox.size = new Vector3(size * 2f, size * 2f, 0.5f);
+        // 为每面墙创建分段的碰撞体，留出门洞空间
+        CreateWallSegment(physicsObject.transform, "FrontWallLeft", 
+            new Vector3(-size, 0, size), new Vector3(size - 3.5f, size * 2f, 0.5f));
+        CreateWallSegment(physicsObject.transform, "FrontWallRight", 
+            new Vector3(3.5f, 0, size), new Vector3(size - 3.5f, size * 2f, 0.5f));
         
-        // 左墙
-        GameObject leftWall = new GameObject("LeftWall");
-        leftWall.transform.SetParent(physicsObject.transform, false);
-        leftWall.transform.localPosition = new Vector3(-size, 0, 0);
-        BoxCollider leftBox = leftWall.AddComponent<BoxCollider>();
-        leftBox.size = new Vector3(0.5f, size * 2f, size * 2f);
+        CreateWallSegment(physicsObject.transform, "BackWallLeft", 
+            new Vector3(-size, 0, -size), new Vector3(size - 3.5f, size * 2f, 0.5f));
+        CreateWallSegment(physicsObject.transform, "BackWallRight", 
+            new Vector3(3.5f, 0, -size), new Vector3(size - 3.5f, size * 2f, 0.5f));
         
-        // 右墙
-        GameObject rightWall = new GameObject("RightWall");
-        rightWall.transform.SetParent(physicsObject.transform, false);
-        rightWall.transform.localPosition = new Vector3(size, 0, 0);
-        BoxCollider rightBox = rightWall.AddComponent<BoxCollider>();
-        rightBox.size = new Vector3(0.5f, size * 2f, size * 2f);
+        CreateWallSegment(physicsObject.transform, "LeftWallFront", 
+            new Vector3(-size, 0, size), new Vector3(0.5f, size * 2f, size - 3.5f));
+        CreateWallSegment(physicsObject.transform, "LeftWallBack", 
+            new Vector3(-size, 0, -3.5f), new Vector3(0.5f, size * 2f, size - 3.5f));
         
-        Debug.Log($"为车厢创建了统一的物理碰撞体，地板大小: {floorBox.size}");
+        CreateWallSegment(physicsObject.transform, "RightWallFront", 
+            new Vector3(size, 0, size), new Vector3(0.5f, size * 2f, size - 3.5f));
+        CreateWallSegment(physicsObject.transform, "RightWallBack", 
+            new Vector3(size, 0, -3.5f), new Vector3(0.5f, size * 2f, size - 3.5f));
+        
+        CreateRailingColliders(physicsObject.transform, size, railingHeight);
+        
+        Debug.Log($"为车厢创建了简化的Kinematic Rigidbody物理系统");
+    }
+    
+    PhysicMaterial CreatePhysicsMaterial()
+    {
+        PhysicMaterial material = new PhysicMaterial("CabinFloor");
+        material.dynamicFriction = 0.8f; // 适中的摩擦力
+        material.staticFriction = 0.8f;
+        material.bounciness = 0f; // 不弹跳
+        material.frictionCombine = PhysicMaterialCombine.Average;
+        material.bounceCombine = PhysicMaterialCombine.Minimum;
+        return material;
+    }
+    
+    void CreateWallSegment(Transform parent, string name, Vector3 position, Vector3 size)
+    {
+        GameObject wallSegment = new GameObject(name);
+        wallSegment.transform.SetParent(parent, false);
+        wallSegment.transform.localPosition = position;
+        
+        BoxCollider wallBox = wallSegment.AddComponent<BoxCollider>();
+        wallBox.size = size;
+        wallBox.material = CreatePhysicsMaterial(); // 使用自定义物理材质
+    }
+    
+    void CreateRailingColliders(Transform parent, float size, float railingHeight)
+    {
+        // 前围栏
+        CreateWallSegment(parent, "FrontRailing", 
+            new Vector3(0, -size + railingHeight/2, size), 
+            new Vector3(size * 2f, railingHeight, 0.5f));
+        
+        // 后围栏
+        CreateWallSegment(parent, "BackRailing", 
+            new Vector3(0, -size + railingHeight/2, -size), 
+            new Vector3(size * 2f, railingHeight, 0.5f));
+        
+        // 左围栏
+        CreateWallSegment(parent, "LeftRailing", 
+            new Vector3(-size, -size + railingHeight/2, 0), 
+            new Vector3(0.5f, railingHeight, size * 2f));
+        
+        // 右围栏
+        CreateWallSegment(parent, "RightRailing", 
+            new Vector3(size, -size + railingHeight/2, 0), 
+            new Vector3(0.5f, railingHeight, size * 2f));
     }
     
     void CreateWindowFrames(Transform parent, float size)
@@ -733,4 +900,11 @@ public class FerrisWheelManager : MonoBehaviour
         }
         return null;
     }
+}
+
+// 简化的移动平台 - 让Unity的物理系统自动处理
+public class MovingPlatform : MonoBehaviour
+{
+    // 空的组件，只是为了标记这是一个移动平台
+    // Unity的Kinematic Rigidbody会自动处理移动平台逻辑
 }
