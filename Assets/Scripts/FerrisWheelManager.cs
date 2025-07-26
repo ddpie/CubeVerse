@@ -24,6 +24,9 @@ public class FerrisWheelManager : MonoBehaviour
     
     void Start()
     {
+        // 设置摩天轮的位置，让圆心在地面上方25个单位
+        transform.position = new Vector3(20f, 25f, 20f);
+        
         timeOffset = Random.value * 10f;
         
         // 如果没有设置方块预制体，尝试从CubeGenerator获取
@@ -78,26 +81,26 @@ public class FerrisWheelManager : MonoBehaviour
     {
         Debug.Log("开始创建摩天轮...");
         
-        // 创建父物体
+        // 创建父物体并设置位置
         GameObject ferrisWheel = new GameObject("FerrisWheel");
-        ferrisWheel.transform.parent = transform;
+        ferrisWheel.transform.SetParent(transform, false); // 使用false保持世界坐标
         ferrisWheel.transform.localPosition = Vector3.zero;
         
         // 创建支架
         frame = new GameObject("Frame");
-        frame.transform.parent = ferrisWheel.transform;
+        frame.transform.SetParent(ferrisWheel.transform, false);
         frame.transform.localPosition = Vector3.zero;
         CreateFrame();
         
         // 创建装饰
         decorations = new GameObject("Decorations");
-        decorations.transform.parent = ferrisWheel.transform;
+        decorations.transform.SetParent(ferrisWheel.transform, false);
         decorations.transform.localPosition = Vector3.zero;
         CreateDecorations();
         
         // 创建轮圈和轮辐
         wheel = new GameObject("Wheel");
-        wheel.transform.parent = ferrisWheel.transform;
+        wheel.transform.SetParent(ferrisWheel.transform, false);
         wheel.transform.localPosition = Vector3.zero;
         CreateWheel();
         
@@ -220,67 +223,80 @@ public class FerrisWheelManager : MonoBehaviour
     
     void CreateWheel()
     {
-        // 创建外圈
+        // 创建外圈，蓝色部分放在后面
         int segments = 72;
         float angleStep = 360f / segments;
+        float baseZ = 0f;  // 基础Z坐标
         
+        // 先创建蓝色主体（放在后面）
         for (int i = 0; i < segments; i++)
         {
             float angle = i * angleStep * Mathf.Deg2Rad;
             Vector3 pos = new Vector3(
                 Mathf.Cos(angle) * wheelRadius,
                 Mathf.Sin(angle) * wheelRadius,
-                0
+                baseZ
             );
             CreateCube(pos, wheel.transform, wheelColor);
-            
-            // 添加金色装饰
+        }
+        
+        // 再创建金色装饰（放在前面）
+        for (int i = 0; i < segments; i++)
+        {
             if (i % 6 == 0)
             {
-                Vector3 decorPos = new Vector3(
+                float angle = i * angleStep * Mathf.Deg2Rad;
+                Vector3 pos = new Vector3(
                     Mathf.Cos(angle) * (wheelRadius + 0.5f),
                     Mathf.Sin(angle) * (wheelRadius + 0.5f),
-                    0
+                    baseZ + 0.1f  // 金色装饰放在前面一点
                 );
-                CreateCube(decorPos, wheel.transform, accentColor);
+                CreateCube(pos, wheel.transform, accentColor);
             }
         }
         
-        // 创建轮辐
+        // 创建轮辐，分层处理
         int spokeCount = 12;
         angleStep = 360f / spokeCount;
         
+        // 先创建蓝色主轮辐（放在最后面）
         for (int i = 0; i < spokeCount; i++)
         {
             float angle = i * angleStep * Mathf.Deg2Rad;
-            // 主轮辐
             for (float r = 1; r < wheelRadius; r += 1f)
             {
                 Vector3 pos = new Vector3(
                     Mathf.Cos(angle) * r,
                     Mathf.Sin(angle) * r,
-                    0
+                    baseZ - 0.1f  // 主轮辐放在最后面
                 );
                 CreateCube(pos, wheel.transform, wheelColor);
             }
-            
-            // 装饰性副轮辐
+        }
+        
+        // 再创建金色副轮辐（放在前面）
+        for (int i = 0; i < spokeCount; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
             float subAngle1 = (angle * Mathf.Rad2Deg + 2f) * Mathf.Deg2Rad;
             float subAngle2 = (angle * Mathf.Rad2Deg - 2f) * Mathf.Deg2Rad;
             
             for (float r = wheelRadius * 0.3f; r < wheelRadius * 0.7f; r += 1f)
             {
+                // 第一条副轮辐
                 Vector3 pos1 = new Vector3(
                     Mathf.Cos(subAngle1) * r,
                     Mathf.Sin(subAngle1) * r,
-                    0
+                    baseZ + 0.2f  // 副轮辐放在最前面
                 );
+                CreateCube(pos1, wheel.transform, accentColor);
+                
+                // 第二条副轮辐
                 Vector3 pos2 = new Vector3(
                     Mathf.Cos(subAngle2) * r,
                     Mathf.Sin(subAngle2) * r,
-                    0
+                    baseZ + 0.2f  // 副轮辐放在最前面
                 );
-                CreateCube(pos1, wheel.transform, accentColor);
                 CreateCube(pos2, wheel.transform, accentColor);
             }
         }
@@ -292,23 +308,31 @@ public class FerrisWheelManager : MonoBehaviour
     void CreateWheelCenter()
     {
         float centerSize = wheelRadius * 0.15f;
+        float baseZ = 0.3f;  // 中心装饰放在最前面
         
-        // 创建中心圆盘
-        for (float x = -centerSize; x <= centerSize; x += 1f)
+        // 创建中心圆盘，从后到前分层
+        for (int layer = 0; layer < 3; layer++)
         {
-            for (float y = -centerSize; y <= centerSize; y += 1f)
+            float currentZ = baseZ + (layer * 0.1f);  // 每层都往前一点
+            for (float x = -centerSize; x <= centerSize; x += 1f)
             {
-                if (Vector2.Distance(Vector2.zero, new Vector2(x, y)) <= centerSize)
+                for (float y = -centerSize; y <= centerSize; y += 1f)
                 {
-                    CreateCube(new Vector3(x, y, 0), wheel.transform, accentColor);
+                    float distanceFromCenter = Vector2.Distance(Vector2.zero, new Vector2(x, y));
+                    if (distanceFromCenter <= centerSize - layer)
+                    {
+                        Vector3 pos = new Vector3(x, y, currentZ);
+                        CreateCube(pos, wheel.transform, accentColor);
+                    }
                 }
             }
         }
         
-        // 添加装饰性环形
+        // 添加装饰性环形，放在最前面
         int decorCount = 8;
         float decorRadius = centerSize + 1f;
         float angleStep = 360f / decorCount;
+        float decorZ = baseZ + 0.4f;  // 装饰环放在最前面
         
         for (int i = 0; i < decorCount; i++)
         {
@@ -316,7 +340,7 @@ public class FerrisWheelManager : MonoBehaviour
             Vector3 pos = new Vector3(
                 Mathf.Cos(angle) * decorRadius,
                 Mathf.Sin(angle) * decorRadius,
-                0
+                decorZ
             );
             CreateCube(pos, wheel.transform, wheelColor);
         }
@@ -337,8 +361,8 @@ public class FerrisWheelManager : MonoBehaviour
             );
             
             GameObject cabin = new GameObject($"Cabin_{i}");
-            cabin.transform.parent = wheel.transform;
-            cabin.transform.position = pos;
+            cabin.transform.SetParent(wheel.transform, false);
+            cabin.transform.localPosition = pos;
             
             // 创建豪华车厢
             CreateLuxuryCabin(cabin.transform, cabinSize);
@@ -404,31 +428,14 @@ public class FerrisWheelManager : MonoBehaviour
     {
         if (cubePrefab != null)
         {
-            // 添加一个微小的随机偏移来避免Z-fighting
-            Vector3 offset = new Vector3(
-                Random.Range(-0.01f, 0.01f),
-                Random.Range(-0.01f, 0.01f),
-                Random.Range(-0.01f, 0.01f)
-            );
-            
             GameObject cube = Instantiate(cubePrefab, Vector3.zero, Quaternion.identity, parent);
-            cube.transform.localPosition = position + offset;
+            cube.transform.localPosition = position;
             
             Renderer renderer = cube.GetComponent<Renderer>();
             if (renderer != null)
             {
                 Material material = new Material(Shader.Find("Standard"));
                 material.color = color;
-                
-                // 调整渲染设置以减少闪烁
-                material.enableInstancing = true;
-                material.SetFloat("_Metallic", 0);
-                material.SetFloat("_Glossiness", 0.1f);
-                
-                // 设置更好的阴影接收和投射
-                renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-                renderer.receiveShadows = true;
-                
                 renderer.material = material;
             }
             
