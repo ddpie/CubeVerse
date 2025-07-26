@@ -70,6 +70,36 @@ public class AnimalManager : MonoBehaviour
                 3f,   // 跳跃力
                 2f    // 移动速度
             )
+        },
+        {
+            Animal.AnimalType.Tiger,
+            new AnimalData(
+                new Color(1f, 0.6f, 0.1f),   // 橙色
+                new Color(0.1f, 0.1f, 0.1f), // 黑色
+                0.7f, // 缩放
+                6f,   // 跳跃力
+                5f    // 移动速度
+            )
+        },
+        {
+            Animal.AnimalType.Lion,
+            new AnimalData(
+                new Color(0.9f, 0.7f, 0.3f), // 金色
+                new Color(0.6f, 0.4f, 0.1f), // 深金
+                0.7f, // 缩放
+                6f,   // 跳跃力
+                5f    // 移动速度
+            )
+        },
+        {
+            Animal.AnimalType.Elephant,
+            new AnimalData(
+                new Color(0.5f, 0.5f, 0.5f), // 灰色
+                new Color(0.4f, 0.4f, 0.4f), // 深灰
+                0.8f, // 缩放
+                2f,   // 跳跃力
+                2f    // 移动速度
+            )
         }
     };
     
@@ -206,9 +236,17 @@ public class AnimalManager : MonoBehaviour
             case Animal.AnimalType.Sheep:
                 CreateSheep(parent, data);
                 break;
+            case Animal.AnimalType.Tiger:
+                CreateTiger(parent, data);
+                break;
+            case Animal.AnimalType.Lion:
+                CreateLion(parent, data);
+                break;
+            case Animal.AnimalType.Elephant:
+                CreateElephant(parent, data);
+                break;
         }
     }
-    
     GameObject CreateCube(Vector3 position, Transform parent, Color color)
     {
         if (cubePrefab != null)
@@ -511,6 +549,202 @@ public class AnimalManager : MonoBehaviour
         CreateCube(new Vector3(0.3f, 0, -0.3f), parent, data.secondaryColor);
         CreateCube(new Vector3(-0.3f, 0, 0.3f), parent, data.secondaryColor);
         CreateCube(new Vector3(0.3f, 0, 0.3f), parent, data.secondaryColor);
+    }
+
+    void CreateTiger(Transform parent, AnimalData data)
+    {
+        parent.localScale = Vector3.one * data.scale;
+        
+        // 身体
+        for (float z = -1f; z <= 1f; z += 0.4f)
+        {
+            for (float x = -0.6f; x <= 0.6f; x += 0.4f)
+            {
+                CreateCube(new Vector3(x, 0.8f, z), parent, data.mainColor);
+                // 添加条纹
+                if (Mathf.Abs(z) % 0.8f < 0.4f)
+                {
+                    CreateCube(new Vector3(x, 0.8f, z), parent, data.secondaryColor);
+                }
+            }
+        }
+        
+        // 头部
+        for (float x = -0.5f; x <= 0.5f; x += 0.25f)
+        {
+            for (float z = 1f; z <= 1.5f; z += 0.25f)
+            {
+                CreateCube(new Vector3(x, 1.2f, z), parent, data.mainColor);
+            }
+        }
+        
+        // 眼睛（发光的黄色）
+        CreateCube(new Vector3(-0.25f, 1.3f, 1.6f), parent, new Color(1f, 0.8f, 0));
+        CreateCube(new Vector3(0.25f, 1.3f, 1.6f), parent, new Color(1f, 0.8f, 0));
+        
+        // 耳朵
+        CreateCube(new Vector3(-0.4f, 1.6f, 1.2f), parent, data.mainColor);
+        CreateCube(new Vector3(0.4f, 1.6f, 1.2f), parent, data.mainColor);
+        
+        // 强壮的腿
+        float legHeight = 0.8f;
+        for (float y = 0; y < legHeight; y += 0.2f)
+        {
+            CreateCube(new Vector3(-0.4f, y, -0.8f), parent, data.mainColor);
+            CreateCube(new Vector3(0.4f, y, -0.8f), parent, data.mainColor);
+            CreateCube(new Vector3(-0.4f, y, 0.8f), parent, data.mainColor);
+            CreateCube(new Vector3(0.4f, y, 0.8f), parent, data.mainColor);
+        }
+        
+        // 长尾巴
+        float tailLength = 1.5f;
+        int tailSegments = 6;
+        for (int i = 0; i < tailSegments; i++)
+        {
+            float t = i / (float)(tailSegments - 1);
+            Vector3 pos = new Vector3(
+                0,
+                0.8f - t * 0.3f,
+                -1f - t * tailLength
+            );
+            CreateCube(pos, parent, data.mainColor);
+        }
+    }
+
+    void CreateLion(Transform parent, AnimalData data)
+    {
+        parent.localScale = Vector3.one * data.scale;
+        
+        // 身体
+        for (float z = -1f; z <= 1f; z += 0.4f)
+        {
+            for (float x = -0.6f; x <= 0.6f; x += 0.4f)
+            {
+                CreateCube(new Vector3(x, 0.8f, z), parent, data.mainColor);
+            }
+        }
+        
+        // 头部和鬃毛
+        for (float x = -0.8f; x <= 0.8f; x += 0.2f)
+        {
+            for (float z = 1f; z <= 1.8f; z += 0.2f)
+            {
+                for (float y = 1f; y <= 1.6f; y += 0.2f)
+                {
+                    if (Random.value < 0.7f) // 随机创建蓬松的鬃毛
+                    {
+                        CreateCube(new Vector3(x, y, z), parent, data.secondaryColor);
+                    }
+                }
+            }
+        }
+        
+        // 面部
+        CreateCube(new Vector3(0, 1.2f, 1.9f), parent, data.mainColor);
+        
+        // 眼睛（发光的黄色）
+        CreateCube(new Vector3(-0.3f, 1.3f, 2f), parent, new Color(1f, 0.8f, 0));
+        CreateCube(new Vector3(0.3f, 1.3f, 2f), parent, new Color(1f, 0.8f, 0));
+        
+        // 鼻子
+        CreateCube(new Vector3(0, 1.1f, 2.1f), parent, Color.black);
+        
+        // 强壮的腿
+        float legHeight = 0.8f;
+        for (float y = 0; y < legHeight; y += 0.2f)
+        {
+            CreateCube(new Vector3(-0.4f, y, -0.8f), parent, data.mainColor);
+            CreateCube(new Vector3(0.4f, y, -0.8f), parent, data.mainColor);
+            CreateCube(new Vector3(-0.4f, y, 0.8f), parent, data.mainColor);
+            CreateCube(new Vector3(0.4f, y, 0.8f), parent, data.mainColor);
+        }
+        
+        // 尾巴
+        float tailLength = 1.5f;
+        int tailSegments = 6;
+        for (int i = 0; i < tailSegments; i++)
+        {
+            float t = i / (float)(tailSegments - 1);
+            Vector3 pos = new Vector3(
+                0,
+                0.8f - t * 0.3f,
+                -1f - t * tailLength
+            );
+            CreateCube(pos, parent, data.mainColor);
+        }
+        
+        // 尾巴尖端的毛
+        for (float x = -0.2f; x <= 0.2f; x += 0.2f)
+        {
+            for (float y = -0.2f; y <= 0.2f; y += 0.2f)
+            {
+                CreateCube(new Vector3(x, 0.2f + y, -1f - tailLength), parent, data.secondaryColor);
+            }
+        }
+    }
+
+    void CreateElephant(Transform parent, AnimalData data)
+    {
+        parent.localScale = Vector3.one * data.scale;
+        
+        // 庞大的身体
+        for (float x = -0.8f; x <= 0.8f; x += 0.4f)
+        {
+            for (float z = -1f; z <= 1f; z += 0.4f)
+            {
+                CreateCube(new Vector3(x, 1.2f, z), parent, data.mainColor);
+            }
+        }
+        
+        // 头部
+        for (float x = -0.6f; x <= 0.6f; x += 0.3f)
+        {
+            for (float y = 1.2f; y <= 2f; y += 0.4f)
+            {
+                CreateCube(new Vector3(x, y, 1.2f), parent, data.mainColor);
+            }
+        }
+        
+        // 眼睛
+        CreateCube(new Vector3(-0.4f, 1.8f, 1.4f), parent, Color.black);
+        CreateCube(new Vector3(0.4f, 1.8f, 1.4f), parent, Color.black);
+        
+        // 大耳朵
+        for (float y = 1.4f; y <= 2f; y += 0.3f)
+        {
+            for (float z = 0.9f; z <= 1.5f; z += 0.3f)
+            {
+                CreateCube(new Vector3(-1f, y, z), parent, data.secondaryColor);
+                CreateCube(new Vector3(1f, y, z), parent, data.secondaryColor);
+            }
+        }
+        
+        // 长鼻子
+        float trunkLength = 2f;
+        int segments = 8;
+        for (int i = 0; i < segments; i++)
+        {
+            float t = i / (float)(segments - 1);
+            float angle = t * Mathf.PI * 0.5f;
+            Vector3 pos = new Vector3(
+                0,
+                1.6f - Mathf.Sin(angle) * trunkLength,
+                1.4f + Mathf.Cos(angle) * trunkLength
+            );
+            CreateCube(pos, parent, data.mainColor);
+        }
+        
+        // 粗壮的腿
+        float legHeight = 1.2f;
+        float legWidth = 0.6f;
+        for (float y = 0; y < legHeight; y += 0.3f)
+        {
+            for (float x = -legWidth; x <= legWidth; x += 0.3f)
+            {
+                CreateCube(new Vector3(x, y, -0.8f), parent, data.mainColor);
+                CreateCube(new Vector3(x, y, 0.8f), parent, data.mainColor);
+            }
+        }
     }
     
     void OnDestroy()
