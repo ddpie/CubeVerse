@@ -353,9 +353,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 0}
-  cabinCount: 12
-  wheelRadius: 25
+  cabinCount: 6
+  wheelRadius: 30
   rotationSpeed: 8
+  exitKey: 101
+  enterKey: 101
+  interactionDistance: 20
   frameColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   wheelColor: {r: 0.3, g: 0.6, b: 1, a: 1}
   accentColor: {r: 1, g: 0.8, b: 0.2, a: 1}
@@ -502,8 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 0}
-  minAnimals: 20
-  maxAnimals: 50
+  minAnimals: 5
+  maxAnimals: 10
   spawnRadius: 10
   updateInterval: 1
   minScale: 0.3
