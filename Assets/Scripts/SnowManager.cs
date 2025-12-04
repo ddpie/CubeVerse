@@ -9,7 +9,12 @@ public class SnowManager : MonoBehaviour
     public bool startWithSnow = false;
     public float defaultSnowIntensity = 0.5f;
     
+    [Header("下雪控制开关")]
+    [Tooltip("直接控制下雪开关 - 设置为true开始下雪，false停止下雪")]
+    public bool isSnowingEnabled = false;
+    
     private SnowSystem snowSystem;
+    private bool lastSnowingState = false;
     
     void Awake()
     {
@@ -42,6 +47,30 @@ public class SnowManager : MonoBehaviour
         {
             snowSystem = existingSystem;
             Debug.Log("SnowManager: 场景中已存在雪花系统");
+        }
+        
+        // 初始化下雪状态
+        isSnowingEnabled = startWithSnow;
+        lastSnowingState = isSnowingEnabled;
+    }
+    
+    void Update()
+    {
+        // 检测isSnowingEnabled的变化，自动控制下雪
+        if (isSnowingEnabled != lastSnowingState)
+        {
+            lastSnowingState = isSnowingEnabled;
+            
+            if (isSnowingEnabled)
+            {
+                StartSnow();
+                Debug.Log("SnowManager: 下雪已开启");
+            }
+            else
+            {
+                StopSnow();
+                Debug.Log("SnowManager: 下雪已关闭");
+            }
         }
     }
     
