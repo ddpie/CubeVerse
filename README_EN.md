@@ -77,7 +77,6 @@ This project is developed using **Kiro** and other AI development tools combined
 - **Code Optimization Suggestions**: AI proactively provides performance optimization and code improvement suggestions
 - **Automatic Documentation Generation**: Project documentation and code comments assisted by AI
 - **Direct Engine Operations**: Through MCP protocol, AI can directly create scenes, add components, and set parameters in Unity
-- **CLI Tool**: Uses Kiro or Kiro CLI (formerly Amazon Q Developer CLI) for command-line development
 
 ### Development Environment
 - **Game Engine**: Unity 2022.3 LTS
@@ -105,19 +104,6 @@ Refer to https://github.com/CoderGamester/mcp-unity/blob/main/README.md for MCP 
 - **WASD** - Movement
 - **Mouse** - Camera control
 - **Space** - Jump
-
-## Recommended Development Process
-
-For developing complex game projects using AI-assisted tools, we recommend the following structured process:
-
-1. **Rough Idea** - Establish the basic concept and core gameplay (provided by humans)
-2. **CodeBase Research** - Understand relevant technologies and existing solutions (done by AI, monitored by humans)
-3. **Requirement Clarification** - Refine and clarify requirements through AI questioning (AI asks questions, humans answer)
-4. **Detail Design** - Design system architecture, component interactions, and data flow (done by AI, monitored by humans)
-5. **Implementation Plan** - Create task lists and development roadmap (done by AI, monitored by humans)
-6. **Implementation** - Implement features through natural language instructions (done by AI, monitored by humans)
-
-This process is particularly suitable for team collaboration and complex feature development. Through collaboration with Kiro and other AI tools, even non-technical team members can participate in the entire development process, from conceptualization to final implementation.
 
 ---
 
