@@ -28,6 +28,8 @@ This solution lowers the barrier to game programming skills, enabling every team
 - **First-Person Perspective Control**: Smooth player movement and camera control
 - **Cube World Generation**: Procedurally generated cube terrain
 - **Physics Interaction**: Realistic physics collision and gravity system
+- **Interactive Animals**: Cute animals roaming the world, including rabbits, sheep, and chickens with natural behaviors
+- **Ferris Wheel**: A rotating Ferris wheel landmark that adds life to the cube world
 
 ### 🌦️ Weather System
 - **Rain System**: Realistic rainfall effects with rain particle effects
