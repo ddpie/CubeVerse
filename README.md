@@ -1,121 +1,99 @@
-# CubeVerse - 立方体世界
+# CubeVerse - Cube World
 
-| [English](README_EN.md) | 中文 |
+| English | [中文](README_CN.md) |
 |:---:|:---:|
 
-## 项目简介
+## Project Overview
 
-CubeVerse 是一个完全使用 **Amazon Q Developer CLI** 通过自然语言对话开发的 3D 立方体世界游戏。
+CubeVerse is a 3D cube world game developed using AI-assisted development tools (such as Kiro) through natural language conversations.
 
-## 创新开发方式
+> **Note**: Amazon Q Developer CLI has been renamed to Kiro CLI. This project was originally developed using Amazon Q Developer CLI, and we now recommend using Kiro or Kiro CLI for continued development.
 
-传统游戏开发技术门槛高，游戏制作人、策划等非技术人员只能通过文档描述创意，无法直接参与功能实现。这种开发模式导致创意转化为实际功能的过程缓慢且容易产生理解偏差。
+## Innovative Development Approach
 
-**Amazon Q Developer CLI** 结合 MCP（Model Context Protocol）技术与团结引擎/Unity集成，打造了自然语言驱动的游戏开发新范式。开发者仅需用自然语言描述需求，Q CLI 即可智能解析指令、自动生成代码并直接操控游戏引擎实现功能。
+Traditional game development has high technical barriers, where game producers, designers, and other non-technical team members can only describe their creative ideas through documentation without directly participating in implementation. This development model leads to slow conversion of ideas into actual features and often results in misunderstandings.
 
-本项目完全由 Amazon Q Developer CLI 从零构建，包含全部代码和引擎配置，是这一创新开发方式的完整实践。
+By combining **AI-assisted development tools** with **MCP (Model Context Protocol)** technology and Unity integration, we've created a new paradigm of natural language-driven game development. Developers only need to describe requirements in natural language, and AI assistants intelligently interpret instructions, automatically generate code, and directly control the game engine to implement features, achieving seamless transformation from ideas to functionality.
 
-这一解决方案显著降低了游戏编程技能壁垒，使团队每位成员（包括非技术人员）都能直接参与功能开发，提升了迭代速度和创意验证效率。它适用于游戏工作室的快速原型开发、创意概念验证以及敏捷迭代场景。
+This project is built from scratch using Kiro and other AI development tools, including all code and engine configurations, representing a complete practice of this innovative development approach.
 
-![游戏截图](Assets/Resources/showcase.png)
-*CubeVerse 游戏截图 - 立方体风格的世界*
+This solution lowers the barrier to game programming skills, enabling every team member (including non-technical personnel) to directly participate in feature development, greatly improving iteration speed and creative validation efficiency. It is particularly suitable for rapid prototyping, concept validation, and agile iteration scenarios in game studios.
 
-## 演示视频
+![Game Screenshot](Assets/Resources/showcase.png)
+*CubeVerse game screenshot - Cube-style world*
 
-https://www.bilibili.com/video/BV1bUKfzjEbr
+## Game Features
 
-### 视频说明
+### 🎮 Core Gameplay
+- **First-Person Perspective Control**: Smooth player movement and camera control
+- **Cube World Generation**: Procedurally generated cube terrain
+- **Physics Interaction**: Realistic physics collision and gravity system
+- **Interactive Animals**: Cute animals roaming the world, including rabbits, sheep, and chickens with natural behaviors
+- **Ferris Wheel**: A rotating Ferris wheel landmark that adds life to the cube world
 
-这段演示视频展示了如何使用 Amazon Q Developer CLI 通过自然语言对话来操作团结引擎/Unity开发游戏。在视频中，我们通过简单的自然语言指令实现了以下效果：
+### 🌦️ Weather System
+- **Rain System**: Realistic rainfall effects with rain particle effects
+- **Snow System**: Beautiful snowfall effects creating winter atmosphere
+- **Lightning System**: Dynamic lightning effects enhancing storm experience
+- **Rainbow System**: Post-rain rainbows adding visual beauty
+- **Cloud System**: Dynamic cloud generation and movement
 
-- 将游戏场景切换为冬季风格，开启降雪效果开关
-- 调整地形生成参数，降低地形的起伏程度
+### 🌅 Day-Night Cycle
+- **Day-Night Transition**: Smooth day-night transition effects
+- **Dynamic Lighting**: Environmental lighting that changes with time
+- **Star System**: Starry sky effects during nighttime
 
-所有这些操作都是通过与 Amazon Q Developer CLI 的对话完成的，而不是手动修改代码或调整参数。
+### ⚡ Performance Optimization
+- **Object Pool Management**: Efficient object reuse mechanism
+- **Quality Settings**: Adjustable graphics quality options
+- **LOD System**: Distance-based level of detail
 
-## 游戏特性
+## Development Tools
 
-### 🎮 核心玩法
-- **第一人称视角控制**：流畅的玩家移动和视角控制
-- **立方体世界生成**：程序化生成的立方体地形
-- **物理交互**：真实的物理碰撞和重力系统
+### AI-Assisted Development + MCP Unity
+This project is developed using **Kiro** and other AI development tools combined with **MCP Unity** through natural language conversations:
 
-### 🌦️ 天气系统
-- **雨天系统**：逼真的降雨效果，包含雨滴粒子
-- **雪天系统**：美丽的降雪效果，营造冬日氛围
-- **闪电系统**：动态闪电效果，增强暴风雨体验
-- **彩虹系统**：雨后彩虹，增加视觉美感
-- **云朵系统**：动态云朵生成和移动
+#### MCP Unity Integration
+- **Project Repository**: [https://github.com/CoderGamester/mcp-unity](https://github.com/CoderGamester/mcp-unity)
+- **MCP Protocol**: Model Context Protocol, enabling direct AI interaction with Unity
+- **Seamless Integration**: AI assistants directly operate Unity Editor through MCP
+- **Real-time Operations**: AI can directly create and modify game objects and components without manual intervention
 
-### 🌅 昼夜循环
-- **日夜交替**：平滑的昼夜过渡效果
-- **动态光照**：根据时间变化的环境光照
-- **星空系统**：夜晚时的星空效果
+#### Kiro Collaborative Development Features
+- **Natural Language Programming**: Generate code through conversations with Kiro, lowering programming barriers
+- **Intelligent Code Generation**: Complex weather systems and physics interactions generated by AI understanding requirements
+- **Real-time Problem Solving**: Technical issues during development resolved through natural language descriptions
+- **Code Optimization Suggestions**: AI proactively provides performance optimization and code improvement suggestions
+- **Automatic Documentation Generation**: Project documentation and code comments assisted by AI
+- **Direct Engine Operations**: Through MCP protocol, AI can directly create scenes, add components, and set parameters in Unity
 
-### ⚡ 性能优化
-- **对象池管理**：高效的对象复用机制
-- **质量设置**：可调节的画质选项
-- **LOD 系统**：距离相关的细节层次
+### Development Environment
+- **Game Engine**: Unity 2022.3 LTS
+- **Programming Language**: C#
+- **AI Tools**: Kiro or Kiro CLI (formerly Amazon Q Developer CLI)
 
-## 开发工具
+## Installation and Setup
 
-### Amazon Q Developer CLI + MCP Unity - 核心开发工具
-本项目 **100% 使用 Amazon Q Developer CLI** 结合 **MCP Unity** 通过自然语言对话完成开发：
+### Requirements
+- Unity 2022.3 LTS or higher
+- Kiro or Kiro CLI (formerly Amazon Q Developer CLI)
+- Node.js 18+ (for running MCP Unity server)
 
-#### MCP Unity 集成
-- **项目地址**：[https://github.com/CoderGamester/mcp-unity](https://github.com/CoderGamester/mcp-unity)
-- **MCP 协议**：Model Context Protocol，实现 AI 与团结引擎/Unity 的直接交互
-- **无缝集成**：Amazon Q Developer CLI 通过 MCP 直接操作团结引擎/Unity 编辑器
-- **实时操作**：AI 可以直接创建、修改游戏对象和组件，无需手动操作
+### MCP Installation Steps
+Refer to https://github.com/CoderGamester/mcp-unity/blob/main/README.md for MCP configuration
 
-#### 开发特性
-- **自然语言编程**：所有代码均通过与 AI 对话生成，无需手动编写
-- **智能代码生成**：复杂的天气系统、物理交互全部由 AI 理解需求后自动生成
-- **实时问题解决**：开发过程中遇到的所有技术问题都通过自然语言描述获得解决方案
-- **代码优化建议**：AI 主动提供性能优化和代码改进建议
-- **文档自动生成**：项目文档和代码注释全部由 AI 自动生成
-- **引擎直接操作**：通过 MCP 协议，AI 可以直接在团结引擎/Unity 中创建场景、添加组件、设置参数
+### Project Setup Steps
+1. Open the project using Unity Hub
+2. Wait for Unity to import all assets
+3. In the Project window, navigate to the `Assets/Scenes` folder
+4. Double-click to open the `SampleScene.scene` file
+5. Click the play button at the top of the editor to start the game
 
-### 开发环境
-- **游戏引擎**：团结引擎 1.5.x (Unity 2022.3 LTS)
-- **编程语言**：C#（通过自然语言生成）
-- **核心工具**：Amazon Q Developer CLI
-
-## 安装和运行
-
-### 环境要求
-- 团结引擎 1.5.x (Unity 2022.3 LTS) 或更高版本
-- Amazon Q Developer CLI（核心开发工具）
-- Node.js 18+ （用于运行 MCP Unity/团结引擎 服务器）
-
-### MCP 安装步骤
-参考 https://github.com/CoderGamester/mcp-unity/blob/main/README.md 来配置 MCP
-
-### 项目运行步骤
-1. 使用 Unity Hub 打开项目
-2. 等待团结引擎/Unity 导入所有资源
-3. 在 Project 窗口中导航到 `Assets/Scenes` 文件夹
-4. 双击打开 `SampleScene.scene` 场景文件
-5. 点击编辑器顶部的播放按钮开始游戏
-
-### 控制说明
-- **WASD** - 移动
-- **鼠标** - 视角控制
-- **空格** - 跳跃
-
-## 推荐开发流程
-
-对于使用 Amazon Q Developer CLI 开发复杂游戏项目，我们推荐以下结构化流程：
-
-1. **粗略构思** - 确定游戏的基本概念和核心玩法（人来提供文档）
-2. **代码研究** - 了解相关技术和现有解决方案（Q CLI来做，人来监控）
-3. **需求明确** - 通过 Q CLI 提问来细化和明确需求（Q CLI提问，人回答）
-4. **详细设计** - 设计系统架构、组件交互和数据流（Q CLI来做，人来监控）
-5. **开发计划** - 制定任务清单和开发路线图（Q CLI来做，人来监控）
-6. **逐步实现** - 通过自然语言指令实现功能（Q CLI来做，人来监控）
-
-这一流程参考了 [这个PR](https://github.com/aws/amazon-q-developer-cli/pull/834)，特别适合团队协作和复杂功能开发。通过这种方式，即使是非技术团队成员也能参与整个开发过程，从创意构思到最终实现。
+### Controls
+- **WASD** - Movement
+- **Mouse** - Camera control
+- **Space** - Jump
 
 ---
 
-**使用 Amazon Q Developer CLI，让游戏开发更高效！** 🚀
+**Use AI-assisted development tools to make game development more efficient!** 🚀
