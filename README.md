@@ -19,8 +19,15 @@ This project is built from scratch using Kiro and other AI development tools, in
 
 This solution lowers the barrier to game programming skills, enabling every team member (including non-technical personnel) to directly participate in feature development, greatly improving iteration speed and creative validation efficiency. It is particularly suitable for rapid prototyping, concept validation, and agile iteration scenarios in game studios.
 
+## Game Showcase
+
 ![Game Screenshot](Assets/Resources/showcase.png)
 *CubeVerse game screenshot - Cube-style world*
+
+![CubeVerse Gameplay](Assets/Resources/showcase.gif)
+*CubeVerse gameplay demonstration - Explore the cube world with dynamic weather and interactive elements*
+
+📹 [Download Full Video (MP4)](Assets/Resources/showcase.mp4) - High quality gameplay video
 
 ## Game Features
 
