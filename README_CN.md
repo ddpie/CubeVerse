@@ -19,8 +19,15 @@ CubeVerse 是一个通过 AI 辅助开发工具（如 Kiro）结合自然语言�
 
 这一解决方案显著降低了游戏编程技能壁垒，使团队每位成员（包括非技术人员）都能直接参与功能开发，提升了迭代速度和创意验证效率。它适用于游戏工作室的快速原型开发、创意概念验证以及敏捷迭代场景。
 
+## 游戏展示
+
 ![游戏截图](Assets/Resources/showcase.png)
 *CubeVerse 游戏截图 - 立方体风格的世界*
+
+![游戏演示](Assets/Resources/showcase.gif)
+*CubeVerse 游戏演示 - 探索拥有动态天气和互动元素的立方体世界*
+
+📹 [下载完整视频 (MP4)](Assets/Resources/showcase.mp4) - 高清游戏演示视频
 
 ## 游戏特性
 
