@@ -15,12 +15,16 @@ public class PlayerController : MonoBehaviour
     
     [Header("天气控制")]
     public KeyCode toggleRainKey = KeyCode.R; // 按R键切换雨的状态
-    public KeyCode toggleSnowKey = KeyCode.S; // 按S键切换雪的状态
-    public KeyCode toggleDayNightKey = KeyCode.D; // 按D键切换日夜状态
+    public KeyCode toggleSnowKey = KeyCode.T; // 按T键切换雪的状态（改为T避免与移动冲突）
+    public KeyCode toggleDayNightKey = KeyCode.N; // 按N键切换日夜状态（改为N避免与移动冲突）
     public KeyCode triggerLightningKey = KeyCode.L; // 按L键触发闪电
+    
+    [Header("方块交互")]
+    public bool enableBlockInteraction = true; // 是否启用方块交互系统
     
     private CharacterController characterController;
     private Camera playerCamera;
+    private BlockInteractionSystem blockInteractionSystem;
     private float rotationX = 0;
     private Vector3 moveDirection = Vector3.zero;
     private bool isGrounded;
@@ -42,11 +46,27 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
+        // 初始化方块交互系统
+        if (enableBlockInteraction)
+        {
+            InitializeBlockInteraction();
+        }
+        
         // 锁定并隐藏光标
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
         Debug.Log("玩家控制器已初始化");
+    }
+    
+    void InitializeBlockInteraction()
+    {
+        blockInteractionSystem = GetComponent<BlockInteractionSystem>();
+        if (blockInteractionSystem == null)
+        {
+            blockInteractionSystem = gameObject.AddComponent<BlockInteractionSystem>();
+            Debug.Log("PlayerController: 已添加方块交互系统");
+        }
     }
     
     void Update()
