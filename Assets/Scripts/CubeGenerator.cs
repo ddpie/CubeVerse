@@ -12,6 +12,7 @@ public class CubeGenerator : MonoBehaviour
     public float noiseScale = 20f;
     public float heightScale = 10f;
     public int seed;
+    public int terrainDepth = 4;  // 地形厚度（层数）
     
     [Header("颜色设置")]
     public Color grassColor = new Color(0.4f, 0.7f, 0.2f);
@@ -208,8 +209,31 @@ public class CubeGenerator : MonoBehaviour
                 float height = GenerateHeight(worldX, worldZ);
                 int intHeight = Mathf.FloorToInt(height);
                 
-                // 生成地面方块
-                CreateCube(new Vector3(worldX, intHeight, worldZ), GetTerrainColor(intHeight, height), parent);
+                // 生成多层地形方块
+                for (int depth = 0; depth < terrainDepth; depth++)
+                {
+                    int y = intHeight - depth;
+                    if (y < 0) break; // 不生成负高度的方块
+                    
+                    Color blockColor;
+                    if (depth == 0)
+                    {
+                        // 表面层使用地形颜色
+                        blockColor = GetTerrainColor(intHeight, height);
+                    }
+                    else if (depth < 2)
+                    {
+                        // 第2层是泥土
+                        blockColor = dirtColor;
+                    }
+                    else
+                    {
+                        // 更深层是石头
+                        blockColor = stoneColor;
+                    }
+                    
+                    CreateCube(new Vector3(worldX, y, worldZ), blockColor, parent);
+                }
                 
                 // 生成水面
                 int waterLevel = 3;
