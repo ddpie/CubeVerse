@@ -31,6 +31,7 @@ public class SimpleInventory : MonoBehaviour
     private GUIStyle slotStyle;
     private GUIStyle selectedSlotStyle;
     private GUIStyle countStyle;
+    private GUIStyle slotNumberStyle;
     private bool stylesInitialized = false;
     
     void Start()
@@ -242,14 +243,20 @@ public class SimpleInventory : MonoBehaviour
         slotStyle.alignment = TextAnchor.MiddleCenter;
         
         selectedSlotStyle = new GUIStyle(GUI.skin.box);
-        selectedSlotStyle.normal.background = MakeTexture(2, 2, new Color(0.4f, 0.4f, 0.4f, 0.9f));
+        selectedSlotStyle.normal.background = MakeTexture(2, 2, new Color(0.5f, 0.5f, 0.5f, 0.95f));
         selectedSlotStyle.alignment = TextAnchor.MiddleCenter;
         
         countStyle = new GUIStyle(GUI.skin.label);
-        countStyle.fontSize = 12;
+        countStyle.fontSize = 14;
         countStyle.fontStyle = FontStyle.Bold;
         countStyle.normal.textColor = Color.white;
         countStyle.alignment = TextAnchor.LowerRight;
+        
+        slotNumberStyle = new GUIStyle(GUI.skin.label);
+        slotNumberStyle.fontSize = 14;
+        slotNumberStyle.fontStyle = FontStyle.Bold;
+        slotNumberStyle.normal.textColor = Color.white;
+        slotNumberStyle.alignment = TextAnchor.MiddleCenter;
         
         stylesInitialized = true;
     }
@@ -278,14 +285,21 @@ public class SimpleInventory : MonoBehaviour
                 Texture2D colorTex = MakeTexture(1, 1, slots[i].blockColor);
                 GUI.DrawTexture(colorRect, colorTex);
                 
-                // 绘制数量
+                // 绘制数量（右下角，带阴影）
+                Rect countShadowRect = new Rect(x + 1, startY + 1, slotSize - 3, slotSize - 3);
+                GUI.color = Color.black;
+                GUI.Label(countShadowRect, slots[i].count.ToString(), countStyle);
+                GUI.color = Color.white;
+                
                 Rect countRect = new Rect(x, startY, slotSize - 3, slotSize - 3);
                 GUI.Label(countRect, slots[i].count.ToString(), countStyle);
             }
             
-            // 绘制槽位编号
-            Rect numRect = new Rect(x + 3, startY + 2, 15, 15);
-            GUI.Label(numRect, (i + 1).ToString());
+            // 绘制槽位编号（槽位上方）
+            Rect numRect = new Rect(x, startY - 18, slotSize, 16);
+            GUI.color = (i == selectedSlot) ? Color.yellow : Color.white;
+            GUI.Label(numRect, (i + 1).ToString(), slotNumberStyle);
+            GUI.color = Color.white;
         }
         
         // 绘制准星
