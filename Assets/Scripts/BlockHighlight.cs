@@ -122,6 +122,20 @@ public class BlockHighlight : MonoBehaviour
         transform.position = position;
         SetVisible(visible);
     }
+
+    /// <summary>
+    /// 设置高亮目标位置 (Vector3Int - 方块坐标)
+    /// </summary>
+    public void SetTarget(Vector3Int blockPosition, bool visible)
+    {
+        // Convert to world position (center of block)
+        transform.position = new Vector3(
+            blockPosition.x + 0.5f,
+            blockPosition.y + 0.5f,
+            blockPosition.z + 0.5f
+        );
+        SetVisible(visible);
+    }
     
     /// <summary>
     /// 设置可见性

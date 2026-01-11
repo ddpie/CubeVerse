@@ -1,83 +1,72 @@
 using UnityEngine;
 
 /// <summary>
-/// 方块交互系统 - 处理方块的放置和破坏
+/// Block interaction system - handles block placement and destruction
+/// Uses optimized math-based raycast instead of physics raycast
 /// </summary>
 public class BlockInteractionSystem : MonoBehaviour
 {
-    [Header("交互设置")]
-    public float interactionRange = 5f;          // 交互距离
-    public LayerMask blockLayer;                  // 方块层级
-    public KeyCode destroyKey = KeyCode.Mouse0;   // 破坏方块按键（左键）
-    public KeyCode placeKey = KeyCode.Mouse1;     // 放置方块按键（右键）
-    public float destroyTime = 0.5f;              // 破坏所需时间（秒）
-    
-    [Header("方块设置")]
-    public GameObject cubePrefab;                 // 方块预制体
-    public float blockSize = 1f;                  // 方块大小
-    
-    [Header("视觉反馈")]
-    public bool showBlockHighlight = true;        // 是否显示高亮
+    [Header("Interaction Settings")]
+    public float interactionRange = 5f;
+    public KeyCode destroyKey = KeyCode.Mouse0;
+    public KeyCode placeKey = KeyCode.Mouse1;
+    public float destroyTime = 0.5f;
+
+    [Header("Visual Feedback")]
+    public bool showBlockHighlight = true;
     public Color highlightColor = new Color(1f, 1f, 1f, 0.3f);
-    
-    [Header("音效")]
+
+    [Header("Audio")]
     public AudioClip destroySound;
     public AudioClip placeSound;
-    
+
     private Camera playerCamera;
     private BlockHighlight blockHighlight;
     private SimpleInventory inventory;
     private AudioSource audioSource;
-    
-    // 当前瞄准的方块信息
-    private GameObject targetBlock;
-    private Vector3 targetBlockPosition;
-    private Vector3 placePosition;
+    private CubeGenerator cubeGenerator;
+
+    // Current target info
+    private Vector3Int targetBlockPos;
+    private Vector3 targetNormal;
     private bool hasTarget;
-    
-    // 破坏进度
+
+    // Destroy progress
     private float destroyProgress = 0f;
-    private Vector3 lastDestroyPosition;
+    private Vector3Int lastDestroyPos;
     private bool isDestroying = false;
-    
+
     void Start()
     {
         InitializeComponents();
     }
-    
+
     void InitializeComponents()
     {
-        // 获取玩家相机
+        // Get player camera
         playerCamera = GetComponentInChildren<Camera>();
         if (playerCamera == null)
         {
             playerCamera = Camera.main;
         }
-        
-        // 获取或创建背包组件
+
+        // Get or create inventory
         inventory = GetComponent<SimpleInventory>();
         if (inventory == null)
         {
             inventory = gameObject.AddComponent<SimpleInventory>();
         }
-        
-        // 获取方块预制体
-        if (cubePrefab == null)
-        {
-            CubeGenerator cubeGen = FindObjectOfType<CubeGenerator>();
-            if (cubeGen != null && cubeGen.cubePrefab != null)
-            {
-                cubePrefab = cubeGen.cubePrefab;
-            }
-        }
-        
-        // 创建高亮显示组件
+
+        // Get CubeGenerator reference
+        cubeGenerator = FindObjectOfType<CubeGenerator>();
+
+        // Create highlight
         if (showBlockHighlight)
         {
             CreateBlockHighlight();
         }
-        
-        // 设置音频源
+
+        // Setup audio
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -85,94 +74,93 @@ public class BlockInteractionSystem : MonoBehaviour
             audioSource.spatialBlend = 0f;
             audioSource.playOnAwake = false;
         }
-        
-        // 设置默认层级（如果未设置）
-        if (blockLayer == 0)
-        {
-            blockLayer = ~0; // 所有层级
-        }
-        
-        Debug.Log("BlockInteractionSystem: 方块交互系统已初始化");
+
+        Debug.Log("BlockInteractionSystem: Initialized with optimized raycast");
     }
-    
+
     void CreateBlockHighlight()
     {
         GameObject highlightObj = new GameObject("BlockHighlight");
         blockHighlight = highlightObj.AddComponent<BlockHighlight>();
         blockHighlight.highlightColor = highlightColor;
-        blockHighlight.blockSize = blockSize;
+        blockHighlight.blockSize = 1f;
     }
-    
+
     void Update()
     {
         UpdateTargetBlock();
         HandleInput();
     }
-    
+
     /// <summary>
-    /// 更新当前瞄准的方块
+    /// Update current target block using raycast
     /// </summary>
     void UpdateTargetBlock()
     {
         if (playerCamera == null) return;
-        
+
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
-        
-        if (Physics.Raycast(ray, out hit, interactionRange, blockLayer))
+
+        // Try math raycast first
+        hasTarget = ChunkRaycast.Raycast(ray, interactionRange, out targetBlockPos, out targetNormal);
+
+        // Fallback to physics raycast if math raycast fails
+        if (!hasTarget)
         {
-            hasTarget = true;
-            targetBlock = hit.collider.gameObject;
-            
-            // 计算方块中心位置（对齐到网格）
-            targetBlockPosition = GetBlockPosition(hit.point - hit.normal * 0.1f);
-            
-            // 计算放置位置（在命中面的外侧）
-            placePosition = GetBlockPosition(hit.point + hit.normal * 0.5f);
-            
-            // 更新高亮显示
-            if (blockHighlight != null)
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, interactionRange))
             {
-                blockHighlight.SetTarget(targetBlockPosition, true);
+                hasTarget = true;
+                // Calculate block position from hit point
+                Vector3 blockCenter = hit.point - hit.normal * 0.5f;
+                targetBlockPos = new Vector3Int(
+                    Mathf.FloorToInt(blockCenter.x),
+                    Mathf.FloorToInt(blockCenter.y),
+                    Mathf.FloorToInt(blockCenter.z)
+                );
+                targetNormal = hit.normal;
             }
         }
-        else
+
+        // Update highlight
+        if (blockHighlight != null)
         {
-            hasTarget = false;
-            targetBlock = null;
-            
-            if (blockHighlight != null)
+            if (hasTarget)
+            {
+                blockHighlight.SetTarget(targetBlockPos, true);
+            }
+            else
             {
                 blockHighlight.SetTarget(Vector3.zero, false);
             }
         }
     }
-    
+
     /// <summary>
-    /// 处理输入
+    /// Handle input for block interaction
     /// </summary>
     void HandleInput()
     {
-        // 破坏方块（长按）
+        // Destroy block (hold)
         if (Input.GetKey(destroyKey) && hasTarget)
         {
-            // 检查是否切换了目标方块
-            if (targetBlockPosition != lastDestroyPosition)
+            // Check if target changed
+            if (targetBlockPos != lastDestroyPos)
             {
                 destroyProgress = 0f;
-                lastDestroyPosition = targetBlockPosition;
+                lastDestroyPos = targetBlockPos;
             }
-            
+
             isDestroying = true;
             destroyProgress += Time.deltaTime;
-            
-            // 更新高亮显示破坏进度
+
+            // Update highlight progress
             if (blockHighlight != null)
             {
                 blockHighlight.SetDestroyProgress(destroyProgress / destroyTime);
             }
-            
-            // 破坏完成
+
+            // Destroy complete
             if (destroyProgress >= destroyTime)
             {
                 DestroyBlock();
@@ -181,7 +169,7 @@ public class BlockInteractionSystem : MonoBehaviour
         }
         else
         {
-            // 松开按键，重置进度
+            // Reset progress when released
             if (isDestroying)
             {
                 isDestroying = false;
@@ -192,233 +180,122 @@ public class BlockInteractionSystem : MonoBehaviour
                 }
             }
         }
-        
-        // 放置方块（单击）
+
+        // Place block (click)
         if (Input.GetKeyDown(placeKey) && hasTarget)
         {
             PlaceBlock();
         }
     }
-    
+
     /// <summary>
-    /// 破坏方块
+    /// Destroy the target block
     /// </summary>
     void DestroyBlock()
     {
-        if (targetBlock == null) return;
-        
-        // 获取方块颜色用于背包
-        Renderer renderer = targetBlock.GetComponent<Renderer>();
-        Color blockColor = Color.white;
-        if (renderer != null && renderer.material != null)
+        // Get block type for inventory
+        BlockType blockType = BlockType.Dirt; // Default
+        Color blockColor = BlockTypeConfig.GetColor(BlockType.Dirt);
+
+        if (WorldData.Instance != null)
         {
-            blockColor = renderer.material.color;
+            blockType = WorldData.Instance.GetBlock(targetBlockPos);
+            if (blockType != BlockType.Air)
+            {
+                blockColor = BlockTypeConfig.GetColor(blockType);
+            }
+            // Update world data
+            WorldData.Instance.SetBlock(targetBlockPos, BlockType.Air);
         }
-        
-        // 记录被破坏方块的位置
-        Vector3 destroyedPos = targetBlockPosition;
-        
-        // 添加到背包
+
+        // Add to inventory
         inventory.AddBlock(blockColor);
-        
-        // 播放音效
+
+        // Play sound
         PlaySound(destroySound);
-        
-        // 创建破坏粒子效果
-        CreateDestroyEffect(targetBlockPosition, blockColor);
-        
-        // 销毁方块
-        Destroy(targetBlock);
-        
-        // 检查并生成下方隐藏的方块
-        RevealHiddenBlocks(destroyedPos);
-        
-        Debug.Log($"BlockInteractionSystem: 破坏方块于 {targetBlockPosition}");
-    }
-    
-    /// <summary>
-    /// 破坏方块后，检查并生成周围被隐藏的方块
-    /// </summary>
-    void RevealHiddenBlocks(Vector3 destroyedPos)
-    {
-        // 方块已经全部生成，不需要额外揭露逻辑
-    }
-    
-    /// <summary>
-    /// 获取地形高度
-    /// </summary>
-    float GetTerrainHeight(int x, int z, CubeGenerator cubeGen)
-    {
-        float scale = cubeGen.noiseScale;
-        int seed = cubeGen.seed;
-        float heightScale = cubeGen.heightScale;
-        
-        float height = Mathf.PerlinNoise((x + seed) / scale, (z + seed) / scale) * heightScale;
-        height += Mathf.PerlinNoise((x + seed) / (scale * 0.5f), (z + seed) / (scale * 0.5f)) * 2;
-        
-        return height;
-    }
-    
-    /// <summary>
-    /// 根据深度获取方块颜色
-    /// </summary>
-    Color GetBlockColorForDepth(int depth, int surfaceHeight, CubeGenerator cubeGen)
-    {
-        if (depth == 0)
+
+        // Create effect
+        CreateDestroyEffect(targetBlockPos, blockColor);
+
+        // Notify chunk system to rebuild mesh
+        if (cubeGenerator != null)
         {
-            // 表面层
-            int waterLevel = 3;
-            if (surfaceHeight < waterLevel - 1)
-                return cubeGen.stoneColor;
-            else if (surfaceHeight < waterLevel)
-                return cubeGen.sandColor;
-            else if (surfaceHeight < 8)
-                return cubeGen.grassColor;
-            else if (surfaceHeight < 12)
-                return cubeGen.dirtColor;
-            else
-                return cubeGen.stoneColor;
+            cubeGenerator.OnBlockChanged(targetBlockPos);
         }
-        else if (depth < 3)
-        {
-            return cubeGen.dirtColor;
-        }
-        else
-        {
-            return cubeGen.stoneColor;
-        }
+
+        Debug.Log($"BlockInteractionSystem: Destroyed block at {targetBlockPos}");
     }
-    
+
     /// <summary>
-    /// 创建被揭露的方块
-    /// </summary>
-    void CreateRevealedBlock(Vector3 position, Color color)
-    {
-        if (cubePrefab == null) return;
-        
-        GameObject newBlock = Instantiate(cubePrefab, position, Quaternion.identity);
-        newBlock.name = "RevealedBlock";
-        
-        Renderer renderer = newBlock.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            Material mat = new Material(Shader.Find("Standard"));
-            mat.color = color;
-            renderer.material = mat;
-        }
-        
-        if (newBlock.GetComponent<Collider>() == null)
-        {
-            newBlock.AddComponent<BoxCollider>();
-        }
-    }
-    
-    /// <summary>
-    /// 放置方块
+    /// Place a block
     /// </summary>
     void PlaceBlock()
     {
-        if (cubePrefab == null)
-        {
-            Debug.LogWarning("BlockInteractionSystem: 未设置方块预制体");
-            return;
-        }
-        
-        // 检查背包是否有方块
+        // Check inventory
         if (!inventory.HasBlocks())
         {
-            Debug.Log("BlockInteractionSystem: 背包中没有方块");
+            Debug.Log("BlockInteractionSystem: No blocks in inventory");
             return;
         }
-        
-        // 检查放置位置是否与玩家重叠
-        if (IsPositionOccupiedByPlayer(placePosition))
+
+        // Calculate place position
+        Vector3Int placePos = ChunkRaycast.GetPlacePosition(targetBlockPos, targetNormal);
+
+        // Check if position is occupied by player
+        if (IsPositionOccupiedByPlayer(placePos))
         {
-            Debug.Log("BlockInteractionSystem: 无法在玩家位置放置方块");
+            Debug.Log("BlockInteractionSystem: Cannot place block at player position");
             return;
         }
-        
-        // 检查位置是否已有方块
-        if (IsPositionOccupied(placePosition))
+
+        // Check if position is already occupied (using physics)
+        Vector3 checkPos = new Vector3(placePos.x + 0.5f, placePos.y + 0.5f, placePos.z + 0.5f);
+        if (Physics.CheckBox(checkPos, Vector3.one * 0.4f))
         {
-            Debug.Log("BlockInteractionSystem: 该位置已有方块");
+            Debug.Log("BlockInteractionSystem: Position already occupied");
             return;
         }
-        
-        // 从背包取出方块
+
+        // Get block from inventory
         Color blockColor = inventory.RemoveBlock();
-        
-        // 创建新方块
-        GameObject newBlock = Instantiate(cubePrefab, placePosition, Quaternion.identity);
-        newBlock.name = "PlacedBlock";
-        
-        // 设置颜色
-        Renderer renderer = newBlock.GetComponent<Renderer>();
-        if (renderer != null)
+        BlockType blockType = BlockTypeConfig.GetBlockTypeFromColor(blockColor);
+
+        // Update world data
+        if (WorldData.Instance != null)
         {
-            Material mat = new Material(Shader.Find("Standard"));
-            mat.color = blockColor;
-            renderer.material = mat;
+            WorldData.Instance.SetBlock(placePos, blockType);
         }
-        
-        // 确保有碰撞体
-        if (newBlock.GetComponent<Collider>() == null)
+
+        // Notify chunk system to rebuild mesh
+        if (cubeGenerator != null)
         {
-            newBlock.AddComponent<BoxCollider>();
+            cubeGenerator.OnBlockChanged(placePos);
         }
-        
-        // 播放音效
+
+        // Play sound
         PlaySound(placeSound);
-        
-        // 创建放置粒子效果
-        CreatePlaceEffect(placePosition, blockColor);
-        
-        Debug.Log($"BlockInteractionSystem: 放置方块于 {placePosition}");
+
+        // Create effect
+        CreatePlaceEffect(placePos, blockColor);
+
+        Debug.Log($"BlockInteractionSystem: Placed block at {placePos}");
     }
 
-    
     /// <summary>
-    /// 将世界坐标对齐到方块网格
+    /// Check if position is occupied by player
     /// </summary>
-    Vector3 GetBlockPosition(Vector3 worldPos)
-    {
-        return new Vector3(
-            Mathf.Round(worldPos.x / blockSize) * blockSize,
-            Mathf.Round(worldPos.y / blockSize) * blockSize,
-            Mathf.Round(worldPos.z / blockSize) * blockSize
-        );
-    }
-    
-    /// <summary>
-    /// 检查位置是否被玩家占用
-    /// </summary>
-    bool IsPositionOccupiedByPlayer(Vector3 position)
+    bool IsPositionOccupiedByPlayer(Vector3Int position)
     {
         Vector3 playerPos = transform.position;
         float playerHeight = 2f;
-        
-        // 检查方块是否与玩家碰撞盒重叠
-        if (Mathf.Abs(position.x - playerPos.x) < blockSize &&
-            position.y >= playerPos.y - 0.5f && position.y <= playerPos.y + playerHeight &&
-            Mathf.Abs(position.z - playerPos.z) < blockSize)
-        {
-            return true;
-        }
-        
-        return false;
+
+        return Mathf.Abs(position.x - playerPos.x) < 1f &&
+               position.y >= playerPos.y - 0.5f && position.y <= playerPos.y + playerHeight &&
+               Mathf.Abs(position.z - playerPos.z) < 1f;
     }
-    
+
     /// <summary>
-    /// 检查位置是否已有方块
-    /// </summary>
-    bool IsPositionOccupied(Vector3 position)
-    {
-        Collider[] colliders = Physics.OverlapSphere(position, blockSize * 0.4f, blockLayer);
-        return colliders.Length > 0;
-    }
-    
-    /// <summary>
-    /// 播放音效
+    /// Play sound effect
     /// </summary>
     void PlaySound(AudioClip clip)
     {
@@ -427,98 +304,102 @@ public class BlockInteractionSystem : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
     }
-    
+
     /// <summary>
-    /// 创建破坏粒子效果
+    /// Create destroy particle effect
     /// </summary>
-    void CreateDestroyEffect(Vector3 position, Color color)
+    void CreateDestroyEffect(Vector3Int position, Color color)
     {
-        // 创建简单的粒子效果
         GameObject effectObj = new GameObject("DestroyEffect");
-        effectObj.transform.position = position;
-        
+        effectObj.transform.position = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z + 0.5f);
+
         ParticleSystem ps = effectObj.AddComponent<ParticleSystem>();
+        ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
         var main = ps.main;
+        main.duration = 0.1f;
+        main.loop = false;
         main.startLifetime = 0.5f;
         main.startSpeed = 3f;
         main.startSize = 0.15f;
         main.startColor = color;
         main.gravityModifier = 1f;
         main.maxParticles = 20;
-        main.duration = 0.1f;
-        main.loop = false;
-        
+
         var emission = ps.emission;
         emission.rateOverTime = 0;
         emission.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0f, 15) });
-        
+
         var shape = ps.shape;
         shape.shapeType = ParticleSystemShapeType.Sphere;
         shape.radius = 0.3f;
-        
+
         var renderer = ps.GetComponent<ParticleSystemRenderer>();
         renderer.material = new Material(Shader.Find("Particles/Standard Unlit"));
         renderer.material.color = color;
-        
+
         ps.Play();
-        
+
         Destroy(effectObj, 1f);
     }
-    
+
     /// <summary>
-    /// 创建放置粒子效果
+    /// Create place particle effect
     /// </summary>
-    void CreatePlaceEffect(Vector3 position, Color color)
+    void CreatePlaceEffect(Vector3Int position, Color color)
     {
         GameObject effectObj = new GameObject("PlaceEffect");
-        effectObj.transform.position = position;
-        
+        effectObj.transform.position = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z + 0.5f);
+
         ParticleSystem ps = effectObj.AddComponent<ParticleSystem>();
+        ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
         var main = ps.main;
+        main.duration = 0.1f;
+        main.loop = false;
         main.startLifetime = 0.3f;
         main.startSpeed = 1f;
         main.startSize = 0.1f;
         main.startColor = new Color(color.r, color.g, color.b, 0.5f);
         main.gravityModifier = 0f;
         main.maxParticles = 10;
-        main.duration = 0.1f;
-        main.loop = false;
-        
+
         var emission = ps.emission;
         emission.rateOverTime = 0;
         emission.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0f, 8) });
-        
+
         var shape = ps.shape;
         shape.shapeType = ParticleSystemShapeType.Box;
-        shape.scale = Vector3.one * blockSize;
-        
+        shape.scale = Vector3.one;
+
         var renderer = ps.GetComponent<ParticleSystemRenderer>();
         renderer.material = new Material(Shader.Find("Particles/Standard Unlit"));
         renderer.material.color = color;
-        
+
         ps.Play();
-        
+
         Destroy(effectObj, 0.5f);
     }
-    
+
     /// <summary>
-    /// 获取当前瞄准的方块位置
+    /// Get current target block position
     /// </summary>
     public Vector3 GetTargetBlockPosition()
     {
-        return targetBlockPosition;
+        return new Vector3(targetBlockPos.x, targetBlockPos.y, targetBlockPos.z);
     }
-    
+
     /// <summary>
-    /// 获取当前放置位置
+    /// Get current place position
     /// </summary>
     public Vector3 GetPlacePosition()
     {
-        return placePosition;
+        Vector3Int placePos = ChunkRaycast.GetPlacePosition(targetBlockPos, targetNormal);
+        return new Vector3(placePos.x, placePos.y, placePos.z);
     }
-    
+
     /// <summary>
-    /// 是否有瞄准目标
+    /// Check if has target
     /// </summary>
     public bool HasTarget()
     {

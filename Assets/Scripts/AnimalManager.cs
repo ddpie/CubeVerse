@@ -24,81 +24,81 @@ public class AnimalManager : MonoBehaviour
         {
             Animal.AnimalType.Rabbit,
             new AnimalData(
-                new Color(0.9f, 0.9f, 0.9f), // 白色
-                new Color(0.8f, 0.8f, 0.8f), // 浅灰
-                0.4f, // 缩放
-                8f,   // 跳跃力
-                3f    // 移动速度
+                new Color(0.95f, 0.95f, 0.95f), // 白色
+                new Color(1f, 0.6f, 0.6f),      // 粉色内耳
+                1.2f, // 缩放 - 更大
+                8f,
+                3f
             )
         },
         {
             Animal.AnimalType.Chicken,
             new AnimalData(
-                new Color(1f, 0.8f, 0.2f),   // 黄色
-                new Color(1f, 0.3f, 0.1f),   // 红色
-                0.3f, // 缩放
-                2f,   // 跳跃力
-                1.5f  // 移动速度
+                new Color(1f, 0.85f, 0.3f),  // 黄色
+                new Color(1f, 0.2f, 0.1f),   // 红色鸡冠
+                1.0f, // 缩放
+                2f,
+                1.5f
             )
         },
         {
             Animal.AnimalType.Cat,
             new AnimalData(
-                new Color(0.8f, 0.8f, 0.8f), // 灰色
-                new Color(0.6f, 0.6f, 0.6f), // 深灰
-                0.4f, // 缩放
-                6f,   // 跳跃力
-                4f    // 移动速度
+                new Color(1f, 0.6f, 0.2f),   // 橘猫
+                new Color(0.95f, 0.95f, 0.95f), // 白色
+                1.0f, // 缩放
+                6f,
+                4f
             )
         },
         {
             Animal.AnimalType.Dog,
             new AnimalData(
-                new Color(0.6f, 0.4f, 0.2f), // 棕色
-                new Color(0.4f, 0.3f, 0.1f), // 深棕
-                0.5f, // 缩放
-                5f,   // 跳跃力
-                3.5f  // 移动速度
+                new Color(0.65f, 0.45f, 0.25f), // 棕色
+                new Color(0.4f, 0.25f, 0.1f),  // 深棕耳朵
+                1.2f, // 缩放
+                5f,
+                3.5f
             )
         },
         {
             Animal.AnimalType.Sheep,
             new AnimalData(
-                new Color(1f, 1f, 1f),       // 白色
-                new Color(0.9f, 0.9f, 0.9f), // 浅灰
-                0.6f, // 缩放
-                3f,   // 跳跃力
-                2f    // 移动速度
+                new Color(1f, 1f, 1f),       // 白羊毛
+                new Color(0.15f, 0.15f, 0.15f), // 黑脸
+                1.3f, // 缩放
+                3f,
+                2f
             )
         },
         {
             Animal.AnimalType.Tiger,
             new AnimalData(
                 new Color(1f, 0.6f, 0.1f),   // 橙色
-                new Color(0.1f, 0.1f, 0.1f), // 黑色
-                0.7f, // 缩放
-                6f,   // 跳跃力
-                5f    // 移动速度
+                new Color(0.1f, 0.1f, 0.1f), // 黑条纹
+                1.4f, // 缩放
+                6f,
+                5f
             )
         },
         {
             Animal.AnimalType.Lion,
             new AnimalData(
-                new Color(0.9f, 0.7f, 0.3f), // 金色
-                new Color(0.6f, 0.4f, 0.1f), // 深金
-                0.7f, // 缩放
-                6f,   // 跳跃力
-                5f    // 移动速度
+                new Color(0.9f, 0.7f, 0.35f), // 金色身体
+                new Color(0.7f, 0.45f, 0.15f), // 棕色鬃毛
+                1.4f, // 缩放
+                6f,
+                5f
             )
         },
         {
             Animal.AnimalType.Elephant,
             new AnimalData(
-                new Color(0.5f, 0.5f, 0.5f), // 灰色
-                new Color(0.4f, 0.4f, 0.4f), // 深灰
-                0.8f, // 缩放
-                2f,   // 跳跃力
-                2f    // 移动速度
+                new Color(0.55f, 0.55f, 0.6f), // 灰色
+                new Color(0.7f, 0.5f, 0.5f),   // 粉色内耳
+                1.5f, // 缩放 - 大象最大
+                2f,
+                2f
             )
         }
     };
@@ -247,504 +247,376 @@ public class AnimalManager : MonoBehaviour
                 break;
         }
     }
+    GameObject CreatePart(Vector3 position, Transform parent, Color color, PrimitiveType shapeType, Vector3 scale, Vector3? rotation = null)
+    {
+        GameObject part = GameObject.CreatePrimitive(shapeType);
+        part.transform.parent = parent;
+        part.transform.localPosition = position;
+        part.transform.localScale = scale;
+
+        if (rotation.HasValue)
+        {
+            part.transform.localEulerAngles = rotation.Value;
+        }
+
+        // 移除碰撞体，避免物理干扰
+        Collider col = part.GetComponent<Collider>();
+        if (col != null) Destroy(col);
+
+        Renderer renderer = part.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            Material material = new Material(Shader.Find("Standard"));
+            material.color = color;
+            material.SetFloat("_Metallic", 0);
+            material.SetFloat("_Glossiness", 0.3f);
+            renderer.material = material;
+        }
+
+        return part;
+    }
+
+    // 简化版：默认立方体
     GameObject CreateCube(Vector3 position, Transform parent, Color color)
     {
-        if (cubePrefab != null)
-        {
-            // 添加微小的随机偏移来避免Z-fighting
-            Vector3 offset = new Vector3(
-                Random.Range(-0.01f, 0.01f),
-                Random.Range(-0.01f, 0.01f),
-                Random.Range(-0.01f, 0.01f)
-            );
-            
-            GameObject cube = Instantiate(cubePrefab, Vector3.zero, Quaternion.identity, parent);
-            cube.transform.localPosition = position + offset;
-            
-            Renderer renderer = cube.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                Material material = new Material(Shader.Find("Standard"));
-                material.color = color;
-                
-                // 优化渲染设置
-                material.enableInstancing = true;
-                material.SetFloat("_Metallic", 0);
-                material.SetFloat("_Glossiness", 0.1f);
-                
-                // 设置更好的阴影
-                renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-                renderer.receiveShadows = true;
-                
-                renderer.material = material;
-                
-                // 缓存材质
-                if (!materialCache.ContainsKey(parent.gameObject))
-                {
-                    materialCache[parent.gameObject] = new Material[1];
-                }
-                materialCache[parent.gameObject][0] = material;
-            }
-            
-            return cube;
-        }
-        return null;
+        return CreatePart(position, parent, color, PrimitiveType.Cube, Vector3.one);
     }
     
     void CreateRabbit(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 身体（更圆润的形状）
-        for (float z = -0.5f; z <= 0.5f; z += 0.5f)
-        {
-            for (float x = -0.5f; x <= 0.5f; x += 0.5f)
-            {
-                CreateCube(new Vector3(x, 0.5f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 头部（更精细的细节）
-        CreateCube(new Vector3(0, 1f, 0.7f), parent, data.mainColor);
-        CreateCube(new Vector3(-0.2f, 1f, 0.7f), parent, data.mainColor);
-        CreateCube(new Vector3(0.2f, 1f, 0.7f), parent, data.mainColor);
-        
+
+        // 圆头
+        CreatePart(new Vector3(0, 0.9f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.8f, 0.7f, 0.7f));
+
+        // 长耳朵 - 兔子最明显特征 (胶囊形)
+        CreatePart(new Vector3(-0.2f, 1.6f, 0), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.15f, 0.5f, 0.08f));
+        CreatePart(new Vector3(0.2f, 1.6f, 0), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.15f, 0.5f, 0.08f));
+        // 粉色内耳
+        CreatePart(new Vector3(-0.2f, 1.6f, 0.03f), parent, data.secondaryColor, PrimitiveType.Capsule, new Vector3(0.08f, 0.4f, 0.02f));
+        CreatePart(new Vector3(0.2f, 1.6f, 0.03f), parent, data.secondaryColor, PrimitiveType.Capsule, new Vector3(0.08f, 0.4f, 0.02f));
+
         // 眼睛
-        CreateCube(new Vector3(-0.3f, 1.1f, 1f), parent, Color.black);
-        CreateCube(new Vector3(0.3f, 1.1f, 1f), parent, Color.black);
-        
-        // 鼻子
-        CreateCube(new Vector3(0, 0.9f, 1.1f), parent, new Color(1f, 0.8f, 0.8f));
-        
-        // 长耳朵
-        for (float y = 0; y <= 1f; y += 0.5f)
-        {
-            CreateCube(new Vector3(-0.2f, 1.5f + y, 0.7f), parent, data.mainColor);
-            CreateCube(new Vector3(0.2f, 1.5f + y, 0.7f), parent, data.mainColor);
-        }
-        
-        // 内耳
-        CreateCube(new Vector3(-0.2f, 2f, 0.8f), parent, new Color(1f, 0.8f, 0.8f));
-        CreateCube(new Vector3(0.2f, 2f, 0.8f), parent, new Color(1f, 0.8f, 0.8f));
-        
-        // 后腿（更强壮）
-        CreateCube(new Vector3(-0.3f, 0.2f, 0), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 0.2f, 0), parent, data.mainColor);
-        CreateCube(new Vector3(-0.3f, 0, 0.2f), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 0, 0.2f), parent, data.mainColor);
-        
-        // 前腿
-        CreateCube(new Vector3(-0.3f, 0.2f, 0.6f), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 0.2f, 0.6f), parent, data.mainColor);
-        
-        // 蓬松的尾巴
-        CreateCube(new Vector3(0, 0.5f, -0.4f), parent, Color.white);
-        CreateCube(new Vector3(0.2f, 0.5f, -0.4f), parent, Color.white);
-        CreateCube(new Vector3(-0.2f, 0.5f, -0.4f), parent, Color.white);
+        CreatePart(new Vector3(-0.2f, 1f, 0.3f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.15f, 0.15f, 0.1f));
+        CreatePart(new Vector3(0.2f, 1f, 0.3f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.15f, 0.15f, 0.1f));
+
+        // 粉鼻子
+        CreatePart(new Vector3(0, 0.85f, 0.4f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.1f, 0.08f, 0.08f));
+
+        // 椭圆身体
+        CreatePart(new Vector3(0, 0.35f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.6f, 0.5f, 0.7f));
+
+        // 短腿
+        CreatePart(new Vector3(-0.2f, 0.1f, 0.15f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.2f, 0.15f));
+        CreatePart(new Vector3(0.2f, 0.1f, 0.15f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.2f, 0.15f));
+        CreatePart(new Vector3(-0.15f, 0.1f, -0.2f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.2f, 0.2f, 0.25f));
+        CreatePart(new Vector3(0.15f, 0.1f, -0.2f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.2f, 0.2f, 0.25f));
+
+        // 圆尾巴
+        CreatePart(new Vector3(0, 0.4f, -0.4f), parent, Color.white, PrimitiveType.Sphere, new Vector3(0.25f, 0.25f, 0.25f));
     }
 
     void CreateChicken(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 身体（圆润的形状）
-        for (float x = -0.3f; x <= 0.3f; x += 0.3f)
-        {
-            for (float z = -0.3f; z <= 0.3f; z += 0.3f)
-            {
-                CreateCube(new Vector3(x, 0.3f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 头部
-        CreateCube(new Vector3(0, 0.6f, 0.3f), parent, data.mainColor);
-        
-        // 鸡冠
-        for (float x = -0.2f; x <= 0.2f; x += 0.2f)
-        {
-            CreateCube(new Vector3(x, 0.8f, 0.3f), parent, data.secondaryColor);
-        }
-        
+
+        // 小圆头
+        CreatePart(new Vector3(0, 0.9f, 0.1f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.4f, 0.45f, 0.4f));
+
+        // 红色鸡冠 - 最明显特征
+        CreatePart(new Vector3(0, 1.2f, 0.1f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.2f, 0.08f));
+        CreatePart(new Vector3(0.08f, 1.1f, 0.1f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.12f, 0.15f, 0.06f));
+        CreatePart(new Vector3(-0.08f, 1.1f, 0.1f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.12f, 0.15f, 0.06f));
+
         // 眼睛
-        CreateCube(new Vector3(-0.15f, 0.6f, 0.5f), parent, Color.black);
-        CreateCube(new Vector3(0.15f, 0.6f, 0.5f), parent, Color.black);
-        
-        // 喙
-        CreateCube(new Vector3(0, 0.5f, 0.6f), parent, new Color(1f, 0.6f, 0));
-        
+        CreatePart(new Vector3(-0.12f, 0.95f, 0.28f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.08f, 0.08f, 0.05f));
+        CreatePart(new Vector3(0.12f, 0.95f, 0.28f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.08f, 0.08f, 0.05f));
+
+        // 尖喙 - 圆锥形用立方体模拟
+        CreatePart(new Vector3(0, 0.85f, 0.4f), parent, new Color(1f, 0.6f, 0.2f), PrimitiveType.Cube, new Vector3(0.1f, 0.08f, 0.2f));
+
+        // 红色肉垂
+        CreatePart(new Vector3(0, 0.72f, 0.3f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.08f, 0.12f, 0.06f));
+
+        // 椭圆身体
+        CreatePart(new Vector3(0, 0.45f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.5f, 0.55f, 0.65f));
+
         // 翅膀
-        for (float y = 0.2f; y <= 0.4f; y += 0.2f)
-        {
-            CreateCube(new Vector3(-0.4f, y, 0), parent, data.mainColor);
-            CreateCube(new Vector3(0.4f, y, 0), parent, data.mainColor);
-        }
-        
-        // 尾羽
-        for (float x = -0.2f; x <= 0.2f; x += 0.2f)
-        {
-            CreateCube(new Vector3(x, 0.4f, -0.4f), parent, data.mainColor);
-        }
-        
-        // 腿
-        CreateCube(new Vector3(-0.2f, 0, 0), parent, data.secondaryColor);
-        CreateCube(new Vector3(0.2f, 0, 0), parent, data.secondaryColor);
+        CreatePart(new Vector3(-0.3f, 0.5f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.25f, 0.35f));
+        CreatePart(new Vector3(0.3f, 0.5f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.25f, 0.35f));
+
+        // 尾巴羽毛
+        CreatePart(new Vector3(0, 0.6f, -0.35f), parent, data.mainColor, PrimitiveType.Cube, new Vector3(0.08f, 0.3f, 0.15f), new Vector3(-30, 0, 0));
+
+        // 细黄腿
+        CreatePart(new Vector3(-0.12f, 0.1f, 0.05f), parent, new Color(1f, 0.7f, 0.2f), PrimitiveType.Cylinder, new Vector3(0.05f, 0.12f, 0.05f));
+        CreatePart(new Vector3(0.12f, 0.1f, 0.05f), parent, new Color(1f, 0.7f, 0.2f), PrimitiveType.Cylinder, new Vector3(0.05f, 0.12f, 0.05f));
     }
 
     void CreateCat(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 身体
-        for (float z = -0.7f; z <= 0.7f; z += 0.5f)
-        {
-            for (float x = -0.4f; x <= 0.4f; x += 0.4f)
-            {
-                CreateCube(new Vector3(x, 0.5f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 头部
-        CreateCube(new Vector3(0, 1f, 1f), parent, data.mainColor);
-        CreateCube(new Vector3(-0.2f, 1f, 1f), parent, data.mainColor);
-        CreateCube(new Vector3(0.2f, 1f, 1f), parent, data.mainColor);
-        
-        // 眼睛（发光的猫眼）
-        CreateCube(new Vector3(-0.2f, 1.1f, 1.3f), parent, new Color(0.3f, 0.8f, 0.3f));
-        CreateCube(new Vector3(0.2f, 1.1f, 1.3f), parent, new Color(0.3f, 0.8f, 0.3f));
-        
-        // 鼻子
-        CreateCube(new Vector3(0, 0.9f, 1.4f), parent, new Color(1f, 0.8f, 0.8f));
-        
-        // 耳朵（三角形）
-        CreateCube(new Vector3(-0.3f, 1.5f, 1f), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 1.5f, 1f), parent, data.mainColor);
-        CreateCube(new Vector3(-0.3f, 1.7f, 1f), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 1.7f, 1f), parent, data.mainColor);
-        
-        // 内耳
-        CreateCube(new Vector3(-0.3f, 1.5f, 1.1f), parent, new Color(1f, 0.8f, 0.8f));
-        CreateCube(new Vector3(0.3f, 1.5f, 1.1f), parent, new Color(1f, 0.8f, 0.8f));
-        
-        // 腿
-        CreateCube(new Vector3(-0.3f, 0, -0.3f), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 0, -0.3f), parent, data.mainColor);
-        CreateCube(new Vector3(-0.3f, 0, 0.3f), parent, data.mainColor);
-        CreateCube(new Vector3(0.3f, 0, 0.3f), parent, data.mainColor);
-        
-        // 优雅的尾巴（弧形）
-        float tailLength = 1.2f;
-        int tailSegments = 4;
-        for (int i = 0; i < tailSegments; i++)
-        {
-            float t = i / (float)(tailSegments - 1);
-            float angle = Mathf.Lerp(0, Mathf.PI * 0.5f, t);
-            Vector3 pos = new Vector3(
-                0,
-                0.5f + Mathf.Sin(angle) * 0.5f,
-                -0.7f - Mathf.Cos(angle) * tailLength
-            );
-            CreateCube(pos, parent, data.mainColor);
-        }
+
+        // 圆头
+        CreatePart(new Vector3(0, 0.85f, 0.2f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.55f, 0.5f, 0.5f));
+
+        // 三角尖耳朵 - 猫的特征
+        CreatePart(new Vector3(-0.2f, 1.15f, 0.15f), parent, data.mainColor, PrimitiveType.Cube, new Vector3(0.15f, 0.2f, 0.08f), new Vector3(0, 0, 15));
+        CreatePart(new Vector3(0.2f, 1.15f, 0.15f), parent, data.mainColor, PrimitiveType.Cube, new Vector3(0.15f, 0.2f, 0.08f), new Vector3(0, 0, -15));
+        // 粉色内耳
+        CreatePart(new Vector3(-0.2f, 1.12f, 0.18f), parent, new Color(1f, 0.6f, 0.6f), PrimitiveType.Cube, new Vector3(0.08f, 0.12f, 0.02f), new Vector3(0, 0, 15));
+        CreatePart(new Vector3(0.2f, 1.12f, 0.18f), parent, new Color(1f, 0.6f, 0.6f), PrimitiveType.Cube, new Vector3(0.08f, 0.12f, 0.02f), new Vector3(0, 0, -15));
+
+        // 大眼睛
+        CreatePart(new Vector3(-0.15f, 0.9f, 0.42f), parent, new Color(0.2f, 0.8f, 0.2f), PrimitiveType.Sphere, new Vector3(0.14f, 0.16f, 0.08f));
+        CreatePart(new Vector3(0.15f, 0.9f, 0.42f), parent, new Color(0.2f, 0.8f, 0.2f), PrimitiveType.Sphere, new Vector3(0.14f, 0.16f, 0.08f));
+        // 瞳孔
+        CreatePart(new Vector3(-0.15f, 0.9f, 0.46f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.05f, 0.12f, 0.02f));
+        CreatePart(new Vector3(0.15f, 0.9f, 0.46f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.05f, 0.12f, 0.02f));
+
+        // 粉鼻子
+        CreatePart(new Vector3(0, 0.8f, 0.45f), parent, new Color(1f, 0.6f, 0.6f), PrimitiveType.Sphere, new Vector3(0.08f, 0.06f, 0.06f));
+
+        // 白色嘴巴
+        CreatePart(new Vector3(0, 0.73f, 0.4f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.1f, 0.12f));
+
+        // 椭圆身体
+        CreatePart(new Vector3(0, 0.4f, -0.15f), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.35f, 0.3f, 0.4f), new Vector3(90, 0, 0));
+
+        // 四条腿
+        CreatePart(new Vector3(-0.15f, 0.15f, 0.1f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.08f, 0.15f, 0.08f));
+        CreatePart(new Vector3(0.15f, 0.15f, 0.1f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.08f, 0.15f, 0.08f));
+        CreatePart(new Vector3(-0.15f, 0.15f, -0.35f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.08f, 0.15f, 0.08f));
+        CreatePart(new Vector3(0.15f, 0.15f, -0.35f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.08f, 0.15f, 0.08f));
+
+        // 翘起的长尾巴
+        CreatePart(new Vector3(0, 0.45f, -0.55f), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.06f, 0.2f, 0.06f), new Vector3(-30, 0, 0));
+        CreatePart(new Vector3(0, 0.7f, -0.65f), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.06f, 0.15f, 0.06f), new Vector3(30, 0, 0));
     }
 
     void CreateDog(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 身体
-        for (float z = -0.8f; z <= 0.8f; z += 0.4f)
-        {
-            for (float x = -0.4f; x <= 0.4f; x += 0.4f)
-            {
-                CreateCube(new Vector3(x, 0.6f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 头部
-        for (float x = -0.4f; x <= 0.4f; x += 0.4f)
-        {
-            for (float z = 0.8f; z <= 1.2f; z += 0.4f)
-            {
-                CreateCube(new Vector3(x, 1f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 吻部
-        CreateCube(new Vector3(0, 0.8f, 1.4f), parent, data.mainColor);
-        CreateCube(new Vector3(0, 0.6f, 1.4f), parent, data.secondaryColor);
-        
+
+        // 圆头
+        CreatePart(new Vector3(0, 0.85f, 0.15f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.55f, 0.5f, 0.55f));
+
+        // 长嘴巴 - 狗的特征
+        CreatePart(new Vector3(0, 0.75f, 0.45f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.25f, 0.2f, 0.3f));
+
+        // 垂耳 - 狗的特征
+        CreatePart(new Vector3(-0.3f, 0.75f, 0.1f), parent, data.secondaryColor, PrimitiveType.Capsule, new Vector3(0.12f, 0.2f, 0.08f));
+        CreatePart(new Vector3(0.3f, 0.75f, 0.1f), parent, data.secondaryColor, PrimitiveType.Capsule, new Vector3(0.12f, 0.2f, 0.08f));
+
         // 眼睛
-        CreateCube(new Vector3(-0.3f, 1.1f, 1.3f), parent, Color.black);
-        CreateCube(new Vector3(0.3f, 1.1f, 1.3f), parent, Color.black);
-        
-        // 鼻子
-        CreateCube(new Vector3(0, 0.8f, 1.6f), parent, Color.black);
-        
-        // 耳朵（下垂）
-        for (float y = 1.4f; y >= 1f; y -= 0.2f)
-        {
-            CreateCube(new Vector3(-0.4f, y, 1f), parent, data.mainColor);
-            CreateCube(new Vector3(0.4f, y, 1f), parent, data.mainColor);
-        }
-        
-        // 腿
-        float legHeight = 0.8f;
-        for (float y = 0; y < legHeight; y += 0.2f)
-        {
-            CreateCube(new Vector3(-0.3f, y, -0.6f), parent, data.mainColor);
-            CreateCube(new Vector3(0.3f, y, -0.6f), parent, data.mainColor);
-            CreateCube(new Vector3(-0.3f, y, 0.6f), parent, data.mainColor);
-            CreateCube(new Vector3(0.3f, y, 0.6f), parent, data.mainColor);
-        }
-        
-        // 摇摆的尾巴
-        float tailLength = 0.8f;
-        int tailSegments = 4;
-        for (int i = 0; i < tailSegments; i++)
-        {
-            float t = i / (float)(tailSegments - 1);
-            Vector3 pos = new Vector3(
-                Mathf.Sin(t * Mathf.PI * 0.5f) * 0.3f,
-                0.8f + t * 0.4f,
-                -0.8f - t * tailLength
-            );
-            CreateCube(pos, parent, data.mainColor);
-        }
+        CreatePart(new Vector3(-0.15f, 0.92f, 0.35f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.1f, 0.1f, 0.06f));
+        CreatePart(new Vector3(0.15f, 0.92f, 0.35f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.1f, 0.1f, 0.06f));
+
+        // 黑鼻子
+        CreatePart(new Vector3(0, 0.8f, 0.6f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.1f, 0.08f, 0.08f));
+
+        // 吐舌头
+        CreatePart(new Vector3(0, 0.65f, 0.55f), parent, new Color(1f, 0.5f, 0.5f), PrimitiveType.Cube, new Vector3(0.08f, 0.02f, 0.15f), new Vector3(20, 0, 0));
+
+        // 椭圆身体
+        CreatePart(new Vector3(0, 0.4f, -0.2f), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.35f, 0.35f, 0.45f), new Vector3(90, 0, 0));
+
+        // 四条腿
+        CreatePart(new Vector3(-0.18f, 0.18f, 0.1f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(0.18f, 0.18f, 0.1f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(-0.18f, 0.18f, -0.4f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(0.18f, 0.18f, -0.4f), parent, data.mainColor, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+
+        // 翘起的尾巴
+        CreatePart(new Vector3(0, 0.55f, -0.6f), parent, data.mainColor, PrimitiveType.Capsule, new Vector3(0.08f, 0.2f, 0.08f), new Vector3(-45, 0, 0));
     }
 
     void CreateSheep(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 蓬松的身体
-        for (float x = -0.6f; x <= 0.6f; x += 0.3f)
-        {
-            for (float y = 0.3f; y <= 0.9f; y += 0.3f)
-            {
-                for (float z = -0.6f; z <= 0.6f; z += 0.3f)
-                {
-                    if (Random.value < 0.8f) // 随机创建蓬松效果
-                    {
-                        CreateCube(new Vector3(x, y, z), parent, Color.white);
-                    }
-                }
-            }
-        }
-        
-        // 头
-        CreateCube(new Vector3(0, 0.9f, 0.9f), parent, data.secondaryColor);
-        CreateCube(new Vector3(-0.2f, 0.9f, 0.9f), parent, data.secondaryColor);
-        CreateCube(new Vector3(0.2f, 0.9f, 0.9f), parent, data.secondaryColor);
-        
+
+        // 蓬松羊毛头 - 多个球组成
+        CreatePart(new Vector3(0, 0.95f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.5f, 0.45f, 0.45f));
+        CreatePart(new Vector3(-0.2f, 1.05f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.25f, 0.25f, 0.25f));
+        CreatePart(new Vector3(0.2f, 1.05f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.25f, 0.25f, 0.25f));
+        CreatePart(new Vector3(0, 1.15f, 0), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.2f, 0.2f, 0.2f));
+
+        // 黑色小脸 - 绵羊特征
+        CreatePart(new Vector3(0, 0.85f, 0.3f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.25f, 0.3f, 0.2f));
+
         // 眼睛
-        CreateCube(new Vector3(-0.3f, 1f, 1.1f), parent, Color.black);
-        CreateCube(new Vector3(0.3f, 1f, 1.1f), parent, Color.black);
-        
-        // 耳朵
-        CreateCube(new Vector3(-0.4f, 1.1f, 0.9f), parent, data.secondaryColor);
-        CreateCube(new Vector3(0.4f, 1.1f, 0.9f), parent, data.secondaryColor);
-        
-        // 腿
-        CreateCube(new Vector3(-0.3f, 0, -0.3f), parent, data.secondaryColor);
-        CreateCube(new Vector3(0.3f, 0, -0.3f), parent, data.secondaryColor);
-        CreateCube(new Vector3(-0.3f, 0, 0.3f), parent, data.secondaryColor);
-        CreateCube(new Vector3(0.3f, 0, 0.3f), parent, data.secondaryColor);
+        CreatePart(new Vector3(-0.1f, 0.92f, 0.38f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.06f, 0.06f, 0.04f));
+        CreatePart(new Vector3(0.1f, 0.92f, 0.38f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.06f, 0.06f, 0.04f));
+
+        // 小黑耳朵
+        CreatePart(new Vector3(-0.32f, 0.9f, 0.1f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.12f, 0.08f, 0.06f));
+        CreatePart(new Vector3(0.32f, 0.9f, 0.1f), parent, data.secondaryColor, PrimitiveType.Sphere, new Vector3(0.12f, 0.08f, 0.06f));
+
+        // 蓬松身体 - 多个球组成
+        CreatePart(new Vector3(0, 0.45f, -0.1f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.6f, 0.5f, 0.7f));
+        CreatePart(new Vector3(-0.25f, 0.5f, -0.1f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.3f, 0.3f, 0.35f));
+        CreatePart(new Vector3(0.25f, 0.5f, -0.1f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.3f, 0.3f, 0.35f));
+        CreatePart(new Vector3(0, 0.6f, -0.1f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.35f, 0.25f, 0.4f));
+
+        // 黑色细腿
+        CreatePart(new Vector3(-0.2f, 0.12f, 0.15f), parent, data.secondaryColor, PrimitiveType.Cylinder, new Vector3(0.06f, 0.12f, 0.06f));
+        CreatePart(new Vector3(0.2f, 0.12f, 0.15f), parent, data.secondaryColor, PrimitiveType.Cylinder, new Vector3(0.06f, 0.12f, 0.06f));
+        CreatePart(new Vector3(-0.2f, 0.12f, -0.3f), parent, data.secondaryColor, PrimitiveType.Cylinder, new Vector3(0.06f, 0.12f, 0.06f));
+        CreatePart(new Vector3(0.2f, 0.12f, -0.3f), parent, data.secondaryColor, PrimitiveType.Cylinder, new Vector3(0.06f, 0.12f, 0.06f));
+
+        // 小尾巴
+        CreatePart(new Vector3(0, 0.45f, -0.45f), parent, data.mainColor, PrimitiveType.Sphere, new Vector3(0.15f, 0.12f, 0.1f));
     }
 
     void CreateTiger(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 身体
-        for (float z = -1f; z <= 1f; z += 0.4f)
-        {
-            for (float x = -0.6f; x <= 0.6f; x += 0.4f)
-            {
-                CreateCube(new Vector3(x, 0.8f, z), parent, data.mainColor);
-                // 添加条纹
-                if (Mathf.Abs(z) % 0.8f < 0.4f)
-                {
-                    CreateCube(new Vector3(x, 0.8f, z), parent, data.secondaryColor);
-                }
-            }
-        }
-        
-        // 头部
-        for (float x = -0.5f; x <= 0.5f; x += 0.25f)
-        {
-            for (float z = 1f; z <= 1.5f; z += 0.25f)
-            {
-                CreateCube(new Vector3(x, 1.2f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 眼睛（发光的黄色）
-        CreateCube(new Vector3(-0.25f, 1.3f, 1.6f), parent, new Color(1f, 0.8f, 0));
-        CreateCube(new Vector3(0.25f, 1.3f, 1.6f), parent, new Color(1f, 0.8f, 0));
-        
-        // 耳朵
-        CreateCube(new Vector3(-0.4f, 1.6f, 1.2f), parent, data.mainColor);
-        CreateCube(new Vector3(0.4f, 1.6f, 1.2f), parent, data.mainColor);
-        
-        // 强壮的腿
-        float legHeight = 0.8f;
-        for (float y = 0; y < legHeight; y += 0.2f)
-        {
-            CreateCube(new Vector3(-0.4f, y, -0.8f), parent, data.mainColor);
-            CreateCube(new Vector3(0.4f, y, -0.8f), parent, data.mainColor);
-            CreateCube(new Vector3(-0.4f, y, 0.8f), parent, data.mainColor);
-            CreateCube(new Vector3(0.4f, y, 0.8f), parent, data.mainColor);
-        }
-        
-        // 长尾巴
-        float tailLength = 1.5f;
-        int tailSegments = 6;
-        for (int i = 0; i < tailSegments; i++)
-        {
-            float t = i / (float)(tailSegments - 1);
-            Vector3 pos = new Vector3(
-                0,
-                0.8f - t * 0.3f,
-                -1f - t * tailLength
-            );
-            CreateCube(pos, parent, data.mainColor);
-        }
+        Color orange = data.mainColor;
+        Color black = data.secondaryColor;
+        Color white = new Color(1f, 0.95f, 0.9f);
+
+        // 大圆头
+        CreatePart(new Vector3(0, 0.9f, 0.1f), parent, orange, PrimitiveType.Sphere, new Vector3(0.6f, 0.55f, 0.55f));
+
+        // 脸部条纹 - 老虎最明显特征
+        CreatePart(new Vector3(0, 1.05f, 0.1f), parent, black, PrimitiveType.Cube, new Vector3(0.08f, 0.15f, 0.4f));
+        CreatePart(new Vector3(-0.2f, 0.95f, 0.25f), parent, black, PrimitiveType.Cube, new Vector3(0.04f, 0.2f, 0.15f), new Vector3(0, 0, -20));
+        CreatePart(new Vector3(0.2f, 0.95f, 0.25f), parent, black, PrimitiveType.Cube, new Vector3(0.04f, 0.2f, 0.15f), new Vector3(0, 0, 20));
+
+        // 圆耳朵
+        CreatePart(new Vector3(-0.25f, 1.15f, 0.05f), parent, orange, PrimitiveType.Sphere, new Vector3(0.15f, 0.15f, 0.08f));
+        CreatePart(new Vector3(0.25f, 1.15f, 0.05f), parent, orange, PrimitiveType.Sphere, new Vector3(0.15f, 0.15f, 0.08f));
+        // 白色内耳
+        CreatePart(new Vector3(-0.25f, 1.13f, 0.08f), parent, white, PrimitiveType.Sphere, new Vector3(0.08f, 0.08f, 0.04f));
+        CreatePart(new Vector3(0.25f, 1.13f, 0.08f), parent, white, PrimitiveType.Sphere, new Vector3(0.08f, 0.08f, 0.04f));
+
+        // 眼睛
+        CreatePart(new Vector3(-0.15f, 0.95f, 0.38f), parent, new Color(1f, 0.8f, 0.2f), PrimitiveType.Sphere, new Vector3(0.12f, 0.1f, 0.06f));
+        CreatePart(new Vector3(0.15f, 0.95f, 0.38f), parent, new Color(1f, 0.8f, 0.2f), PrimitiveType.Sphere, new Vector3(0.12f, 0.1f, 0.06f));
+        // 瞳孔
+        CreatePart(new Vector3(-0.15f, 0.95f, 0.41f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.05f, 0.08f, 0.02f));
+        CreatePart(new Vector3(0.15f, 0.95f, 0.41f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.05f, 0.08f, 0.02f));
+
+        // 白色嘴部
+        CreatePart(new Vector3(0, 0.78f, 0.35f), parent, white, PrimitiveType.Sphere, new Vector3(0.2f, 0.15f, 0.18f));
+
+        // 粉鼻子
+        CreatePart(new Vector3(0, 0.85f, 0.45f), parent, new Color(1f, 0.6f, 0.6f), PrimitiveType.Sphere, new Vector3(0.08f, 0.06f, 0.06f));
+
+        // 椭圆身体带条纹
+        CreatePart(new Vector3(0, 0.45f, -0.2f), parent, orange, PrimitiveType.Capsule, new Vector3(0.4f, 0.35f, 0.5f), new Vector3(90, 0, 0));
+        // 身体条纹
+        CreatePart(new Vector3(-0.22f, 0.5f, -0.15f), parent, black, PrimitiveType.Cube, new Vector3(0.03f, 0.2f, 0.15f));
+        CreatePart(new Vector3(0.22f, 0.5f, -0.15f), parent, black, PrimitiveType.Cube, new Vector3(0.03f, 0.2f, 0.15f));
+        CreatePart(new Vector3(0, 0.55f, -0.25f), parent, black, PrimitiveType.Cube, new Vector3(0.03f, 0.15f, 0.2f));
+
+        // 四条腿
+        CreatePart(new Vector3(-0.2f, 0.18f, 0.1f), parent, orange, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(0.2f, 0.18f, 0.1f), parent, orange, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(-0.2f, 0.18f, -0.4f), parent, orange, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(0.2f, 0.18f, -0.4f), parent, orange, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+
+        // 长尾巴带条纹
+        CreatePart(new Vector3(0, 0.5f, -0.6f), parent, orange, PrimitiveType.Capsule, new Vector3(0.08f, 0.25f, 0.08f), new Vector3(-50, 0, 0));
+        // 尾巴条纹
+        CreatePart(new Vector3(0, 0.6f, -0.7f), parent, black, PrimitiveType.Cylinder, new Vector3(0.09f, 0.03f, 0.09f));
+        CreatePart(new Vector3(0, 0.75f, -0.6f), parent, black, PrimitiveType.Cylinder, new Vector3(0.09f, 0.03f, 0.09f));
     }
 
     void CreateLion(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 身体
-        for (float z = -1f; z <= 1f; z += 0.4f)
-        {
-            for (float x = -0.6f; x <= 0.6f; x += 0.4f)
-            {
-                CreateCube(new Vector3(x, 0.8f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 头部和鬃毛
-        for (float x = -0.8f; x <= 0.8f; x += 0.2f)
-        {
-            for (float z = 1f; z <= 1.8f; z += 0.2f)
-            {
-                for (float y = 1f; y <= 1.6f; y += 0.2f)
-                {
-                    if (Random.value < 0.7f) // 随机创建蓬松的鬃毛
-                    {
-                        CreateCube(new Vector3(x, y, z), parent, data.secondaryColor);
-                    }
-                }
-            }
-        }
-        
-        // 面部
-        CreateCube(new Vector3(0, 1.2f, 1.9f), parent, data.mainColor);
-        
-        // 眼睛（发光的黄色）
-        CreateCube(new Vector3(-0.3f, 1.3f, 2f), parent, new Color(1f, 0.8f, 0));
-        CreateCube(new Vector3(0.3f, 1.3f, 2f), parent, new Color(1f, 0.8f, 0));
-        
-        // 鼻子
-        CreateCube(new Vector3(0, 1.1f, 2.1f), parent, Color.black);
-        
-        // 强壮的腿
-        float legHeight = 0.8f;
-        for (float y = 0; y < legHeight; y += 0.2f)
-        {
-            CreateCube(new Vector3(-0.4f, y, -0.8f), parent, data.mainColor);
-            CreateCube(new Vector3(0.4f, y, -0.8f), parent, data.mainColor);
-            CreateCube(new Vector3(-0.4f, y, 0.8f), parent, data.mainColor);
-            CreateCube(new Vector3(0.4f, y, 0.8f), parent, data.mainColor);
-        }
-        
-        // 尾巴
-        float tailLength = 1.5f;
-        int tailSegments = 6;
-        for (int i = 0; i < tailSegments; i++)
-        {
-            float t = i / (float)(tailSegments - 1);
-            Vector3 pos = new Vector3(
-                0,
-                0.8f - t * 0.3f,
-                -1f - t * tailLength
-            );
-            CreateCube(pos, parent, data.mainColor);
-        }
-        
-        // 尾巴尖端的毛
-        for (float x = -0.2f; x <= 0.2f; x += 0.2f)
-        {
-            for (float y = -0.2f; y <= 0.2f; y += 0.2f)
-            {
-                CreateCube(new Vector3(x, 0.2f + y, -1f - tailLength), parent, data.secondaryColor);
-            }
-        }
+        Color body = data.mainColor;
+        Color mane = data.secondaryColor;
+
+        // 大蓬松鬃毛 - 狮子最明显的特征（围绕脸一圈）
+        CreatePart(new Vector3(0, 1.05f, -0.05f), parent, mane, PrimitiveType.Sphere, new Vector3(0.9f, 0.8f, 0.7f));
+        // 额外鬃毛球
+        CreatePart(new Vector3(-0.35f, 1f, 0), parent, mane, PrimitiveType.Sphere, new Vector3(0.3f, 0.35f, 0.25f));
+        CreatePart(new Vector3(0.35f, 1f, 0), parent, mane, PrimitiveType.Sphere, new Vector3(0.3f, 0.35f, 0.25f));
+        CreatePart(new Vector3(0, 1.25f, 0), parent, mane, PrimitiveType.Sphere, new Vector3(0.35f, 0.25f, 0.25f));
+        CreatePart(new Vector3(-0.25f, 0.75f, 0.1f), parent, mane, PrimitiveType.Sphere, new Vector3(0.25f, 0.25f, 0.2f));
+        CreatePart(new Vector3(0.25f, 0.75f, 0.1f), parent, mane, PrimitiveType.Sphere, new Vector3(0.25f, 0.25f, 0.2f));
+
+        // 金色脸
+        CreatePart(new Vector3(0, 0.95f, 0.2f), parent, body, PrimitiveType.Sphere, new Vector3(0.45f, 0.4f, 0.4f));
+
+        // 小圆耳朵
+        CreatePart(new Vector3(-0.3f, 1.2f, -0.05f), parent, body, PrimitiveType.Sphere, new Vector3(0.12f, 0.12f, 0.06f));
+        CreatePart(new Vector3(0.3f, 1.2f, -0.05f), parent, body, PrimitiveType.Sphere, new Vector3(0.12f, 0.12f, 0.06f));
+
+        // 眼睛
+        CreatePart(new Vector3(-0.12f, 1f, 0.4f), parent, new Color(0.9f, 0.7f, 0.2f), PrimitiveType.Sphere, new Vector3(0.1f, 0.08f, 0.05f));
+        CreatePart(new Vector3(0.12f, 1f, 0.4f), parent, new Color(0.9f, 0.7f, 0.2f), PrimitiveType.Sphere, new Vector3(0.1f, 0.08f, 0.05f));
+        // 瞳孔
+        CreatePart(new Vector3(-0.12f, 1f, 0.43f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.04f, 0.06f, 0.02f));
+        CreatePart(new Vector3(0.12f, 1f, 0.43f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.04f, 0.06f, 0.02f));
+
+        // 嘴巴区域
+        CreatePart(new Vector3(0, 0.85f, 0.4f), parent, new Color(1f, 0.95f, 0.9f), PrimitiveType.Sphere, new Vector3(0.18f, 0.12f, 0.15f));
+
+        // 棕色鼻子
+        CreatePart(new Vector3(0, 0.9f, 0.48f), parent, new Color(0.3f, 0.2f, 0.1f), PrimitiveType.Sphere, new Vector3(0.08f, 0.06f, 0.06f));
+
+        // 椭圆身体
+        CreatePart(new Vector3(0, 0.45f, -0.25f), parent, body, PrimitiveType.Capsule, new Vector3(0.4f, 0.35f, 0.5f), new Vector3(90, 0, 0));
+
+        // 四条腿
+        CreatePart(new Vector3(-0.18f, 0.18f, 0.05f), parent, body, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(0.18f, 0.18f, 0.05f), parent, body, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(-0.18f, 0.18f, -0.45f), parent, body, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+        CreatePart(new Vector3(0.18f, 0.18f, -0.45f), parent, body, PrimitiveType.Cylinder, new Vector3(0.1f, 0.18f, 0.1f));
+
+        // 尾巴带毛球
+        CreatePart(new Vector3(0, 0.5f, -0.65f), parent, body, PrimitiveType.Capsule, new Vector3(0.06f, 0.25f, 0.06f), new Vector3(-50, 0, 0));
+        // 毛球
+        CreatePart(new Vector3(0, 0.72f, -0.78f), parent, mane, PrimitiveType.Sphere, new Vector3(0.15f, 0.15f, 0.12f));
     }
 
     void CreateElephant(Transform parent, AnimalData data)
     {
         parent.localScale = Vector3.one * data.scale;
-        
-        // 庞大的身体
-        for (float x = -0.8f; x <= 0.8f; x += 0.4f)
-        {
-            for (float z = -1f; z <= 1f; z += 0.4f)
-            {
-                CreateCube(new Vector3(x, 1.2f, z), parent, data.mainColor);
-            }
-        }
-        
-        // 头部
-        for (float x = -0.6f; x <= 0.6f; x += 0.3f)
-        {
-            for (float y = 1.2f; y <= 2f; y += 0.4f)
-            {
-                CreateCube(new Vector3(x, y, 1.2f), parent, data.mainColor);
-            }
-        }
-        
+        Color gray = data.mainColor;
+        Color pink = data.secondaryColor;
+
+        // 大圆头
+        CreatePart(new Vector3(0, 1f, 0.1f), parent, gray, PrimitiveType.Sphere, new Vector3(0.7f, 0.65f, 0.6f));
+
+        // 超大扇形耳朵 - 大象最明显的特征
+        // 左耳
+        CreatePart(new Vector3(-0.5f, 0.95f, 0.05f), parent, gray, PrimitiveType.Sphere, new Vector3(0.45f, 0.55f, 0.08f));
+        // 粉色内耳
+        CreatePart(new Vector3(-0.5f, 0.95f, 0.1f), parent, pink, PrimitiveType.Sphere, new Vector3(0.3f, 0.4f, 0.04f));
+        // 右耳
+        CreatePart(new Vector3(0.5f, 0.95f, 0.05f), parent, gray, PrimitiveType.Sphere, new Vector3(0.45f, 0.55f, 0.08f));
+        // 粉色内耳
+        CreatePart(new Vector3(0.5f, 0.95f, 0.1f), parent, pink, PrimitiveType.Sphere, new Vector3(0.3f, 0.4f, 0.04f));
+
         // 眼睛
-        CreateCube(new Vector3(-0.4f, 1.8f, 1.4f), parent, Color.black);
-        CreateCube(new Vector3(0.4f, 1.8f, 1.4f), parent, Color.black);
-        
-        // 大耳朵
-        for (float y = 1.4f; y <= 2f; y += 0.3f)
-        {
-            for (float z = 0.9f; z <= 1.5f; z += 0.3f)
-            {
-                CreateCube(new Vector3(-1f, y, z), parent, data.secondaryColor);
-                CreateCube(new Vector3(1f, y, z), parent, data.secondaryColor);
-            }
-        }
-        
-        // 长鼻子
-        float trunkLength = 2f;
-        int segments = 8;
-        for (int i = 0; i < segments; i++)
-        {
-            float t = i / (float)(segments - 1);
-            float angle = t * Mathf.PI * 0.5f;
-            Vector3 pos = new Vector3(
-                0,
-                1.6f - Mathf.Sin(angle) * trunkLength,
-                1.4f + Mathf.Cos(angle) * trunkLength
-            );
-            CreateCube(pos, parent, data.mainColor);
-        }
-        
-        // 粗壮的腿
-        float legHeight = 1.2f;
-        float legWidth = 0.6f;
-        for (float y = 0; y < legHeight; y += 0.3f)
-        {
-            for (float x = -legWidth; x <= legWidth; x += 0.3f)
-            {
-                CreateCube(new Vector3(x, y, -0.8f), parent, data.mainColor);
-                CreateCube(new Vector3(x, y, 0.8f), parent, data.mainColor);
-            }
-        }
+        CreatePart(new Vector3(-0.2f, 1.05f, 0.35f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.08f, 0.08f, 0.05f));
+        CreatePart(new Vector3(0.2f, 1.05f, 0.35f), parent, Color.black, PrimitiveType.Sphere, new Vector3(0.08f, 0.08f, 0.05f));
+
+        // 长鼻子 - 大象第二明显特征 (用多个圆柱连接)
+        CreatePart(new Vector3(0, 0.85f, 0.45f), parent, gray, PrimitiveType.Sphere, new Vector3(0.2f, 0.2f, 0.2f));
+        CreatePart(new Vector3(0, 0.65f, 0.55f), parent, gray, PrimitiveType.Capsule, new Vector3(0.12f, 0.15f, 0.12f), new Vector3(20, 0, 0));
+        CreatePart(new Vector3(0, 0.4f, 0.6f), parent, gray, PrimitiveType.Capsule, new Vector3(0.1f, 0.15f, 0.1f), new Vector3(10, 0, 0));
+        CreatePart(new Vector3(0, 0.15f, 0.55f), parent, gray, PrimitiveType.Capsule, new Vector3(0.09f, 0.12f, 0.09f), new Vector3(-20, 0, 0));
+        // 鼻子末端
+        CreatePart(new Vector3(0, 0.08f, 0.4f), parent, gray, PrimitiveType.Sphere, new Vector3(0.1f, 0.08f, 0.12f));
+
+        // 椭圆身体
+        CreatePart(new Vector3(0, 0.5f, -0.25f), parent, gray, PrimitiveType.Sphere, new Vector3(0.55f, 0.5f, 0.7f));
+
+        // 粗腿
+        CreatePart(new Vector3(-0.22f, 0.2f, 0.1f), parent, gray, PrimitiveType.Cylinder, new Vector3(0.12f, 0.2f, 0.12f));
+        CreatePart(new Vector3(0.22f, 0.2f, 0.1f), parent, gray, PrimitiveType.Cylinder, new Vector3(0.12f, 0.2f, 0.12f));
+        CreatePart(new Vector3(-0.22f, 0.2f, -0.45f), parent, gray, PrimitiveType.Cylinder, new Vector3(0.12f, 0.2f, 0.12f));
+        CreatePart(new Vector3(0.22f, 0.2f, -0.45f), parent, gray, PrimitiveType.Cylinder, new Vector3(0.12f, 0.2f, 0.12f));
+
+        // 小尾巴
+        CreatePart(new Vector3(0, 0.55f, -0.6f), parent, gray, PrimitiveType.Capsule, new Vector3(0.04f, 0.15f, 0.04f), new Vector3(-30, 0, 0));
+        // 尾巴末端毛
+        CreatePart(new Vector3(0, 0.38f, -0.68f), parent, new Color(0.4f, 0.4f, 0.45f), PrimitiveType.Sphere, new Vector3(0.06f, 0.08f, 0.04f));
     }
     
     void OnDestroy()
