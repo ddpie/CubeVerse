@@ -26,9 +26,9 @@ public class AnimalManager : MonoBehaviour
             new AnimalData(
                 new Color(0.95f, 0.95f, 0.95f), // 白色
                 new Color(1f, 0.6f, 0.6f),      // 粉色内耳
-                1.2f, // 缩放 - 更大
-                8f,
-                3f
+                1.2f, // 缩放
+                3f,   // 移动速度
+                8f    // 跳跃力 - 兔子跳得最高
             )
         },
         {
@@ -37,8 +37,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(1f, 0.85f, 0.3f),  // 黄色
                 new Color(1f, 0.2f, 0.1f),   // 红色鸡冠
                 1.0f, // 缩放
-                2f,
-                1.5f
+                2f,   // 移动速度
+                5f    // 跳跃力 - 鸡也能跳
             )
         },
         {
@@ -47,8 +47,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(1f, 0.6f, 0.2f),   // 橘猫
                 new Color(0.95f, 0.95f, 0.95f), // 白色
                 1.0f, // 缩放
-                6f,
-                4f
+                4f,   // 移动速度
+                7f    // 跳跃力 - 猫跳得高
             )
         },
         {
@@ -57,8 +57,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(0.65f, 0.45f, 0.25f), // 棕色
                 new Color(0.4f, 0.25f, 0.1f),  // 深棕耳朵
                 1.2f, // 缩放
-                5f,
-                3.5f
+                3.5f, // 移动速度
+                6f    // 跳跃力
             )
         },
         {
@@ -67,8 +67,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(1f, 1f, 1f),       // 白羊毛
                 new Color(0.15f, 0.15f, 0.15f), // 黑脸
                 1.3f, // 缩放
-                3f,
-                2f
+                2f,   // 移动速度 - 绵羊慢
+                5f    // 跳跃力
             )
         },
         {
@@ -77,8 +77,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(1f, 0.6f, 0.1f),   // 橙色
                 new Color(0.1f, 0.1f, 0.1f), // 黑条纹
                 1.4f, // 缩放
-                6f,
-                5f
+                5f,   // 移动速度 - 老虎快
+                7f    // 跳跃力
             )
         },
         {
@@ -87,8 +87,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(0.9f, 0.7f, 0.35f), // 金色身体
                 new Color(0.7f, 0.45f, 0.15f), // 棕色鬃毛
                 1.4f, // 缩放
-                6f,
-                5f
+                5f,   // 移动速度
+                7f    // 跳跃力
             )
         },
         {
@@ -97,8 +97,8 @@ public class AnimalManager : MonoBehaviour
                 new Color(0.55f, 0.55f, 0.6f), // 灰色
                 new Color(0.7f, 0.5f, 0.5f),   // 粉色内耳
                 1.5f, // 缩放 - 大象最大
-                2f,
-                2f
+                1.5f, // 移动速度 - 大象慢
+                4f    // 跳跃力 - 大象跳得低但能跳
             )
         }
     };
