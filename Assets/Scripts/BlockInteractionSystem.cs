@@ -10,6 +10,7 @@ public class BlockInteractionSystem : MonoBehaviour
     public LayerMask blockLayer;                  // 方块层级
     public KeyCode destroyKey = KeyCode.Mouse0;   // 破坏方块按键（左键）
     public KeyCode placeKey = KeyCode.Mouse1;     // 放置方块按键（右键）
+    public float destroyTime = 0.5f;              // 破坏所需时间（秒）
     
     [Header("方块设置")]
     public GameObject cubePrefab;                 // 方块预制体
@@ -33,6 +34,11 @@ public class BlockInteractionSystem : MonoBehaviour
     private Vector3 targetBlockPosition;
     private Vector3 placePosition;
     private bool hasTarget;
+    
+    // 破坏进度
+    private float destroyProgress = 0f;
+    private Vector3 lastDestroyPosition;
+    private bool isDestroying = false;
     
     void Start()
     {
@@ -147,16 +153,48 @@ public class BlockInteractionSystem : MonoBehaviour
     /// </summary>
     void HandleInput()
     {
-        if (!hasTarget) return;
-        
-        // 破坏方块
-        if (Input.GetKeyDown(destroyKey))
+        // 破坏方块（长按）
+        if (Input.GetKey(destroyKey) && hasTarget)
         {
-            DestroyBlock();
+            // 检查是否切换了目标方块
+            if (targetBlockPosition != lastDestroyPosition)
+            {
+                destroyProgress = 0f;
+                lastDestroyPosition = targetBlockPosition;
+            }
+            
+            isDestroying = true;
+            destroyProgress += Time.deltaTime;
+            
+            // 更新高亮显示破坏进度
+            if (blockHighlight != null)
+            {
+                blockHighlight.SetDestroyProgress(destroyProgress / destroyTime);
+            }
+            
+            // 破坏完成
+            if (destroyProgress >= destroyTime)
+            {
+                DestroyBlock();
+                destroyProgress = 0f;
+            }
+        }
+        else
+        {
+            // 松开按键，重置进度
+            if (isDestroying)
+            {
+                isDestroying = false;
+                destroyProgress = 0f;
+                if (blockHighlight != null)
+                {
+                    blockHighlight.SetDestroyProgress(0f);
+                }
+            }
         }
         
-        // 放置方块
-        if (Input.GetKeyDown(placeKey))
+        // 放置方块（单击）
+        if (Input.GetKeyDown(placeKey) && hasTarget)
         {
             PlaceBlock();
         }
