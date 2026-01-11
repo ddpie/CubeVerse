@@ -34,6 +34,8 @@ This solution lowers the barrier to game programming skills, enabling every team
 ### 🎮 Core Gameplay
 - **First-Person Perspective Control**: Smooth player movement and camera control
 - **Cube World Generation**: Procedurally generated cube terrain
+- **Block Interaction System**: Place and destroy blocks to build your world
+- **Inventory System**: 9-slot hotbar with block stacking support
 - **Physics Interaction**: Realistic physics collision and gravity system
 - **Interactive Animals**: Cute animals roaming the world, including rabbits, sheep, and chickens with natural behaviors
 - **Ferris Wheel**: A rotating Ferris wheel landmark that adds life to the cube world
@@ -100,6 +102,13 @@ Refer to https://github.com/CoderGamester/mcp-unity/blob/main/README.md for MCP 
 - **WASD** - Movement
 - **Mouse** - Camera control
 - **Space** - Jump
+- **Left Click** - Destroy block
+- **Right Click** - Place block
+- **1-9 / Scroll Wheel** - Select hotbar slot
+- **R** - Toggle rain
+- **T** - Toggle snow
+- **N** - Toggle day/night
+- **L** - Trigger lightning
 
 ---
 
