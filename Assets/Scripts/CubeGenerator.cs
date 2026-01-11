@@ -12,7 +12,7 @@ public class CubeGenerator : MonoBehaviour
     public float noiseScale = 20f;
     public float heightScale = 10f;
     public int seed;
-    public int terrainDepth = 100;  // 地形厚度（层数）
+    public int terrainDepth = 5;  // 地形厚度（层数）
     
     [Header("颜色设置")]
     public Color grassColor = new Color(0.4f, 0.7f, 0.2f);
@@ -197,19 +197,6 @@ public class CubeGenerator : MonoBehaviour
         int startX = chunkPos.x * chunkSize;
         int startZ = chunkPos.y * chunkSize;
         
-        // 先计算整个区块的高度图
-        int[,] heightMap = new int[chunkSize + 2, chunkSize + 2]; // +2 用于边界检测
-        for (int x = -1; x <= chunkSize; x++)
-        {
-            for (int z = -1; z <= chunkSize; z++)
-            {
-                int worldX = startX + x;
-                int worldZ = startZ + z;
-                float height = GenerateHeight(worldX, worldZ);
-                heightMap[x + 1, z + 1] = Mathf.FloorToInt(height);
-            }
-        }
-        
         // 生成地形
         for (int x = 0; x < chunkSize; x++)
         {
@@ -217,27 +204,15 @@ public class CubeGenerator : MonoBehaviour
             {
                 int worldX = startX + x;
                 int worldZ = startZ + z;
-                int intHeight = heightMap[x + 1, z + 1];
                 
-                // 获取相邻位置的高度
-                int heightN = heightMap[x + 1, z + 2]; // 北
-                int heightS = heightMap[x + 1, z];     // 南
-                int heightE = heightMap[x + 2, z + 1]; // 东
-                int heightW = heightMap[x, z + 1];     // 西
+                // 使用柏林噪声生成高度
+                float height = GenerateHeight(worldX, worldZ);
+                int intHeight = Mathf.FloorToInt(height);
                 
-                // 计算需要暴露的最低高度（相邻最低高度）
-                int minNeighborHeight = Mathf.Min(Mathf.Min(heightN, heightS), Mathf.Min(heightE, heightW));
-                
-                // 只生成从表面到相邻最低点的方块，再加一层底部
-                int bottomY = Mathf.Max(0, minNeighborHeight - 1);
-                
-                // 限制最大深度，避免生成过多方块
-                int maxDepth = Mathf.Min(terrainDepth, intHeight - bottomY + 1);
-                
-                for (int depth = 0; depth < maxDepth; depth++)
+                // 生成完整深度的地形方块
+                for (int depth = 0; depth < terrainDepth; depth++)
                 {
                     int y = intHeight - depth;
-                    if (y < 0) break;
                     
                     Color blockColor;
                     if (depth == 0)

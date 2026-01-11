@@ -241,46 +241,7 @@ public class BlockInteractionSystem : MonoBehaviour
     /// </summary>
     void RevealHiddenBlocks(Vector3 destroyedPos)
     {
-        // 延迟一帧执行，确保方块已被销毁
-        StartCoroutine(RevealHiddenBlocksDelayed(destroyedPos));
-    }
-    
-    System.Collections.IEnumerator RevealHiddenBlocksDelayed(Vector3 destroyedPos)
-    {
-        yield return null; // 等待一帧
-        
-        CubeGenerator cubeGen = FindObjectOfType<CubeGenerator>();
-        if (cubeGen == null || cubeGen.cubePrefab == null) yield break;
-        
-        int worldX = Mathf.RoundToInt(destroyedPos.x);
-        int worldZ = Mathf.RoundToInt(destroyedPos.z);
-        int worldY = Mathf.RoundToInt(destroyedPos.y);
-        
-        // 计算该位置的地形高度
-        float surfaceHeight = GetTerrainHeight(worldX, worldZ, cubeGen);
-        int intSurfaceHeight = Mathf.FloorToInt(surfaceHeight);
-        
-        // 检查下方位置
-        Vector3 belowPos = new Vector3(worldX, worldY - 1, worldZ);
-        int belowY = worldY - 1;
-        
-        if (belowY >= 0)
-        {
-            int depth = intSurfaceHeight - belowY;
-            
-            // 如果在地形深度范围内，直接生成（不检测是否占用，因为优化后下方本来就没有方块）
-            if (depth >= 0 && depth < cubeGen.terrainDepth)
-            {
-                // 用更大的检测范围确认下方确实没有方块
-                Collider[] colliders = Physics.OverlapBox(belowPos, Vector3.one * 0.4f);
-                if (colliders.Length == 0)
-                {
-                    Color blockColor = GetBlockColorForDepth(depth, intSurfaceHeight, cubeGen);
-                    CreateRevealedBlock(belowPos, blockColor);
-                    Debug.Log($"BlockInteractionSystem: 生成隐藏方块于 {belowPos}, 深度={depth}");
-                }
-            }
-        }
+        // 方块已经全部生成，不需要额外揭露逻辑
     }
     
     /// <summary>
