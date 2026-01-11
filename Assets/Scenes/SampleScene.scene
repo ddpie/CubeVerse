@@ -680,7 +680,7 @@ MonoBehaviour:
   noiseScale: 20
   heightScale: 10
   seed: 0
-  terrainDepth: 100
+  terrainDepth: 5
   grassColor: {r: 0.4, g: 0.7, b: 0.2, a: 1}
   dirtColor: {r: 0.6, g: 0.4, b: 0.2, a: 1}
   stoneColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

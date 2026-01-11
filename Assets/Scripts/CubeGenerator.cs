@@ -6,7 +6,7 @@ public class CubeGenerator : MonoBehaviour
     [Header("方块设置")]
     public GameObject cubePrefab;
     public int chunkSize = 16;
-    public int renderDistance = 3;
+    public int renderDistance = 2;  // 减小渲染距离提升性能
     
     [Header("地形设置")]
     public float noiseScale = 20f;
