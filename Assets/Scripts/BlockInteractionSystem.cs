@@ -215,6 +215,9 @@ public class BlockInteractionSystem : MonoBehaviour
             blockColor = renderer.material.color;
         }
         
+        // 记录被破坏方块的位置
+        Vector3 destroyedPos = targetBlockPosition;
+        
         // 添加到背包
         inventory.AddBlock(blockColor);
         
@@ -227,7 +230,126 @@ public class BlockInteractionSystem : MonoBehaviour
         // 销毁方块
         Destroy(targetBlock);
         
+        // 检查并生成下方隐藏的方块
+        RevealHiddenBlocks(destroyedPos);
+        
         Debug.Log($"BlockInteractionSystem: 破坏方块于 {targetBlockPosition}");
+    }
+    
+    /// <summary>
+    /// 破坏方块后，检查并生成周围被隐藏的方块
+    /// </summary>
+    void RevealHiddenBlocks(Vector3 destroyedPos)
+    {
+        // 延迟一帧执行，确保方块已被销毁
+        StartCoroutine(RevealHiddenBlocksDelayed(destroyedPos));
+    }
+    
+    System.Collections.IEnumerator RevealHiddenBlocksDelayed(Vector3 destroyedPos)
+    {
+        yield return null; // 等待一帧
+        
+        CubeGenerator cubeGen = FindObjectOfType<CubeGenerator>();
+        if (cubeGen == null || cubeGen.cubePrefab == null) yield break;
+        
+        int worldX = Mathf.RoundToInt(destroyedPos.x);
+        int worldZ = Mathf.RoundToInt(destroyedPos.z);
+        int worldY = Mathf.RoundToInt(destroyedPos.y);
+        
+        // 计算该位置的地形高度
+        float surfaceHeight = GetTerrainHeight(worldX, worldZ, cubeGen);
+        int intSurfaceHeight = Mathf.FloorToInt(surfaceHeight);
+        
+        // 检查下方位置
+        Vector3 belowPos = new Vector3(worldX, worldY - 1, worldZ);
+        int belowY = worldY - 1;
+        
+        if (belowY >= 0)
+        {
+            int depth = intSurfaceHeight - belowY;
+            
+            // 如果在地形深度范围内，直接生成（不检测是否占用，因为优化后下方本来就没有方块）
+            if (depth >= 0 && depth < cubeGen.terrainDepth)
+            {
+                // 用更大的检测范围确认下方确实没有方块
+                Collider[] colliders = Physics.OverlapBox(belowPos, Vector3.one * 0.4f);
+                if (colliders.Length == 0)
+                {
+                    Color blockColor = GetBlockColorForDepth(depth, intSurfaceHeight, cubeGen);
+                    CreateRevealedBlock(belowPos, blockColor);
+                    Debug.Log($"BlockInteractionSystem: 生成隐藏方块于 {belowPos}, 深度={depth}");
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    /// 获取地形高度
+    /// </summary>
+    float GetTerrainHeight(int x, int z, CubeGenerator cubeGen)
+    {
+        float scale = cubeGen.noiseScale;
+        int seed = cubeGen.seed;
+        float heightScale = cubeGen.heightScale;
+        
+        float height = Mathf.PerlinNoise((x + seed) / scale, (z + seed) / scale) * heightScale;
+        height += Mathf.PerlinNoise((x + seed) / (scale * 0.5f), (z + seed) / (scale * 0.5f)) * 2;
+        
+        return height;
+    }
+    
+    /// <summary>
+    /// 根据深度获取方块颜色
+    /// </summary>
+    Color GetBlockColorForDepth(int depth, int surfaceHeight, CubeGenerator cubeGen)
+    {
+        if (depth == 0)
+        {
+            // 表面层
+            int waterLevel = 3;
+            if (surfaceHeight < waterLevel - 1)
+                return cubeGen.stoneColor;
+            else if (surfaceHeight < waterLevel)
+                return cubeGen.sandColor;
+            else if (surfaceHeight < 8)
+                return cubeGen.grassColor;
+            else if (surfaceHeight < 12)
+                return cubeGen.dirtColor;
+            else
+                return cubeGen.stoneColor;
+        }
+        else if (depth < 3)
+        {
+            return cubeGen.dirtColor;
+        }
+        else
+        {
+            return cubeGen.stoneColor;
+        }
+    }
+    
+    /// <summary>
+    /// 创建被揭露的方块
+    /// </summary>
+    void CreateRevealedBlock(Vector3 position, Color color)
+    {
+        if (cubePrefab == null) return;
+        
+        GameObject newBlock = Instantiate(cubePrefab, position, Quaternion.identity);
+        newBlock.name = "RevealedBlock";
+        
+        Renderer renderer = newBlock.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            Material mat = new Material(Shader.Find("Standard"));
+            mat.color = color;
+            renderer.material = mat;
+        }
+        
+        if (newBlock.GetComponent<Collider>() == null)
+        {
+            newBlock.AddComponent<BoxCollider>();
+        }
     }
     
     /// <summary>
